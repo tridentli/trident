@@ -31,7 +31,6 @@ echo "- Go Dependencies"
 
 cd ${TRIDENT}
 go get -d ./...
-go get -d -u all || true
 
 echo "== Trident dependency updater -- done"
 
