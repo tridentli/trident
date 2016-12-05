@@ -1,8 +1,11 @@
 debian/trident/
-debian/trident.debhelper.log
+debian/trident-cli/
+debian/trident-server/
+debian/trident-wikiexport/
+debian/*.debhelper.log
 debian/*.debhelper
+debian/*.substvars
 debian/files
-debian/trident.substvars
 ext/*
 *.swp
 src/cmd/tcli/tcli

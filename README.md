@@ -15,7 +15,7 @@ and a variety of other instances.
 
 ### Runtime:
  * Minimum Acceptable Runtime: Debian Jessie
- * Golang 1.5.1
+ * Golang 1.6+
  * Postgres 9.4.5
  * Perl v5.20.2
 

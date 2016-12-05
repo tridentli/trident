@@ -6,7 +6,7 @@ Uploaders: Trident Project <project@trident.li>
 Build-Depends: debhelper (>> 9),
                dh-golang,
                dh-systemd,
-               golang-go,
+               golang-go (>> 1.6),
                git,
                ca-certificates
 Standards-Version: 3.9.6
