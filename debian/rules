@@ -8,28 +8,20 @@
 # trident-server		= 'tridentd' + 'tsetup'
 
 # Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+export DH_VERBOSE=1
 
 # Where we store our GOPATH
 export GOPATH=$(shell pwd)/ext/_gopath/
 
 # Our version
-TRIDENT_VERSION=$(shell dpkg-parsechangelog --show-field Version)
+export TRIDENT_VERSION=$(shell dpkg-parsechangelog --show-field Version)
 
 %:
 	dh $@ --parallel --with systemd 
 
 override_dh_auto_install:
-	# Trident version
-
 	# Avoid weird permissions inside sbuild
 	umask 0022
-
-	# Force a clean GOPATH/src
-	rm -rf ${GOPATH}/src/ || true
-
-	# Install dependencies
-	doc/deps.sh
 
 	# Make & Install the binaries
 	# trident-cli
@@ -62,6 +54,4 @@ override_dh_auto_install:
 override_dh_installinit:
 	dh_installinit --name "trident"
 
-
 .PHONY: override_dh_auto_install override_dh_installinit
-
