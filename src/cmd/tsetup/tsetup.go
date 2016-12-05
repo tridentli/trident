@@ -19,5 +19,5 @@ import (
 var Version = "unconfigured"
 
 func main() {
-	pf_cmd_setup.Setup("tsetup", "trident", trident.AppName, Version, tr.Copyright, tr.Website, tr.AppSchemaVersion, "TRIDENT_SERVER", "http://127.0.0.1:8334", tr.NewTriCtx)
+	pf_cmd_setup.Setup("tsetup", "trident", tr.AppName, Version, tr.Copyright, tr.Website, tr.AppSchemaVersion, "TRIDENT_SERVER", "http://127.0.0.1:8334", tr.NewTriCtx)
 }

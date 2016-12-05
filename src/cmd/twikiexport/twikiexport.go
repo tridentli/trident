@@ -10,7 +10,7 @@
 package main
 
 import (
-	"trident.li/pitchfork/cmd/wikiexport/"
+	"trident.li/pitchfork/cmd/wikiexport"
 )
 
 func main() {
