@@ -1,0 +1,19 @@
+[Unit]
+Description=Trident - Trusted Information Exchange Toolkit
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/trident
+ExecStart=/usr/sbin/tridentd --pidfile /var/run/trident/trident.pid $DAEMON_OPTS
+Restart=on-abnormal
+PIDFile=/var/run/trident.pid
+User=trident
+Group=trident
+RuntimeDirectory=trident
+
+[Install]
+WantedBy=multi-user.target
+Alias=tridentd.service
+

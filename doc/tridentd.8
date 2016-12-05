@@ -1,0 +1,39 @@
+.TH "tridentd" "8" "12 May 2015" "" ""
+
+.SH NAME
+trident \- Trusted Information Exchange Toolkit
+.SH SYNOPSIS
+
+\fBtridentd \fR [ \fB\fI<option>...\fB\fR ]
+
+.SH "DESCRIPTION"
+.PP
+tridentd is the Trident server.
+.PP
+It exposes a webinterface on port 8333 that should be proxied to by nginx/apache.
+.SH "OPTIONS"
+.TP
+\fB--disabletwofactor\fR
+Disables Two Factor Authentication.
+.TP
+\fB--insecurecookies\fR
+Disables sending of Secure HTTP cookies, thus allowing direct access to the daemon.
+Should only be used for development.
+.TP
+\fB--syslog\fR
+Use syslog for logging
+.TP
+\fB--verbosedb\fR
+Verbose DB output, Query Logging
+.TP
+\fB--config <dir>\fR
+The directory where the configuration is stored (default: /etc/trident/)
+.TP
+\fB--files <dir>\fR
+The directory where the files are stored, overrides config setting
+.SH "SEE ALSO"
+.PP
+The Trident Website <URL:https://trident.li>.
+.SH "AUTHOR"
+.PP
+Trident was re-written from scratch by Jeroen Massar based on the original Ops-Trust Portal code by Paul Vixie, Ben April, Chris Morrow and Jeroen Massar.

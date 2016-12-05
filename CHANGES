@@ -1,0 +1,15 @@
+Changes for release v1.0.3
+
+- #321 Remove duplicate function definition.
+
+Changes for release v1.0.2
+
+- #131 Require TG attestations to vouch.
+- #281 User sees TG list after login.
+- #297 Sysadmin needs link to member profile from TG member list.
+- #302 Display list e-mail address in mailing-list view.
+- #305 Fix Mailinglist PGP key link.
+- #307 TG bootstrap, creator becomes admin by default.
+- #310 Display e-mail address in user profile view.
+- #312 [partial] member details now appear in profile.
+

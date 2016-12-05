@@ -1,0 +1,82 @@
+{{template "inc/header.tmpl" .}}
+{{template "inc/search.tmpl" .}}
+
+	{{ $isadmin := .IsAdmin }}
+	<table>
+	<thead>
+	<tr>
+		<th>Image</th>
+		<th>Username</th>
+		<th>Full name</th>
+		<th>Email</th>
+		<th>Affiliation</th>
+		<th>Admin</th>
+		<th>Status</th>
+		<th>Activity</th>
+		<th>Vouches</th>
+		{{ if $isadmin }}
+		<th>Actions</th>
+		{{ end }}
+	</tr>
+	</thead>
+	<tbody>{{ range $i, $user := .Users }}
+	<tr>
+		<td><img src="/user/{{ $user.GetUserName }}/image.png" class="userimage" alt="Profile Image" /></td>
+		<td><a href="/group/{{ $user.GetGroupName }}/member/{{ $user.GetUserName }}">{{ $user.GetUserName }}</a>{{ if $isadmin }} (<a href="/user/{{ $user.GetUserName }}">user</a>){{ end }}</td>
+		<td>{{ $user.GetFullName }}</td>
+		<td><a href="mailto:{{ $user.GetEmail }}">{{ $user.GetEmail }}</a>{{ if $user.HasPGP }}<span title="Member has a PGP key">&psi;</span>{{ end }}</td>
+		<td>{{ $user.GetAffiliation }}</td>
+		<td>{{ $user.GetGroupAdmin }}</td>
+		<td>{{ $user.GetGroupState }}</td>
+		<td>{{ $user.GetActivity }}d</td>
+		<td>
+		{{ if gt $user.GetVouchesForMe 0 }}<b>{{ $user.GetVouchesBy }}(by)</b>{{ else }}{{ $user.GetVouchesBy }}(by){{ end }} -&gt;
+		{{ if gt $user.GetVouchesByMe 0 }}<b>{{ $user.GetVouchesFor }}(for)</b>{{ else }}{{ $user.GetVouchesFor }}(for){{ end }}
+		</td>
+		{{ if $isadmin }}
+		<td>
+			{{ if eq $user.GetGroupState "vetted"}}
+				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/approve" method="post">
+					<fieldset>
+						<input id="button" type="submit" name="button" value="Approve Member" />
+					</fieldset>
+				</form>
+			{{ end }}
+			{{ if eq $user.GetGroupState "blocked" }}
+				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/unblock" method="post">
+					<fieldset>
+						<input id="button" type="submit" name="button" value="Unblock Member" />
+					</fieldset>
+				</form>
+			{{ else }}
+				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/block" method="post">
+					<fieldset>
+						<input id="button" type="submit" name="button" value="Block Member" />
+					</fieldset>
+				</form>
+			{{ end }}
+			{{ if $user.GetGroupAdmin }}
+				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/demote" method="post">
+					<fieldset>
+						<input id="button" type="submit" name="button" value="Demote from Admin" />
+					</fieldset>
+				</form>
+			{{ else }}
+				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/promote" method="post">
+					<fieldset>
+						<input id="button" type="submit" name="button" value="Promote to Admin" />
+					</fieldset>
+				</form>
+			{{ end }}
+		</td>
+		{{ end }}
+	</tr>
+	{{ end }}</tbody></table>
+
+	<p>
+		(<b>Bold</b>) = includes vouch for or by you; &psi; = has PGP key
+	</p>
+
+{{template "inc/pager.tmpl" .}}
+
+{{template "inc/footer.tmpl" .}}

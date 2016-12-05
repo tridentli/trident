@@ -1,0 +1,14 @@
+# This is a configuration file for /etc/init.d/trident; it allows you to
+# perform common modifications to the behavior of the Trident daemon
+# startup without editing the init script (and thus getting prompted
+# by dpkg on upgrades).
+
+# Start Trident at startup ? (ignored by systemd)
+TRIDENT_ENABLED=Yes
+
+# The username as who to run Trident
+DAEMON_USER=trident
+
+# Extra options to pass to the Trident daemon
+DAEMON_OPTS=""
+

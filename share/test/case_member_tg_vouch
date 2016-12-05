@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>Member_TG_Vouch</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Member_TG_Vouch</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://trident.localhost/logout/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sign In</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar1234</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Trust Groups</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test - test TG</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Members')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=testuser</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=seconduser</td>
+	<td>seconduser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>2FA</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=seconduser</td>
+	<td>seconduser</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=seconduser</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotValue</td>
+	<td>id=button</td>
+	<td>Vouch</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Test User with 2FA-SOTP (seconduser)'s Profile</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=TriVouch-comment</td>
+	<td>test comment</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriVouch-comment</td>
+	<td>test comment 123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=TriVouch-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyNotValue</td>
+	<td>id=button</td>
+	<td>Vouch</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=TriVouch-comment</td>
+	<td>test comment 123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=form.styled_form &gt; #TriVouch-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=seconduser</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriVouch-comment</td>
+	<td>Test Vouch</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=TriVouch-comment</td>
+	<td>Test Vouch</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=User</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Logout')])[2]</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

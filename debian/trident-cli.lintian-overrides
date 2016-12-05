@@ -1,0 +1,8 @@
+##############################
+# Trident Lintian overrides
+##############################
+
+# The Go compiler is currently unable to produce read-only relocations
+# (it produces static binaries).
+hardening-no-relro usr/bin/tcli
+

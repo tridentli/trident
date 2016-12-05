@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>case_login_2fa_HOTP</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case_login_2fa_HOTP</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://trident.localhost/logout/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>thirduser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=thirduser</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'2FA Tokens')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[4]</td>
+	<td>false</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=verifycode</td>
+	<td>bad_code</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
+	<td>Token value not correct</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=2FA Tokens</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=verifycode</td>
+	<td>177155</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td</td>
+	<td>Enabled</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>https://trident.localhost/logout/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Sign In')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>thirduser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=login-error</td>
+	<td>Login incorrect</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>thirduser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-twofactor</td>
+	<td>bad_code</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=login-error</td>
+	<td>Login incorrect</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>thirduser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-twofactor</td>
+	<td>345847</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>The following is a list of your Trust Groups.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=thirduser</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>The following options are available:</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'2FA Tokens')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>https://trident.localhost/logout/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Sign In')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>thirduser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-twofactor</td>
+	<td>bad_code</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=login-error</td>
+	<td>Login incorrect</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>thirduser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>The following is a list of your Trust Groups.</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>https://trident.localhost/logout/</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

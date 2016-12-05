@@ -1,0 +1,67 @@
+#!/usr/bin/make -f
+
+# These rules are for the packages:
+#
+# trident			= depends on cli + server
+# trident-cli			= only 'tcli' tool
+# trident-wikiexport		= only 'twikiexport' tool
+# trident-server		= 'tridentd' + 'tsetup'
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# Where we store our GOPATH
+export GOPATH=$(shell pwd)/ext/_gopath/
+
+# Our version
+TRIDENT_VERSION=$(shell dpkg-parsechangelog --show-field Version)
+
+%:
+	dh $@ --parallel --with systemd 
+
+override_dh_auto_install:
+	# Trident version
+
+	# Avoid weird permissions inside sbuild
+	umask 0022
+
+	# Force a clean GOPATH/src
+	rm -rf ${GOPATH}/src/ || true
+
+	# Install dependencies
+	doc/deps.sh
+
+	# Make & Install the binaries
+	# trident-cli
+	mkdir -p debian/trident-cli/usr/bin
+	go build -o debian/trident-cli/usr/bin/tcli src/cmd/tcli/tcli.go
+
+	# trident-wikiexport
+	mkdir -p debian/trident-wikiexport/usr/sbin
+	go build -ldflags "-X main.Version=$(TRIDENT_VERSION)" -o debian/trident-wikiexport/usr/sbin/twikiexport src/cmd/twikiexport/twikiexport.go
+
+	########################################
+	# trident-server
+	mkdir -p debian/trident-server/usr/sbin/
+	go build -ldflags "-X main.Version=$(TRIDENT_VERSION)" -o debian/trident-server/usr/sbin/tridentd src/cmd/tridentd/tridentd.go
+	go build -ldflags "-X main.Version=$(TRIDENT_VERSION)" -o debian/trident-server/usr/sbin//tsetup src/cmd/tsetup/tsetup.go
+
+	# DBSchemas, Templates & Web Root
+	mkdir -p debian/trident-server/usr/share/trident/
+	cp --preserve=timestamps -RL share/* debian/trident-server/usr/share/trident/
+
+	# Trident's var
+	mkdir -p debian/trident-server/var/lib/trident/
+	chmod 700 debian/trident-server/var/lib/trident/
+
+	# Example config
+	mkdir -p debian/trident-server/etc/trident/
+	cp --preserve=timestamps doc/conf/trident.conf debian/trident-server/etc/trident/
+	cp --preserve=timestamps -R doc/conf/nginx/ debian/trident-server/etc/trident/
+
+override_dh_installinit:
+	dh_installinit --name "trident"
+
+
+.PHONY: override_dh_auto_install override_dh_installinit
+

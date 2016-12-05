@@ -1,0 +1,10 @@
+debian/trident/
+debian/trident.debhelper.log
+debian/*.debhelper
+debian/files
+debian/trident.substvars
+ext/*
+*.swp
+src/cmd/tcli/tcli
+src/cmd/tridentd/tridentd
+src/cmd/tsetup/tsetup

@@ -1,0 +1,17 @@
+{{template "inc/htmlhead.tmpl" .}}<body class="login">
+<div id="container">
+<div id="receptacle">
+<div id="content">
+<article>
+
+<div class="logo">
+	{{ .SysName }}
+</div>
+
+	{{ pfform .UI .Login . true }}
+
+</div>
+</div>
+</div>
+</div>
+{{template "inc/footer.tmpl" .}}

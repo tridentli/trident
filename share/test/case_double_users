@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>case_double_users</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case_double_users</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://trident.localhost/logout/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>adminuser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Trust Groups</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test - test TG</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>Bart.Simpson@foo.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-descr</td>
+	<td>Bart Simpson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-affiliation</td>
+	<td>Springfield Power</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-bio_info</td>
+	<td>Hello</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vouch</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@name='button'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextNotPresent</td>
+	<td>Something is not right.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Trust Groups</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test - test TG</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>bsimpson@foo.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-descr</td>
+	<td>Bart Simpson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-affiliation</td>
+	<td>Springfield Power</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-bio_info</td>
+	<td>Testing 2</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vouch</td>
+	<td>testing vouch</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@name='button'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextNotPresent</td>
+	<td>Something is not right.</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>https://trident.localhost/logout/</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

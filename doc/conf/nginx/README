@@ -1,0 +1,9 @@
+############################################################
+# Trident Nginx Configuration Includes
+############################################################
+#
+# This directory contains Nginx configuration includes
+# for enabling Trident inside a Nginx server
+#
+# See doc/Trident.md for more details.
+############################################################

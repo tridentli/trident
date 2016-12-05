@@ -1,0 +1,60 @@
+.TH "tsetup" "1" "12 May 2015" "" ""
+
+.SH NAME
+tsetup - Trident Setup command
+.SH SYNOPSIS
+
+\fBtsetup \fR [ \fB\fI<options>\fB\fR ] [ \fB\fI<commands>\fB\fR ]
+
+.SH "DESCRIPTION"
+.PP
+tsetup is the setup tool for Trident. It allows configuring of the
+SQL database, installation and upgrading of the schema.
+.PP
+.TP
+\fB--config <dir>\fR
+The directory where the configuration is stored (default: /etc/trident/).
+.TP
+\fB--verbosedb\fR
+Enable verbose logging of the SQL queries that are made.
+.TP
+\fB--debug\fR
+Enable debug output.
+.TP
+\fB--help\fR
+Show help output.
+.TP
+\fBhelp\fR
+Displays the help.
+.TP
+\fBsetup_db\fR
+Creates and then sets up the database.
+.TP
+\fBsetup_test_db\fR
+Creates and then sets up the test database.
+.TP
+\fBupgrade_db\fR
+Upgrades the database schema to the newest edition.
+.TP
+\fBcleanup_db\fR
+Deletes the database.
+.TP
+\fBadduser <username> <password>\fR
+Adds a new user with the sysadmin flag enabled.
+Useful for setting up the first user.
+.TP
+\fBsetpassword <username> <password>\fR
+Force sets the password of the given user.
+Useful when one has forgotten the sysadmin password.
+.TP
+\fBsudo <username> <cmd.....>\fR
+Runs command as the given user.
+.TP
+\fBversion\fR
+Outputs the version number.
+.SH "SEE ALSO"
+.PP
+The Trident Website <URL:https://trident.li>.
+.SH "AUTHOR"
+.PP
+Trident was re-written from scratch by Jeroen Massar based on the original Ops-Trust Portal code by Paul Vixie, Ben April, Chris Morrow and Jeroen Massar.

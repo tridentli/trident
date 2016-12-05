@@ -1,0 +1,789 @@
+html, body
+{
+	top				: 0px;
+	left				: 0px;
+	color				: #383838;
+	background-color		: white;
+	text-rendering			: optimizeLegibility;
+}
+
+html, body, h1, h2, h3, h4, div, p, ul, li, fieldset
+{
+	font-family			: "Lucida Grande", "Helvetica", "Arial", "Verdana", "sans-serif";
+	border				: none;
+	text-decoration			: none;
+}
+
+*
+{
+	-webkit-font-smoothing		: antialiased;
+}
+
+p
+{
+	line-height			: 1.4737;
+}
+
+html, body, #container
+{
+	height				: 100%;
+}
+
+body > #container
+{
+	height				: auto;
+	overflow			: auto;
+	min-height			: 95%;
+}
+
+html, body, h1, h2, h3, h4, div, p
+{
+	margin				: 0px;
+	padding				: 0px;
+}
+
+.nomargin
+{
+	margin-top			: 0px;
+	margin-bottom			: 0px;
+}
+
+pre
+{
+	background-color		: #eeeeee;
+}
+
+ul
+{
+	padding				: 0px 0px 2px 20px;
+}
+
+audio
+{
+	display				: block;
+}
+
+article
+{
+	border-bottom			: 1px dotted #d5d5d5;
+}
+
+article:last-child
+{
+	border-bottom			: none;
+}
+
+h1, div.sidebar h2, div.sidebox h2
+{
+	font-size			: 1.7em;
+	font-weight			: lighter;
+	padding-top			: 20px;
+	padding-bottom			: 20px;
+	color				: black;
+}
+
+h1, h2, h3, h4
+{
+	letter-spacing			: -1px;
+}
+
+h2, h3, h4
+{
+	font-size			: 1.5em;
+	font-weight			: lighter;
+	padding-top			: 5px;
+	padding-bottom			: 20px;
+	color				: black;
+}
+
+hr
+{
+	background-color		: #050505;
+	color				: black;
+}
+
+li
+{
+	display				: list-item;
+	list-style-type			: square;
+}
+
+video
+{
+	width				: 100%;
+	max-width			: 50% !important;
+	height				: auto !important;
+	margin-bottom			: 25px;
+	border				: 1px solid black;
+}
+
+.galleryPic video
+{
+	width				: 100% !important;
+	max-width			: 100% !important;
+}
+
+/*
+ * Instead of using the text-decoration to get an underline
+ * we use a border-bottom so we can give it a custom color and style
+ * This makes the links less obtrusive to the eye, as they are not
+ * that important to read, but they should be there
+ */
+a
+{
+	color				: #45294a;
+	background-color		: transparent;
+	text-decoration			: none;
+	border-bottom			: 2px dotted #bbbbbb;
+	text-shadow			: 0px 0px .5px #888;
+}
+
+a:hover
+{
+	color				: #45294a;
+	text-decoration			: none;
+	border-bottom			: 2px solid purple;
+	text-shadow			: 0px 0px .5px #888;
+}
+
+.rightpic a
+{
+	color				: black;
+}
+
+table tr th a
+{
+	color				: black;
+}
+
+nav:not(.menu)
+{
+	float				: right;
+	font-size			: small;
+	border				: 1px solid purple;
+	background-color		: #eeeeee;
+}
+
+nav.menu ul
+{
+	margin				: 0px;
+	padding				: 0px;
+}
+
+nav.menu ul li a, #footer ul li a
+{
+	border-bottom			: 0px solid transparent;
+	padding-top			: 5px;
+	padding-bottom			: 5px;
+}
+
+nav.menu ul li, nav.menu ul li:hover, #footer ul li, #footer ul li:hover
+{
+	padding-top			: 0px;
+	padding-bottom			: 5px;
+}
+
+.menu ul li a:hover
+{
+	background-color		: transparent;
+	border-bottom			: 2px solid #a8bdae;
+}
+
+/* add a flavor of purple to the first menu */
+.menu ul:first-child li a:hover
+{
+	background-color		: transparent;
+	border-bottom			: 2px solid #d4cde2;
+}
+
+nav.menu ul li:hover, #footer ul li:hover
+{
+	text-decoration			: none;
+	background-color		: transparent;
+	border-bottom			: 0px solid transparent;
+}
+
+/* Force no lines, used to hide the underlines from <a href="...">..</a>'s */
+.nolines, .nolines:hover
+{
+	text-decoration			: none;
+	border-bottom			: none;
+	background-color		: transparent;
+}
+
+tr.selected
+{
+	background-color		: #d4cde2 !important;
+}
+
+p
+{
+	margin-bottom			: 10px;
+}
+
+/* No image borders please, it makes them ugly */
+img
+{
+	border				: none;
+}
+
+a img.smallimg
+{
+	width				: 30px;
+}
+
+a:focus img.smallimg
+{
+	width				: 100%;
+}
+
+/* But we want a little border around our flags */
+img.country
+{
+	border				: 1px solid black !important;
+	width				: 16px !important;
+	height				: 16px !important;
+}
+
+@media all
+{
+	.printOnly
+	{
+		display			: none;
+	}
+}
+
+/* Printing support */
+@media print
+{
+	.printOnly
+	{
+		display			: inline;
+	}
+
+	body, html
+	{
+		background-color	: transparent;
+		height			: initial;
+	}
+
+	body > #container
+	{
+		height			: initial;
+		overflow		: initial;
+		min-height		: initial;
+	}
+
+	a
+	{
+		text-decoration		: none;
+		border-bottom		: none;
+	}
+
+	a:hover
+	{
+		text-decoration		: none;
+		border-bottom		: none;
+	}
+
+	/* Annotate external URLs */
+	a[href^="http"]:link:after, a[href^="http"]:visited:after
+	{
+		content			: " (" attr(href) ") ";
+		font-size		: 75%;
+	}
+
+	/* Don't annotate maps urls */
+	a[href^="http://maps.google"]:link:after
+	{
+		content			: "";
+	}
+
+	h1, h2, h3, h4, p
+	{
+		page-break-after	: avoid;
+	}
+
+	article
+	{
+		page-break-inside	: avoid;
+	}
+
+	nav.menu ul li, .navbar-handle, #footer ul li, audio, .noprint
+	{
+		display			: none !important;
+	}
+
+	#footer ul li:last-child
+	{
+		display			: inline !important;
+	}
+
+	nav.menu div.navbar-header
+	{
+		display			: inline !important;
+		visibility		: visible !important;
+		text-transform		: none;
+		font-size		: xx-large;
+		margin-left		: 10px;
+	}
+
+	nav.menu, body > #container
+	{
+		margin			: 0px !important;
+		padding			: 0px !important;
+	}
+
+	#receptacle
+	{
+		padding-bottom		: 1em !important;
+	}
+
+	p
+	{
+		line-height		: 1.2;
+	}
+}
+
+th, td, tr
+{
+	text-align			: left;
+}
+
+table
+{
+	color				: #666666;
+}
+
+table tr:nth-child(even)
+{
+	background-color		: #f4f4f4;
+}
+
+table tr:nth-child(odd)
+{
+	background-color		: #e8e8e8;
+}
+
+table tr th
+{
+	color				: black;
+	background-color		: #a8bdae;
+}
+
+table tr th, table tr td
+{
+	padding				: 4px;
+}
+
+nav.menu
+{
+	background-color		: #554488;
+	font-weight			: 800;
+	min-height			: 4em;
+	padding-top			: 5px;
+	padding-left			: 5px;
+}
+
+nav.menu > ul > li > a > img
+{
+	height				: 2em;
+}
+
+nav.slider
+{
+	border-bottom			: none;
+}
+
+nav.menu ul li a, nav.menu ul li a:hover
+{
+	color				: white;
+}
+
+nav.menu ul li.sel a
+{
+	border-bottom			: 2px solid #5da370;
+}
+
+nav.menu ul:first-child li.sel a
+{
+	border-bottom			: 2px solid purple;
+}
+
+nav ul:nth-child(2)
+{
+	padding-left			: 48px;
+	font-size			: small;
+}
+
+nav.menu ul li, nav.menu ul li.sel, #footer ul li
+{
+	display				: inline-block;
+	list-style			: none;
+	list-style-image		: none;
+}
+
+header.usertop
+{
+	position			: absolute;
+	right				: 15px;
+	top				: 5px;
+	background-color		: transparent;
+}
+
+header.usertop a.fakebutton
+{
+	position			: relative;
+	top				: 10px;
+}
+
+
+header.usertop a
+{
+	border-bottom			: none;
+}
+
+header.usertop a img
+{
+	background-color		: white;
+	border				: 1px solid gray;
+	border-radius			: 20px;
+	width				: 40px;
+}
+
+img.userimage
+{
+	max-height			: 40px;
+	max-width			: 40px;
+	border-radius			: 20px;
+}
+
+#footer
+{
+	clear				: both;
+	position			: relative;
+	z-index				: 10;
+	height				: 4em;
+	font-size			: xx-small;
+	text-align			: right; 
+	width				: 100%;
+	background-color		: #eeeeee;
+	border-top			: 1px solid #aaaaaa;
+}
+
+#footer ul
+{
+	margin				: 0px;
+	margin-right			: 30px;
+	padding				: 0px;
+	padding-top			: 10px;
+}
+
+#footer ul li img
+{
+	height				: 10px;
+	width				: 10px;
+}
+
+#container
+{
+	height				: 100%;
+	background-color		: white;
+	position			: relative;
+}
+
+#receptacle
+{
+	position			: relative;
+	padding-bottom			: 4em;
+}
+
+.content, .center
+{
+	margin-top			: 10px;
+	margin-left			: 20px;
+	margin-right			: 20px;
+	padding-bottom			: 20px;
+}
+
+.center
+{
+	text-align			: center;
+}
+
+.small
+{
+	font-size			: xx-small;
+}
+
+.menu ul li a, #footer ul li a
+{
+	text-shadow		: none;
+	text-decoration		: none;
+	border-bottom		: none;
+	padding			: 5px 5px 2px 5px;
+}
+
+.menu li
+{
+	display			: inline-block;
+	vertical-align		: middle;
+}
+
+img.header
+{
+	width			: 100%;
+	height			: 200px;
+	border-top		: 2px solid black;
+	border-bottom		: 4px solid #548;
+}
+
+nav.menu div.navbar-header
+{
+	visibility		: hidden;
+	display			: none;
+}
+
+@media (max-width: 810px)
+{
+	.menu ul
+	{
+		max-height	: 0;
+		overflow	: hidden;
+		background-color: #554488;
+	}
+
+	.menu li
+	{
+		visibility	: hidden;
+		display		: block;
+		border		: none;
+	}
+
+	.menu ul li a
+	{
+		display		: block;
+	}
+
+	.menu .navbar-handle
+	{
+		display		: block;
+	}
+
+	nav.menu
+	{
+		min-height	: 2em;
+		margin-left	: 3em;
+		margin-right	: 4em;
+		border-bottom	: none;
+		background-color: white;
+	}
+
+	#navbar-checkbox:checked + nav.menu ul
+	{
+		margin-top	: -10px;
+	}
+
+	#navbar-checkbox:checked + nav.menu
+	{
+		padding-bottom	: 5em;
+	}
+
+	#navbar-checkbox:checked + .menu ul
+	{
+		max-height	: 300px;
+		overflow	: inherit;
+		border-left	: 2px solid black;
+		border-right	: 2px solid black;
+	}
+
+	#navbar-checkbox:checked + .menu li
+	{
+		visibility	: visible;
+		display		: block;
+	}
+
+	.navbar-handle
+	{
+		-webkit-touch-callout	: none;
+		-webkit-user-select	: none;
+		 -khtml-user-select	: none;
+		   -moz-user-select	: none;
+		    -ms-user-select	: none;
+		        user-select	: none;
+	}
+
+	.navbar-handle,
+	.navbar-handle:before,
+	.navbar-handle:after
+	{
+		border-top		: 0.27em solid #554488;
+	}
+
+	.navbar-handle:before
+	{
+		top			: 0.37777777777777777em;
+	}
+
+	.navbar-handle:after
+	{
+		top			: 0.8888888888888888em;
+	}
+
+	#navbar-checkbox:checked .navbar-handle,
+	#navbar-checkbox:checked .navbar-handle:before,
+	#navbar-checkbox:checked .navbar-handle:after
+	{
+		border-top	: 0.27em solid #45294a !important;
+	}
+
+
+	#navbar-checkbox:checked + nav.menu div.navbar-header
+	{
+		border-top	: 2px solid black;
+		padding-top	: 20px;
+	}
+
+	nav.menu div.navbar-header
+	{
+		visibility	: visible;
+		display		: block;
+		width		: 100%;
+		text-align	: center;
+		text-transform	: none;
+	}
+
+	article
+	{
+		border-bottom	: 2px solid #a8bdae;
+	}
+
+	article:last-child
+	{
+		border-bottom	: 1px solid #a8bdae;
+	}
+
+	p, h1, h2, h3, h4, h5
+	{
+		margin-left	: 5px;
+		margin-right	: 5px;
+	}
+
+	#container, #receptacle, .content
+	{
+		margin-left	: 0px;
+		margin-right	: 0px;
+		margin-top	: 0px;
+		padding-left	: 0px;
+		padding-right	: 0px;
+	}
+}
+
+.navbar-checkbox
+{
+	display			: none;
+}
+
+.navbar-handle
+{
+	display			: none;
+	cursor			: pointer;
+	position		: relative;
+	font-size		: 45px;
+	padding			: .5em 0;
+	height			: 0;
+	width			: 1.6666666666666667em;
+}
+
+.navbar-handle:before, .navbar-handle:after
+{
+	position		: absolute;
+	left			: 0;
+	right			: 0;
+	content			: ' ';
+}
+
+.menu
+{
+	top			: 0;
+	left			: 0;
+	right			: 0;
+}
+
+.menu .navbar-handle
+{
+	position		: absolute;
+	font-size		: 1.2em;
+	top			: 0.0em;
+	left			: 12px;
+	margin-top		: 10px;
+}
+
+.footnotes
+{
+	font-size		: xx-small;
+	float			: right;
+	clear			: both;
+}
+
+.login div#content
+{
+	width			: 620px;
+	margin			: 0 auto;
+}
+
+.login form.styled_form
+{
+	background-color	: #f7f7f7;
+	box-shadow		: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	border-radius		: 2px;
+	margin-bottom		: 20px;
+}
+
+.login article div.logo
+{
+	padding-top		: 1em;
+	padding-bottom		: 1em;
+	text-align		: center;
+	font-size		: xx-large;
+}
+
+.login article
+{
+	padding-left		: 10px;
+	padding-right		: 10px;
+	border			: 0px;
+}
+
+.login .styled_form input
+{
+	min-width		: 15em;
+}
+
+.login .styled_form input[type="submit"]
+{
+	min-width		: 6em;
+}
+
+@media (max-width: 610px)
+{
+	.login div#content
+	{
+		width		: 100%;
+		margin-left	: 0px;
+	}
+
+	.login div#content fieldset ul
+	{
+		width		: 100%;
+	}
+}
+
+@media (max-width: 450px)
+{
+	.login article
+	{
+		padding-left	: 0px;
+		padding-right	: 0px;
+	}
+}

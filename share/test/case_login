@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>Login_logout</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Login_logout</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>https://trident.localhost/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=article &gt; a.fakebutton</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=User</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=article &gt; ul &gt; li &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotValue</td>
+	<td>id=TriUser-activity</td>
+	<td>2015-12-30T14:00</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Trust Groups</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>The following is a list of your Trust Groups.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>You have been logged out </td>
+</tr>
+<tr>
+	<td>open</td>
+	<td></td>
+	<td>/user/bapril/profile/</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Sign In')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Two Factor Code:</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-twofactor</td>
+	<td>123456</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Login incorrect</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobah</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=login-error</td>
+	<td>Login incorrect</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>invalid_user_that_does_not_exist</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>invalid_password</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=login-error</td>
+	<td>Login incorrect</td>
+</tr>
+</tbody></table>
+</body>
+</html>

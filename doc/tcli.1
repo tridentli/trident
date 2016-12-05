@@ -1,0 +1,68 @@
+.TH "tcli" "1" "12 May 2015" "" ""
+
+.SH NAME
+tcli - myFSI CLI
+.SH SYNOPSIS
+
+\fBtcli \fR [ \fB\fI<commands>\fB\fR ]
+
+.SH "DESCRIPTION"
+.PP
+tcli is a Command Line Interface (CLI) for the Trident server daemon (tridentd).
+It allows access to the Trident commands by issuing HTTP requests.
+.PP
+All commands are shown when providing the 'help' command as an argument.
+
+.SH "LOGGING IN"
+.PP
+To execute most commands one has to be authenticated to the Trident daemon.
+One can accomplish this by executing:
+.B "tcli system login <username> <password> [TFA-token]"
+.PP
+This causes the
+.B system login
+command to be sent to the Trident server, which then acts upon.
+If successfully logged in, a JSON Web Token (JWT) is stored in
+.B ~/.myfsi_token
+.
+
+.SH "SESSION MAINTENANCE"
+.PP
+Each time an authenticated command is executed the JWT is sent along
+as proof of authentication. When the JWT is about to expire, the server
+automatically will send a new JWT that is expiring further in the future.
+.PP
+As such, when no commands are executed before the JWT expires, the JWT
+automatically becomes invalid.
+
+.SH "ENVIRONMENT"
+.TP
+.B TRIDENT_TOKEN
+If
+.B TRIDENT_TOKEN
+is set, it is used as the filename where the JSON Web Token is stored.
+Default the token is
+.B ~/.myfsi_token
+.
+.TP
+.B TRIDENT_SERVER
+If
+.B TRIDENT_SERVER
+is set, it defines the URL of the server to access. This allows remote CLI
+access to a Trident installation. ACLs are required to be configured
+properly serverside for this to function.
+The default is
+.B http://127.0.0.1:8334
+.
+.TP
+.B TRIDENT_VERBOSE
+Setting
+.B TRIDENT_VERBOSE
+to anything but empty or 'off' causes tcli to become verbose and
+report on the HTTP request/response used to execute the requested command.
+.SH "SEE ALSO"
+.PP
+The Trident Website <URL:https://trident.li>.
+.SH "AUTHOR"
+.PP
+Trident was re-written from scratch by Jeroen Massar based on the original Ops-Trust Portal code by Paul Vixie, Ben April, Chris Morrow and Jeroen Massar.

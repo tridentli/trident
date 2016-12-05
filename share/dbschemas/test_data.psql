@@ -1,0 +1,180 @@
+-- No tabs in this file please. The hamper the ability to paste commands
+-- into SQL consoles for specific testing.
+
+-- Create Test members
+INSERT INTO member (ident, descr, password, uuid,entered,activity)
+    VALUES('testuser',
+        'Test User',
+        '$1$zO9zswsc$6D6mJ2GhLGWhU/uttYqc31',
+        'f3d8120e-6df5-4677-b128-935f8ee60347','2015-12-30 14:00:00.000000+00','2015-12-30 14:00:00.000000+00');
+-- pass: foobar
+
+--Add user detail
+INSERT INTO member_details (member,type,entered,value) VALUES
+  ('testuser','callsign',now(),'WHAT');
+
+--Add user languages
+INSERT INTO member_language_skill (member,language,entered,skill) VALUES 
+  ('testuser','en',now(),'native');
+
+INSERT INTO member_language_skill (member,language,entered,skill) VALUES 
+  ('testuser','es',now(),'expert');
+
+INSERT INTO member (ident, descr, password, uuid)
+    VALUES('seconduser',
+        'Test User with 2FA-SOTP',
+        '$1$zO9zswsc$6D6mJ2GhLGWhU/uttYqc31',
+        'f3d8120e-6df5-4677-b128-935f8ee60348');
+-- pass: foobar
+
+INSERT INTO member_language_skill (member,language,entered,skill) VALUES 
+  ('seconduser','es',now(),'native');
+
+INSERT INTO member (ident, descr, password, uuid)
+    VALUES('thirduser',
+        'Test User with 2FA-HOTP',
+        '$1$zO9zswsc$6D6mJ2GhLGWhU/uttYqc31',
+        'f3d8120e-6df5-4677-b128-935f8ee60351');
+-- pass: foobar
+
+--Add user detail
+INSERT INTO member_details (member,type,entered,value) VALUES
+  ('thirduser','callsign',now(),'KFOO');
+
+INSERT INTO member (ident, descr, password, uuid)
+    VALUES('adminuser',
+        'TG Admin User',
+        '$1$zO9zswsc$6D6mJ2GhLGWhU/uttYqc31',
+        'f3d8120e-6df5-4677-b128-935f8ee60349');
+-- pass: foobar
+
+INSERT INTO member (ident, descr, sysadmin, password, uuid)
+    VALUES('sysadmin',
+        'Sysadmin user',
+        't',
+        '$1$zO9zswsc$6D6mJ2GhLGWhU/uttYqc31',
+        'f3d8120e-6df5-4677-b128-935f8ee60350');
+-- pass: foobar
+
+INSERT INTO member (ident, descr, sysadmin, password, uuid, recover_password, recover_password_set_at)
+    VALUES('recoveruser',
+        'recover_test user',
+        'f',
+        '$1$zO9zswsc$6D6mJ2GhLGWhU/uttYqc31',
+        'f3d8120e-6df5-4677-b128-935f8ee60352',
+        '9296f47ab4e566bf8703cefc807ff065f829fb237ee15c3f11fc4f647a2babc5',
+        now());
+-- pass: foobar
+-- Recover User: 7OJOR2q9rzMA28t_
+-- Recover Nomi: RZgj-lcKQG1kGmuR
+
+--SecondFactors
+INSERT INTO second_factors (member, type, entered, active, key, descr)
+    VALUES('seconduser',
+        'SOTP',
+        NOW(),
+        true,
+        '8d8c8448f501d77b040fdbea5e66367a751add0aae4abd10082ee871c4e30bd5',
+        'Test SOTP Login');
+-- token: 5551212
+
+--SecondFactors
+INSERT INTO second_factors (member, type, entered, active, key, descr)
+    VALUES('thirduser',
+        'HOTP',
+        NOW(),
+        false,
+        'ANrkwhi1Dn',
+        'HOTP Toekn');
+
+--1: 177155
+--2: 345847
+
+
+INSERT INTO trustgroup (ident, shortname, descr, min_invouch, target_invouch,
+  pgp_required, please_vouch, vouch_adminonly, nom_enabled,
+  min_outvouch, max_inactivity, can_time_out, max_vouchdays,
+  idle_guard)
+  VALUES('test', 'test', 'test TG', 0, 0, false, false, false, true, 1,
+  interval '30 days', true, 5, interval '3 days');
+
+
+-- Add mailinglists for tg:test
+INSERT INTO mailinglist (lhs, trustgroup, descr, members_only, can_add_self,
+   automatic,always_crypt,virtual, pubkey)
+  VALUES ('admin', 'test', 'TG Administration', false, false, false, false,
+  false,'test pubkey');
+
+INSERT INTO mailinglist (lhs, trustgroup, descr, members_only, can_add_self,
+   automatic,always_crypt,virtual)
+  VALUES ('general', 'test', 'General Discussion', true, true, true, false,
+  false);
+
+INSERT INTO mailinglist (lhs, trustgroup, descr, members_only, can_add_self,
+   automatic,always_crypt,virtual)
+  VALUES ('vetting', 'test', 'Vetting and Vouching', true, true, true, false,
+  false);
+
+
+INSERT INTO trustgroup (ident, shortname, descr, min_invouch, target_invouch, 
+        pgp_required, please_vouch, vouch_adminonly, nom_enabled,
+        min_outvouch, max_inactivity, can_time_out, max_vouchdays,
+        idle_guard, has_wiki)
+    VALUES ('test2', 'test2', 'test2 TG', 5, 5, true, true, false, true, 1,
+        interval '30 days', true, 5, interval '3 days', true);
+
+
+-- Add E-mail addresses
+INSERT INTO member_email (member, email, verified)
+    VALUES ('testuser', 'test@user.com', true);
+INSERT INTO member_email (member, email, verified)
+    VALUES ('seconduser', 'second@user.com', true);
+INSERT INTO member_email (member, email, verified)
+    VALUES ('adminuser', 'admin@user.com', true);
+INSERT INTO member_email (member, email, verified)
+    VALUES ('sysadmin', 'sysadmin@user.com', true);
+INSERT INTO member_email (member, email, verify_token)
+    VALUES ('testuser', 'test_verify@user.com',
+    '8d8c8448f501d77b040fdbea5e66367a751add0aae4abd10082ee871c4e30bd5');
+--Code 5551212
+INSERT INTO member_email (member, email, verified)
+    VALUES ('seconduser', 'test_delete@user.com', true);
+INSERT INTO member_email (member, email, verified)
+    VALUES ('recoveruser', 'recover_user@user.com', true);
+
+
+-- Add to a TG
+INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
+    VALUES ('testuser', 'test', false, NOW(), 'active', 'test@user.com');
+INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
+    VALUES ('seconduser', 'test', false, NOW(), 'active', 'second@user.com');
+INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
+    VALUES ('adminuser', 'test', true, NOW(), 'active', 'admin@user.com');
+INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
+    VALUES ('sysadmin', 'test', true, NOW(), 'active', 'sysadmin@user.com');
+-- Add one user to tg/test2, for nomination testing.
+INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
+    VALUES ('sysadmin', 'test2', true, NOW(), 'active', 'sysadmin@user.com');
+-- Add Recover user to test
+INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
+    VALUES ('recoveruser', 'test', true, NOW(), 'active', 'recover_user@user.com');
+
+
+-- Add Vouches
+INSERT INTO member_vouch (vouchor, vouchee, trustgroup, positive, comment, entered)
+    VALUES ('testuser', 'seconduser', 'test', true, 'test comment', NOW());
+INSERT INTO member_vouch (vouchor, vouchee, trustgroup, positive, comment, entered)
+    VALUES ('seconduser', 'testuser', 'test', true, 'test comment2 ', NOW());
+-- Add vouch for Recover user (need a nominator)
+INSERT INTO member_vouch (vouchor, vouchee, trustgroup, positive, comment, entered)
+    VALUES ('testuser', 'recoveruser', 'test', true, 'test comment', NOW());
+
+-- Add test users to mailinglist.
+INSERT INTO member_mailinglist (member, lhs, trustgroup, virtual)
+    VALUES ('testuser','general','test',false);
+INSERT INTO member_mailinglist (member, lhs, trustgroup, virtual)
+    VALUES ('seconduser','general','test',false);
+INSERT INTO member_mailinglist (member, lhs, trustgroup, virtual)
+    VALUES ('adminuser','general','test',false);
+INSERT INTO member_mailinglist (member, lhs, trustgroup, virtual)
+    VALUES ('sysadmin','general','test',false);

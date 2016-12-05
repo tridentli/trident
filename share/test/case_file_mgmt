@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>File Mgmt</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">File Mgmt</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sign In</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>adminuser</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Trust Groups</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test - test TG</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=article &gt; ul &gt; li &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=TriTG-has_file</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=TriTG-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Profile Image&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Sign In</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar1234</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Trust Groups</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test - test TG</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Files</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add a new file</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-name</td>
+	<td>/test.txt</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-description</td>
+	<td>test file</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-file</td>
+	<td>${testSuiteFolder}/files/test.txt</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=np-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Offset: 0, Total: 1 </td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add a new file</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-name</td>
+	<td>/</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-description</td>
+	<td>test file No ext.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-file</td>
+	<td>${testSuiteFolder}/files/test</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=np-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
+	<td>File extension required</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Files</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add a new directory</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-name</td>
+	<td>/test</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-description</td>
+	<td>test dir</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=np-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>This directory does not have any files or sub-directories.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Files</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add a new directory</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-name</td>
+	<td>/test2/</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-description</td>
+	<td>Test dir with slash</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=np-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>This directory does not have any files or sub-directories.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add a new directory</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-name</td>
+	<td>/test/deep/</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-description</td>
+	<td>deeper test dir</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=np-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>This directory does not have any files or sub-directories.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add a new file</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-description</td>
+	<td>upload</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-file</td>
+	<td>${testSuiteFolder}/files/test.txt</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=np-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Details</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[6]/td</td>
+	<td>1a302813af9c79530b5eaa6cc4d99509bff6222d7d7c45a865e7ccbff0198795423274bfb675935491de136bd2d6473dd5d660243e0d9ee086bd032b14c6fdf8</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=move-path</td>
+	<td>/test/Uplinks.html</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=move-confirm</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=move-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Files</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=/test/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>link=/test/Uplinks.html</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>https://trident.localhost/group/test/file/test/deep/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td> This directory does not have any files or sub-directories. </td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'test')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Files</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Details')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=del-confirm</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=del-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Details')])[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=del-confirm</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=del-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Profile Image&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

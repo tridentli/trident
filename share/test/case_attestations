@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>case_attestations</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case_attestations</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/logout/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>sysadmin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=create - Test 3 vouch group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>test@user.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=fieldset &gt; input[name=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vouch</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
+	<td>Incomplete attestations</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/user/sysadmin/group/create/vouch/testuser/nominate_form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vouch</td>
+	<td>vouch</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=attestation-met</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=attestation-trust</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
+	<td>Incomplete attestations</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/user/sysadmin/group/create/vouch/testuser/nominate_form</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vouch</td>
+	<td>vouch</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=attestation-met</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=attestation-trust</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=attestation-fate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[7]</td>
+	<td>nominated</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>bob@trident.li</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-descr</td>
+	<td>bob smith</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-affiliation</td>
+	<td>trident</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-bio_info</td>
+	<td>bio</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@name='button'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
+	<td>Incomplete attestations</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Nominate')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>bob@trident.li</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-descr</td>
+	<td>bob smith</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-affiliation</td>
+	<td>trident</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriUser-bio_info</td>
+	<td>bio</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=vouch</td>
+	<td>vouch<br /></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=attestation-met</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=attestation-trust</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=attestation-fate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@name='button'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[7]</td>
+	<td>nominated</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/logout/</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

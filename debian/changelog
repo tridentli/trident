@@ -1,0 +1,46 @@
+trident (1.3.9) unstable; urgency=medium
+
+  * #321 Remove extra function definition.
+  * #157 Listing files only shows the current level
+  * #336 TG member list includes e-mail
+  * #346 Generate QR code when creating new 2FA
+  * #348 Provide error when attempting to create a TG without a sysadmin e-mail set.
+  * #353 Prevent file upload without an extension for mime-type selection. 
+  * #354 Adding a trailing slash to a directory name no longer causes an error.
+  * #371 Correct for change in code.google.com deployment.
+  * #317 PGP key links.
+  * #377 2FA token names can't have spaces.
+
+ -- root <bapril@people.ops-trust.net>  Fri, 09 Sep 2016 23:03:55 -0400
+
+trident (1.0.2) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * #131 Require TG attestations to vouch.
+  * #281 User sees TG list after login.
+  * #297 Sysadmin needs link to member profile from TG member list.
+  * #302 Display list e-mail address in mailing-list view.
+  * #305 Fix Mailinglist PGP key link.
+  * #307 TG bootstrap, creator becomes admin by default.
+  * #310 Display e-mail address in user profile view.
+  * #312 [partial] member details now appear in profile.
+
+ -- root <root@trident.stagecraft.net>  Wed, 11 Nov 2015 21:36:10 -0500
+
+trident (0.1.1) stable; urgency=medium
+
+  * Fix Nominator e-mail
+  * Properly deal with duplicate names
+  * Correct Audit-log messages
+  * Fix PGP Key Uploads
+  * Honor ML Can_add_self flag when offering and processing subscriptions
+  * Login attpents counter now functions
+  * Updated Selenium tests
+
+ -- Trident Project <project@trident.li>  Tue, 08 Sep 2015 15:16:45 -0000
+
+trident (0.1.0) stable; urgency=low
+
+  * Initial Release.
+
+ -- Trident Project <project@trident.li>  Tue, 01 Sep 2015 01:15:28 +0000

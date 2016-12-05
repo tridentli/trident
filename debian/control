@@ -1,0 +1,80 @@
+Source: trident
+Section: net
+Priority: optional
+Maintainer: Trident Project <project@trident.li>
+Uploaders: Trident Project <project@trident.li>
+Build-Depends: debhelper (>> 9),
+               dh-golang,
+               dh-systemd,
+               golang-go,
+               git,
+               ca-certificates
+Standards-Version: 3.9.6
+Homepage: https://trident.li
+Vcs-Browser: https://github.com/trident/trident
+Vcs-Git: git://github.com/trident/trident.git
+
+Package: trident
+Architecture: all
+Depends: trident-server, trident-cli
+Description: Trusted Information Exchange Toolkit
+ This is Trident, a Trusted Information Exchange Toolkit.
+ .
+ This package installs the Server and CLI components.
+ .
+ Note that PostgreSQL is required, either on this host or a separate host.
+ .
+ After installation read /usr/share/doc/trident/README.md for
+ further installation instructions.
+ .
+ For more information about Trident please see https://trident.li
+
+Package: trident-server
+Architecture: linux-any kfreebsd-any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         ntpdate | ntp | time-daemon,
+         nginx | apache,
+         lsb-base (>= 3.0-6),
+         openssl,
+         adduser,
+         postfix | sendmail
+Suggests: postgresql
+Description: Trusted Information Exchange Toolkit (server)
+ This is Trident, a Trusted Information Exchange Toolkit.
+ .
+ Note that PostgreSQL is required, either on this host or a separate host.
+ .
+ After installation read /usr/share/doc/trident/README.md for
+ further installation instructions.
+ .
+ This package installs the server components of Trident.
+ .
+ For more information about Trident please see https://trident.li
+
+Package: trident-cli
+Architecture: linux-any kfreebsd-any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         lsb-base (>= 3.0-6),
+Description: Trident Command Line Interface (CLI)
+ This is Trident, a Trusted Information Exchange Toolkit.
+ .
+ This package only contains the CLI tool that use the Trident API
+ and allows one to execute Trident commands from the command line.
+ .
+ For more information about Trident please see https://trident.li
+
+Package: trident-wikiexport
+Architecture: linux-any kfreebsd-any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         lsb-base (>= 3.0-6),
+Description: Trident - Wiki Exporter
+ This is Trident, a Trusted Information Exchange Toolkit.
+ .
+ This package only contains the twikiexport tool that can be
+ used for exporting an existing wiki into a Trident Wiki Archive.
+ The Trident Wiki Archive can then be imported into Trident.
+ .
+ For more information about Trident please see https://trident.li

@@ -1,0 +1,10 @@
+##############################
+# Trident Lintian overrides
+##############################
+
+# The Go compiler is currently unable to produce read-only relocations
+# (it produces static binaries).
+hardening-no-relro usr/sbin/twikiexport
+
+# Golang is statically linked for the time being
+statically-linked-binary usr/sbin/twikiexport

@@ -1,0 +1,17 @@
+##############################
+# Trident Lintian overrides
+##############################
+
+# The Go compiler is currently unable to produce read-only relocations
+# (it produces static binaries).
+hardening-no-relro usr/sbin/tridentd
+hardening-no-relro usr/sbin/tsetup
+
+# Not a typo :)
+spelling-error-in-binary usr/sbin/tsetup ang and
+spelling-error-in-binary usr/sbin/tridentd ang and
+
+# Don't strip Go binaries yet
+unstripped-binary-or-object usr/sbin/tridentd
+unstripped-binary-or-object usr/sbin/tsetup
+
