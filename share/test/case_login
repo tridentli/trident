@@ -13,12 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td></td>
-	<td>${testURI}</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=article &gt; a.fakebutton</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>

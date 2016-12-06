@@ -13,8 +13,8 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
-	<td>${testURI}/logout/</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -53,22 +53,27 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=verifycode</td>
+	<td>id=popt_enable-curpassword</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt_enable-twofactorcode</td>
 	<td>bad_code</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=button</td>
+	<td>id=popt_enable-button</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
+	<td>id=popt_enable-error</td>
 	<td>Token value not correct</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=2FA Tokens</td>
+	<td>link=Return to 2FA list</td>
 	<td></td>
 </tr>
 <tr>
@@ -78,12 +83,17 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=verifycode</td>
+	<td>id=popt_enable-curpassword</td>
+	<td>foobar</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt_enable-twofactorcode</td>
 	<td>177155</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=button</td>
+	<td>id=popt_enable-button</td>
 	<td></td>
 </tr>
 <tr>
@@ -93,12 +103,7 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Sign In')])[2]</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -169,17 +174,7 @@
 <tr>
 	<td>assertText</td>
 	<td>css=p</td>
-	<td>The following is a list of your Trust Groups.</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=thirduser</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>css=p</td>
-	<td>The following options are available:</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -192,18 +187,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>type</td>
+	<td>id=popt_disable-curpassword</td>
+	<td>foobar</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
-	<td>id=button</td>
+	<td>id=popt_disable-button</td>
 	<td></td>
 </tr>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Sign In')])[2]</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -249,12 +244,12 @@
 <tr>
 	<td>assertText</td>
 	<td>css=p</td>
-	<td>The following is a list of your Trust Groups.</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
 	<td></td>
-	<td>${testURI}/logout/</td>
 </tr>
 </tbody></table>
 </body>

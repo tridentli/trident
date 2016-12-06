@@ -13,7 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -96,7 +96,6 @@
 	<td>link=ψ</td>
 	<td>ψ</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
