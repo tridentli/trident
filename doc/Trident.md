@@ -9,7 +9,7 @@ The Trident database and functionality are based on the
 [Portal code](https://github.com/ops-trust/portal/),
 but Trident is a full redesign and from scratch rewrite in [Go](https://golang.org/).
 
-The underlying lirbary has been cared out into a dedicated project [Pitchfork](https://github.com/tridentli/pitchfork) for use in other systems.
+The underlying library has been carved out into a dedicated project [Pitchfork](https://github.com/tridentli/pitchfork) for use in other systems.
 
 Useful links:
  * [Trident Website](https://trident.li)
@@ -28,12 +28,12 @@ This section briefly describes the components inside Trident.
 ### tridentd
 
 ```tridentd``` is the Trident Daemon. It runs in the background and
-published a web-server on ```localhost``` and port ```8333```.
+publishes a web-server on ```localhost``` and port ```8333```.
 This HTTP-based web-server provides an ```/api/``` URL for
-Trident API calls and the rest of the exported details consist
+Trident API calls and the remaining exported details consist
 of the Trident web interface.
 
-The tridentd web-service can be published to the general Internet
+The Trident web-service can be published to the general Internet
 by using a HTTP proxy like Nginx or Apache and forwarding the
 correct requests to it.
 
@@ -273,12 +273,12 @@ As in the Web CLI typing ```tcli -help``` will provide details on available comm
 ```
   # tcli -help
 Usage of tcli:
-  -r	Read an argument from the CLI, useful for passwords
+  -r    Read an argument from the CLI, useful for passwords
   -server string
-    	Server to talk to [env TRIDENT_SERVER] (default "http://localhost:8334")
+        Server to talk to [env TRIDENT_SERVER] (default "http://localhost:8333")
   -tokenfile string
-    	Token to use [env TRIDENT_TOKEN] (default "~/.trident_token")
-  -v	Enable verbosity [env TRIDENT_VERBOSE]
+        Token to use [env TRIDENT_TOKEN] (default "~/.trident_token")
+  -v    Enable verbosity [env TRIDENT_VERBOSE]
 ```
 
 ```tcli``` stores its [JSON Web Token (JWT)](http://jwt.io/) authentication token in ```~/.trident_token```.
@@ -354,9 +354,9 @@ which ```tcli``` or the Trident UI can be used to configure the rest of the syst
 
 ## Installation
 
-Debian packaging is provided (use 'dpkg-buildpackage -b -uc -us' to generate a pacakge). FreeBSD packaging might follow at a later date.
+Debian packaging is provided (use ```make pkg``` to generate a package). FreeBSD packaging might follow at a later date.
 
-Trident requires PostgreSQL 9.1+ as a database and Postfix for SMTP.
+Trident requires PostgreSQL 9.4+ as a database and Postfix for SMTP.
 
 Trident prefers to be run behind Nginx or another HTTP proxy providing HTTPS access.
 This avoids having Trident needing to know any SSL keys.
@@ -567,7 +567,7 @@ mail-handler@example.net   trident-handler
 @example.net               trident-handler
 ```
 
-There are cases where, trident-handler might need to be trident-handler@localhost.
+There are cases where, ```trident-handler``` might need to be ```trident-handler@localhost```.
 
 Critical elements of ```/etc/postfix/main.cf```:
 ```
@@ -579,7 +579,7 @@ mydestination = localhost.example.net, localhost, portal.example.net
 virtual_maps = hash:/etc/postfix/virtual
 ```
 
-DOn't forget to update the aliases and virtual databases:
+Don't forget to update the aliases and virtual databases:
 
 ```
 postmap /etc/postfix/virtual
@@ -667,7 +667,7 @@ The ```src``` directory contains all the source code, this directory is subdivid
 The ```share``` directory contains SQL Schemas in ```dbschemas```, the web root in ```webroot```
 and Golang templates in ```templates```.
 
-The ```ext``` directory contains external dependencies (update/fetch with the Makefile).
+The ```ext``` directory contains external dependencies (update/fetch with the Makefile's ```make deps``` option).
 
 ### Coding Style
 
@@ -736,13 +736,14 @@ schroot -e --all-sessions
 ```
 
 #### Manual packages
-Cheanup first:
+
+Cleanup first:
 ```
 make clean_ext
 ```
 Make sure that all dependencies are up to date:
 ```
-make ext
+make deps
 ```
 
 Build a new Debian package:
