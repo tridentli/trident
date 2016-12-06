@@ -16,7 +16,11 @@
 	<td>Preferences.getString(TestSuite.TEST_SUITE_DIRECTORY_PREF);</td>
 	<td>testSuiteFolder</td>
 </tr>
-
+<tr>
+	<td>store</td>
+	<td>https://trident.localhost/</td>
+	<td>testURI</td>
+</tr>
 </tbody></table>
 </body>
 </html>

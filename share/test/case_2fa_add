@@ -13,8 +13,8 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
 	<td></td>
+	<td>${testURI}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -42,11 +42,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>link=User</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>link=User</td>
 	<td></td>
@@ -57,28 +52,23 @@
 	<td></td>
 </tr>
 <tr>
+	<td>type</td>
+	<td>id=TFATok-curpassword</td>
+	<td>foobar1234</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TFATok-descr</td>
+	<td>Test #123?</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>xpath=(//a[contains(text(),'2FA Tokens')])[2]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>id=Tok-name</td>
-	<td>Test #123?</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=Tok-name</td>
-	<td>Test #123?</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=Tok-button</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
-	<td>id=Tok-button</td>
+	<td>id=TFATok-button</td>
 	<td></td>
 </tr>
 <tr>
@@ -87,11 +77,6 @@
 	<td>URL: otpauth://totp/Test__123_?secret=</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>link=Return to 2FA list</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>link=Return to 2FA list</td>
 	<td></td>
@@ -131,7 +116,6 @@
 	<td>xpath=(//a[contains(text(),'Logout')])[2]</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
