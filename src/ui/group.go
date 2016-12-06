@@ -8,25 +8,32 @@ import (
 )
 
 func h_group_members(cui pu.PfUI) {
+	path := cui.GetPath()
+
+	cui.Errf("group PATH: %+v\n", path)
+
+	if len(path) != 0 && path[0] != "" {
+		pu.H_group_member_profile(cui)
+		return
+	}
+
 	var err error
 
-	tcui := TriGetUI(cui)
-
+	tctx := tr.TriGetCtx(cui)
 	total := 0
 	offset := 0
 
-	offset_v := tcui.GetArg("offset")
+	offset_v := cui.GetArg("offset")
 	if offset_v != "" {
 		offset, _ = strconv.Atoi(offset_v)
 	}
 
-	search := tcui.GetArg("search")
+	search := cui.GetArg("search")
 
-	grp := tcui.TriSelectedGroup()
+	grp := tctx.TriSelectedGroup()
 
 	total, err = grp.GetMembersTot(search)
 	if err != nil {
-		cui.Err("error: " + err.Error())
 		cui.Err("error: " + err.Error())
 		return
 	}
@@ -54,14 +61,14 @@ func h_group_members(cui pu.PfUI) {
 }
 
 func h_group_nominate(cui pu.PfUI) {
-	tcui := TriGetUI(cui)
+	tctx := tr.TriGetCtx(cui)
 
 	var err error
 	var list []pf.PfUser
 	var notfound bool
 
-	user := tcui.TriSelectedUser()
-	grp := tcui.TriSelectedGroup()
+	user := tctx.TriSelectedUser()
+	grp := tctx.TriSelectedGroup()
 
 	attestations, err := grp.GetAttestations()
 	if err != nil {

@@ -32,11 +32,11 @@ func attestations_get(cui pu.PfUI, grp tr.TriGroup) (attestations string, err er
 }
 
 func h_vouch_edit(cui pu.PfUI) {
-	tcui := TriGetUI(cui)
-	user := tcui.TriSelectedUser()
-	grp := tcui.TriSelectedGroup()
-	vouchee := tcui.SelectedVouchee()
-	comment, err := tcui.FormValue("comment")
+	tctx := tr.TriGetCtx(cui)
+	user := tctx.TriSelectedUser()
+	grp := tctx.TriSelectedGroup()
+	vouchee := tctx.SelectedVouchee()
+	comment, err := cui.FormValue("comment")
 
 	if err != nil {
 		cmd := "group vouch update"
@@ -55,12 +55,12 @@ func h_vouch_edit(cui pu.PfUI) {
 }
 
 func h_vouch_add(cui pu.PfUI) {
-	tcui := TriGetUI(cui)
+	tctx := tr.TriGetCtx(cui)
 
-	user := tcui.TriSelectedUser()
-	grp := tcui.TriSelectedGroup()
-	vouchee := tcui.SelectedVouchee()
-	comment, err := tcui.FormValue("comment")
+	user := tctx.TriSelectedUser()
+	grp := tctx.TriSelectedGroup()
+	vouchee := tctx.SelectedVouchee()
+	comment, err := cui.FormValue("comment")
 
 	var attestations string
 
@@ -85,10 +85,10 @@ func h_vouch_add(cui pu.PfUI) {
 }
 
 func h_vouch_remove(cui pu.PfUI) {
-	tcui := TriGetUI(cui)
-	user := tcui.TriSelectedUser()
-	grp := tcui.TriSelectedGroup()
-	vouchee := tcui.SelectedVouchee()
+	tctx := tr.TriGetCtx(cui)
+	user := tctx.TriSelectedUser()
+	grp := tctx.TriSelectedGroup()
+	vouchee := tctx.SelectedVouchee()
 
 	cmd := "group vouch remove"
 	arg := []string{grp.GetGroupName(), user.GetUserName(), vouchee.GetUserName()}
@@ -105,10 +105,10 @@ func h_vouch_remove(cui pu.PfUI) {
 }
 
 func h_vouch_nominate_form(cui pu.PfUI) {
-	tcui := TriGetUI(cui)
-	user := tcui.TriSelectedUser()
-	grp := tcui.TriSelectedGroup()
-	vouchee := tcui.SelectedVouchee()
+	tctx := tr.TriGetCtx(cui)
+	user := tctx.TriSelectedUser()
+	grp := tctx.TriSelectedGroup()
+	vouchee := tctx.SelectedVouchee()
 
 	type Page struct {
 		*pu.PfPage
@@ -129,13 +129,13 @@ func h_vouch_nominate_form(cui pu.PfUI) {
 }
 
 func h_vouch_nominate_new(cui pu.PfUI) {
-	tcui := TriGetUI(cui)
+	tctx := tr.TriGetCtx(cui)
 
 	var cmd string
 	var args []string
 
-	user := tcui.TriSelectedUser()
-	grp := tcui.TriSelectedGroup()
+	user := tctx.TriSelectedUser()
+	grp := tctx.TriSelectedGroup()
 
 	address, err := cui.FormValue("address")
 	descr, err2 := cui.FormValue("descr")
@@ -197,15 +197,15 @@ func h_vouch_nominate_new(cui pu.PfUI) {
 }
 
 func h_vouch_nominate(cui pu.PfUI) {
-	tcui := TriGetUI(cui)
+	tctx := tr.TriGetCtx(cui)
 
 	var cmd string
 	var arg []string
 
-	user := tcui.TriSelectedUser()
-	grp := tcui.TriSelectedGroup()
-	vouchee := tcui.SelectedVouchee()
-	comment, err := tcui.FormValue("comment")
+	user := tctx.TriSelectedUser()
+	grp := tctx.TriSelectedGroup()
+	vouchee := tctx.SelectedVouchee()
+	comment, err := cui.FormValue("comment")
 
 	if err != nil {
 		pu.H_errtxt(cui, "Invalid parameters")
@@ -239,9 +239,9 @@ func h_vouch_nominate(cui pu.PfUI) {
 }
 
 func h_vouch(cui pu.PfUI) {
-	tcui := TriGetUI(cui)
+	tctx := tr.TriGetCtx(cui)
 
-	path := tcui.GetPath()
+	path := cui.GetPath()
 
 	if len(path) == 0 || path[0] == "" {
 		pu.H_group_member_profile(cui)
@@ -257,24 +257,25 @@ func h_vouch(cui pu.PfUI) {
 		pu.H_errtxt(cui, "Vouch: No group selected")
 		return
 	}
+
 	if !cui.HasSelectedUser() {
 		pu.H_errtxt(cui, "Vouch: No User Selected")
 		return
 	}
 
 	/* Check member access to group */
-	err := tcui.SelectVouchee(path[0], pf.PERM_GROUP_MEMBER|pf.PERM_USER_VIEW)
+	err := tctx.SelectVouchee(path[0], pf.PERM_GROUP_MEMBER|pf.PERM_USER_VIEW)
 	if err != nil {
-		tcui.Errf("Selecting Vouchee: %s", err.Error())
-		pu.H_error(tcui, http.StatusNotFound)
+		cui.Errf("Selecting Vouchee: %s", err.Error())
+		pu.H_error(cui, http.StatusNotFound)
 		return
 	}
 
-	vouchee := tcui.SelectedVouchee()
+	vouchee := tctx.SelectedVouchee()
 
-	tcui.AddCrumb(path[0], vouchee.GetUserName(), vouchee.GetFullName())
+	cui.AddCrumb(path[0], vouchee.GetUserName(), vouchee.GetFullName())
 
-	tcui.SetPath(path[1:])
+	cui.SetPath(path[1:])
 
 	p := pf.PERM_GROUP_MEMBER | pf.PERM_HIDDEN
 

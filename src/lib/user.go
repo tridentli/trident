@@ -7,8 +7,8 @@ import (
 
 type TriUser interface {
 	pf.PfUser
-	IsNominator(ctx TriCtx, nom_name string) (ok bool)
-	BestNominator(ctx TriCtx) (nom_name string, err error)
+	IsNominator(ctx pf.PfCtx, nom_name string) (ok bool)
+	BestNominator(ctx pf.PfCtx) (nom_name string, err error)
 }
 
 type TriUserS struct {
@@ -19,7 +19,7 @@ func NewTriUser() pf.PfUser {
 	return &TriUserS{PfUser: pf.NewPfUser(nil, nil)}
 }
 
-func (user *TriUserS) IsNominator(ctx TriCtx, nom_name string) (ok bool) {
+func (user *TriUserS) IsNominator(ctx pf.PfCtx, nom_name string) (ok bool) {
 	cnt := 0
 
 	q := "SELECT COUNT(*) " +
@@ -34,7 +34,7 @@ func (user *TriUserS) IsNominator(ctx TriCtx, nom_name string) (ok bool) {
 	return cnt == 0
 }
 
-func (user *TriUserS) BestNominator(ctx TriCtx) (nom_name string, err error) {
+func (user *TriUserS) BestNominator(ctx pf.PfCtx) (nom_name string, err error) {
 	q := "SELECT vouchor " +
 		"FROM member_vouch mv " +
 		"JOIN member_email me ON mv.vouchor = me.member " +
@@ -155,16 +155,16 @@ func user_pw_send(ctx pf.PfCtx, is_reset bool, nom_name string) (err error) {
 }
 
 func user_pw_reset(ctx pf.PfCtx, args []string) (err error) {
-	tctx := TriGetCtx(ctx)
 
 	username := args[0]
 	nom_name := ""
 
-	err = tctx.SelectUser(username, pf.PERM_USER_SELF)
+	err = ctx.SelectUser(username, pf.PERM_USER_SELF)
 	if err != nil {
 		return
 	}
 
+	tctx := TriGetCtx(ctx)
 	user := tctx.TriSelectedUser()
 
 	/*
@@ -173,12 +173,12 @@ func user_pw_reset(ctx pf.PfCtx, args []string) (err error) {
 	 */
 	if len(args) >= 2 {
 		nom_name = args[1]
-		if !user.IsNominator(tctx, nom_name) {
+		if !user.IsNominator(ctx, nom_name) {
 			err = errors.New(nom_name + " is not a nominator for this user")
 			return
 		}
 	} else {
-		nom_name, err = user.BestNominator(tctx)
+		nom_name, err = user.BestNominator(ctx)
 		if err != nil {
 			err = errors.New("No nominator with valid PGP key")
 			return
@@ -188,7 +188,7 @@ func user_pw_reset(ctx pf.PfCtx, args []string) (err error) {
 	/* Send out the new password */
 	err = user_pw_send(ctx, true, nom_name)
 	if err == nil {
-		tctx.OutLn("Recovery Passwords sent to user and " + nom_name)
+		ctx.OutLn("Recovery Passwords sent to user and " + nom_name)
 	}
 	return
 }

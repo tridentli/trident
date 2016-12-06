@@ -5,44 +5,32 @@ import (
 	tf "trident.li/trident/src/lib"
 )
 
-type TriUI interface {
-	pu.PfUIi
-	tf.TriCtx
-}
-
-type TriUIi interface {
-	pu.PfUIi
-}
-
-type TriUIS struct {
-	pu.PfUI
-}
-
 func NewTriUI() pu.PfUI {
 	tctx := tf.NewTriCtx()
 	pfui := pu.NewPfUI(tctx, nil, TriUIMenuOverride, nil)
-	tcui := &TriUIS{PfUI: pfui}
-	return tcui
-}
-
-func TriGetUI(cui pu.PfUI) TriUI {
-	return cui.(TriUI)
+	return pfui
 }
 
 func TriUIMenuOverride(cui pu.PfUI, menu *pu.PfUIMenu) {
-	loc := cui.GetLoc()
+	path := cui.GetCrumbParts()
 
-	switch loc {
-	case "":
+	lp := len(path)
+
+	if lp == 0 {
 		h_root(cui, menu)
+		return
+	}
 
-	case "group":
-		h_group(cui, menu)
-		break
-
-	case "user":
-		h_user(cui, menu)
-		break
+	if lp >= 1 {
+		switch path[0] {
+		case "group":
+			if lp == 2 {
+				h_group(cui, menu)
+			} else if lp == 3 {
+				menu.Add(pu.PfUIMentry{"vouches", "Vouches", pu.PERM_GROUP_MEMBER, h_user_vouches, nil})
+			}
+			break
+		}
 	}
 
 	return

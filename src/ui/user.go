@@ -1,31 +1,26 @@
 package TriUI
 
 import (
-	pf "trident.li/pitchfork/lib"
 	pu "trident.li/pitchfork/ui"
-	"trident.li/trident/src/lib"
+	tr "trident.li/trident/src/lib"
 )
 
 func h_user_vouches(cui pu.PfUI) {
-	tcui := TriGetUI(cui)
+	tctx := tr.TriGetCtx(cui)
 
-	var vouch trident.TriVouch
+	var vouch tr.TriVouch
 	var isedit bool
 	var msg string
 	var err error
 	var canvouch bool
 	var errmsg string
 
-	theuser := tcui.TriTheUser()
-	user := tcui.TriSelectedUser()
-	grp := tcui.TriSelectedGroup()
+	theuser := tctx.TriTheUser()
+	user := tctx.TriSelectedUser()
+	grp := tctx.TriSelectedGroup()
 
 	/* SysAdmin and User-Self can edit */
 	isedit = cui.IsSysAdmin() || cui.SelectedSelf()
-
-	if isedit && cui.IsPOST() {
-		msg, err = pu.H_user_profile_post(cui)
-	}
 
 	if err != nil {
 		/* Failed */
@@ -45,18 +40,16 @@ func h_user_vouches(cui pu.PfUI) {
 		*pu.PfPage
 		Message      string
 		Error        string
-		User         trident.TriUser
-		TrustGroup   trident.TriGroup
-		VouchIn      []trident.TriVouch
-		VouchOut     []trident.TriVouch
-		Details      []pf.PfUserDetail
-		Languages    []pf.PfUserLanguage
-		Attestations []trident.TriGroupAttestation
+		User         tr.TriUser
+		Group        tr.TriGroup
+		VouchIn      []tr.TriVouch
+		VouchOut     []tr.TriVouch
+		Attestations []tr.TriGroupAttestation
 		IsEdit       bool
 		CanVouch     bool
 		MyUserName   string
 		IsAdmin      bool
-		GroupMember  trident.TriGroupMember
+		GroupMember  tr.TriGroupMember
 	}
 
 	vi, err := vouch.ListFor(user, grp, theuser.GetUserName())
@@ -88,10 +81,7 @@ func h_user_vouches(cui pu.PfUI) {
 
 	isadmin := cui.IAmGroupAdmin()
 
-	/* Set the last link nicer */
-	cui.AddCrumb("", "Profile", user.GetFullName()+" ("+user.GetUserName()+")'s Profile")
-
-	p := Page{cui.Page_def(), msg, errmsg, user, grp, vi, vo, nil, nil, nil, isedit,
+	p := Page{cui.Page_def(), msg, errmsg, user, grp, vi, vo, nil, isedit,
 		canvouch, theuser.GetUserName(), isadmin, nil}
 
 	/*
@@ -100,13 +90,7 @@ func h_user_vouches(cui pu.PfUI) {
 	 */
 	grpusers, err := grp.GetMembers(user.GetUserName(), user.GetUserName(), 0, 1, true, true)
 	if err == nil {
-		p.GroupMember = grpusers[0].(trident.TriGroupMember)
-
-		p.Details, err = user.GetDetails()
-	}
-
-	if err == nil {
-		p.Languages, err = user.GetLanguages()
+		p.GroupMember = grpusers[0].(tr.TriGroupMember)
 	}
 
 	if err == nil {
@@ -117,9 +101,5 @@ func h_user_vouches(cui pu.PfUI) {
 		errmsg = err.Error()
 	}
 
-	cui.Page_show("user/profile_with_group.tmpl", p)
-}
-
-func h_user(cui pu.PfUI, menu *pu.PfUIMenu) {
-	menu.Add(pu.PfUIMentry{"vouches", "Vouches", pf.PERM_GROUP_MEMBER, h_user_vouches, nil})
+	cui.Page_show("user/profile_vouches.tmpl", p)
 }

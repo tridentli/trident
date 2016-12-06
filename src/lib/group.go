@@ -8,7 +8,7 @@ import (
 
 type TriGroup interface {
 	pf.PfGroup
-	Add_default_attestations(ctx TriCtx) (err error)
+	Add_default_attestations(ctx pf.PfCtx) (err error)
 	GetVouch_adminonly() bool
 	GetAttestations() (output []TriGroupAttestation, err error)
 }
@@ -207,7 +207,7 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 	return members, nil
 }
 
-func (grp *TriGroupS) Add_default_attestations(ctx TriCtx) (err error) {
+func (grp *TriGroupS) Add_default_attestations(ctx pf.PfCtx) (err error) {
 	att := make(map[string]string)
 	att["met"] = "I have met them in person more than once"
 	att["trust"] = "I trust them to take action"
@@ -249,7 +249,7 @@ func (grp *TriGroupS) Add_default_mailinglists(ctx pf.PfCtx) (err error) {
 	return
 }
 
-func group_add(ctx TriCtx, args []string) (err error) {
+func group_add(ctx pf.PfCtx, args []string) (err error) {
 	var group_name string
 
 	/* Make sure the name is mostly sane */
@@ -294,12 +294,15 @@ func group_add(ctx TriCtx, args []string) (err error) {
 		return
 	}
 
+	tctx := TriGetCtx(ctx)
+
 	/* Fetch our newly created group */
-	grp = ctx.TriSelectedGroup()
+	grp = tctx.TriSelectedGroup()
 
 	/* Select yourself */
 	ctx.SelectMe()
 	if err != nil {
+		return
 	}
 
 	err = grp.Add_default_attestations(ctx)

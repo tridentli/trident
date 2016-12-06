@@ -46,7 +46,7 @@ func grp_attestation_list(ctx pf.PfCtx, args []string) (err error) {
 
 	tctx := TriGetCtx(ctx)
 
-	err = tctx.SelectGroup(groupname, pf.PERM_GROUP_MEMBER)
+	err = ctx.SelectGroup(groupname, pf.PERM_GROUP_MEMBER)
 	if err != nil {
 		return
 	}
@@ -67,13 +67,12 @@ func grp_attestation_add(ctx pf.PfCtx, args []string) (err error) {
 	ident := args[1]
 	descr := args[2]
 
-	tctx := TriGetCtx(ctx)
-
-	err = tctx.SelectGroup(groupname, pf.PERM_GROUP_ADMIN)
+	err = ctx.SelectGroup(groupname, pf.PERM_GROUP_ADMIN)
 	if err != nil {
 		return
 	}
 
+	tctx := TriGetCtx(ctx)
 	grp := tctx.TriSelectedGroup()
 
 	q := "INSERT INTO attestations " +
@@ -95,13 +94,12 @@ func grp_attestation_delete(ctx pf.PfCtx, args []string) (err error) {
 	ident := args[1]
 	descr := args[2]
 
-	tctx := TriGetCtx(ctx)
-
-	err = tctx.SelectGroup(groupname, pf.PERM_GROUP_ADMIN)
+	err = ctx.SelectGroup(groupname, pf.PERM_GROUP_ADMIN)
 	if err != nil {
 		return
 	}
 
+	tctx := TriGetCtx(ctx)
 	grp := tctx.TriSelectedGroup()
 
 	q := "DELETE FROM attestations " +

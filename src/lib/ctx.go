@@ -4,71 +4,59 @@ import (
 	pf "trident.li/pitchfork/lib"
 )
 
-type TriCtx interface {
-	pf.PfCtx /* Pitchfork Context */
-
-	TriTheUser() (user TriUser)
-	TriSelectedUser() (user TriUser)
-	TriSelectedGroup() (grp TriGroup)
-	SelectedVouchee() (user TriUser)
-	HasSelectedVouchee() bool
-	SelectVouchee(username string, perms pf.Perm) (err error)
-}
-
-type TriCtxS struct {
-	pf.PfCtx
+type TriCtx struct {
+	pfctx       pf.PfCtx
 	sel_vouchee TriUser /* Selected User target of a vouch*/
 }
 
 func NewTriCtx() pf.PfCtx {
 	pctx := pf.NewPfCtx(NewTriUser, NewTriGroup, TriMenuOverride, nil, nil)
-	tctx := &TriCtxS{PfCtx: pctx}
-	return tctx
+	tctx := &TriCtx{pfctx: pctx}
+	pctx.SetAppData(tctx)
+	return pctx
 }
 
-func TriGetCtx(ctx pf.PfCtx) (tctx *TriCtxS) {
-	tctxp, ok := ctx.(*TriCtxS)
-	if !ok {
-		panic("Not a TriCtx")
-	}
-	return tctxp
+func TriGetCtx(ctx pf.PfCtx) (tctx *TriCtx) {
+	tctx = ctx.GetAppData().(*TriCtx)
+	tctx.pfctx = ctx
+	return
 }
 
-func (ctx *TriCtxS) TriTheUser() (user TriUser) {
-	return ctx.PfCtx.TheUser().(TriUser)
+func (tctx *TriCtx) TriTheUser() (user TriUser) {
+	return tctx.pfctx.TheUser().(TriUser)
 }
 
-func (ctx *TriCtxS) TriSelectedUser() (user TriUser) {
-	return ctx.PfCtx.SelectedUser().(TriUser)
+func (tctx *TriCtx) TriSelectedUser() (user TriUser) {
+	return tctx.pfctx.SelectedUser().(TriUser)
 }
 
-func (ctx *TriCtxS) TriSelectedGroup() (grp TriGroup) {
-	return ctx.PfCtx.SelectedGroup().(TriGroup)
+func (tctx *TriCtx) TriSelectedGroup() (grp TriGroup) {
+	return tctx.pfctx.SelectedGroup().(TriGroup)
 }
 
-func (ctx *TriCtxS) SelectedVouchee() (user TriUser) {
+func (tctx *TriCtx) SelectedVouchee() (user TriUser) {
 	/* Return a copy, not a reference */
 	/* XXX: verify */
-	return ctx.sel_vouchee
+	return tctx.sel_vouchee
 }
 
-func (ctx *TriCtxS) HasSelectedVouchee() bool {
-	return ctx.sel_vouchee != nil
+func (tctx *TriCtx) HasSelectedVouchee() bool {
+	return tctx.sel_vouchee != nil
 }
 
-func (ctx *TriCtxS) SelectVouchee(username string, perms pf.Perm) (err error) {
-	ctx.PDbgf("SelectVouchee", perms, "%q", username)
+func (tctx *TriCtx) SelectVouchee(username string, perms pf.Perm) (err error) {
+	tctx.pfctx.PDbgf("SelectVouchee", perms, "%q", username)
 
 	/* Nothing to select, always works */
 	if username == "" {
-		ctx.sel_vouchee = nil
+		tctx.sel_vouchee = nil
 		return nil
 	}
 
-	ctx.sel_vouchee = ctx.NewUser().(*TriUserS)
-	err = ctx.sel_vouchee.Select(ctx, username, perms)
+	tctx.sel_vouchee = tctx.pfctx.NewUser().(*TriUserS)
+	err = tctx.sel_vouchee.Select(tctx.pfctx, username, perms)
 	if err != nil {
-		ctx.sel_vouchee = nil
+		tctx.sel_vouchee = nil
 	}
 
 	return
