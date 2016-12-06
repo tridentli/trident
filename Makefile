@@ -3,7 +3,7 @@ GOPATH := ${PWD}/ext/_gopath
 export GOPATH
 
 ifndef $GIT_BRANCH
-	GIT_BRANCH := `git rev-parse --abbrev-ref HEAD` 
+	GIT_BRANCH := `git rev-parse --abbrev-ref HEAD 2>/dev/null || printf "nogit"`
 endif
 
 # Pull correct branches for PF from local files. 
@@ -42,7 +42,7 @@ versions:
 	@echo "Pitchfork: $(PF_GIT_BRANCH)"
 	@echo
 	@printf "Go version: "; go version
-	@printf "Trident branch: "; git rev-parse --abbrev-ref HEAD; printf "Trident Git commit: "; git rev-parse HEAD
+	@printf "Trident branch: "; git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "nogit"; printf "Trident Git commit: "; git rev-parse HEAD 2>/dev/null || echo "nogit"
 	@echo
 	@printf "Build OS: "
 	@if [ -f /etc/debian_version ]; then printf "Debian "; cat /etc/debian_version; else echo "Not Debian"; fi
@@ -77,7 +77,7 @@ deps: ext
 
 	@echo
 	@echo "Updating Pitchfork..."
-	@cd ext/_gopath/src/trident.li/pitchfork; git pull; git checkout ${PF_GIT_BRANCH}; printf "Pitchfork branch: "; git rev-parse --abbrev-ref HEAD; printf "Pitchfork GIT commit: "; git rev-parse HEAD
+	@cd ext/_gopath/src/trident.li/pitchfork; (git pull 2>/dev/null && git checkout ${PF_GIT_BRANCH} && printf "Pitchfork branch: " && git rev-parse --abbrev-ref HEAD && printf "Pitchfork GIT commit: " && git rev-parse HEAD) || echo "NO GIT"
 
 	@echo
 	@echo "Updating Pitchfork dependencies"
@@ -85,7 +85,7 @@ deps: ext
 
 	@echo
 	@echo "Updating Trident Go Dependencies"
-	@cd ext/_gopath/src/trident.li/go; git pull
+	@cd ext/_gopath/src/trident.li/go; git pull 2>/dev/null || echo "NO GIT"
 
 	@echo
 	@echo "Updating Golang dependencies (imports)..."
