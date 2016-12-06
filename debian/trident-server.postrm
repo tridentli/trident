@@ -18,6 +18,9 @@ case "$1" in
     # remove the configuration files itself
     rm -rf /etc/trident/
 
+    # remove the log files
+    rm -rf /var/log/trident/
+
     ;;
 
     upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)

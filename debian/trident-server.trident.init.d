@@ -107,13 +107,17 @@ case "$1" in
 	fi
 	;;
 
+  rotate)
+	start-stop-daemon --stop --quiet --signal USR1 --exec ${DAEMON} --pidfile ${PIDFILE} --name ${DNAME}
+	;;
+
   status)
 	check_for_upstart 1
 	status_of_proc "${DAEMON}" "${DNAME}" && exit 0 || exit $?
 	;;
 
   *)
-	log_action_msg "Usage: ${SCRIPTNAME} {start|stop|restart|status}" || true
+	log_action_msg "Usage: ${SCRIPTNAME} {start|stop|restart|status|rotate}" || true
 	exit 1
 	;;
 esac
