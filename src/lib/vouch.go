@@ -133,31 +133,30 @@ func (vouch *TriVouch) ListFor(user TriUser, tg TriGroup, username string) (vouc
 }
 
 func vouches_member(ctx pf.PfCtx, args []string, is_by bool) (err error) {
-	tctx := TriGetCtx(ctx)
-
 	tg_name := args[0]
 	user_name := args[1]
 
 	var tv TriVouch
 	var vouches []TriVouch
 
-	if !tctx.IsLoggedIn() {
+	if !ctx.IsLoggedIn() {
 		err = errors.New("Not authenticated")
 		return
 	}
 
-	theuser := tctx.TriTheUser()
+	theuser := ctx.TheUser()
 
-	err = tctx.SelectUser(user_name, pf.PERM_USER_SELF)
+	err = ctx.SelectUser(user_name, pf.PERM_USER_SELF)
 	if err != nil {
 		return
 	}
 
-	err = tctx.SelectGroup(tg_name, pf.PERM_GROUP_MEMBER)
+	err = ctx.SelectGroup(tg_name, pf.PERM_GROUP_MEMBER)
 	if err != nil {
 		return
 	}
 
+	tctx := TriGetCtx(ctx)
 	user := tctx.TriSelectedUser()
 	tg := tctx.TriSelectedGroup()
 
@@ -168,7 +167,7 @@ func vouches_member(ctx pf.PfCtx, args []string, is_by bool) (err error) {
 	}
 
 	for _, tv = range vouches {
-		tctx.OutLn(tv.String())
+		ctx.OutLn(tv.String())
 	}
 
 	return
@@ -183,7 +182,6 @@ func vouches_for_member(ctx pf.PfCtx, args []string) (err error) {
 }
 
 func vouch_add(ctx pf.PfCtx, args []string) (err error) {
-	tctx := TriGetCtx(ctx)
 
 	tg_name := args[0]
 	user_name := args[1]
@@ -191,16 +189,17 @@ func vouch_add(ctx pf.PfCtx, args []string) (err error) {
 	comment := args[3]
 	attestations := args[4]
 
-	err = tctx.SelectUser(user_name, pf.PERM_USER_SELF)
+	err = ctx.SelectUser(user_name, pf.PERM_USER_SELF)
 	if err != nil {
 		return
 	}
 
-	err = tctx.SelectGroup(tg_name, pf.PERM_GROUP_MEMBER)
+	err = ctx.SelectGroup(tg_name, pf.PERM_GROUP_MEMBER)
 	if err != nil {
 		return
 	}
 
+	tctx := TriGetCtx(ctx)
 	user := tctx.TriSelectedUser()
 	tg := tctx.TriSelectedGroup()
 
@@ -238,7 +237,7 @@ func vouch_add(ctx pf.PfCtx, args []string) (err error) {
 	q := "INSERT INTO member_vouch " +
 		"(vouchor, vouchee, trustgroup, comment, entered, positive) " +
 		"VALUES($1, $2, $3, $4, now(), 't') "
-	err = pf.DB.Exec(tctx,
+	err = pf.DB.Exec(ctx,
 		"Created Vouch $1 -> $2, group: $3",
 		1, q,
 		user.GetUserName(), vouchee_name, tg.GetGroupName(), comment)
@@ -250,23 +249,22 @@ func vouch_add(ctx pf.PfCtx, args []string) (err error) {
  * Entered at will update automaticall
  */
 func vouch_update(ctx pf.PfCtx, args []string) (err error) {
-	tctx := TriGetCtx(ctx)
-
 	tg_name := args[0]
 	user_name := args[1]
 	vouchee_name := args[2]
 	comment := args[3]
 
-	err = tctx.SelectUser(user_name, pf.PERM_USER_SELF)
+	err = ctx.SelectUser(user_name, pf.PERM_USER_SELF)
 	if err != nil {
 		return
 	}
 
-	err = tctx.SelectGroup(tg_name, pf.PERM_USER_SELF)
+	err = ctx.SelectGroup(tg_name, pf.PERM_USER_SELF)
 	if err != nil {
 		return
 	}
 
+	tctx := TriGetCtx(ctx)
 	user := tctx.TriSelectedUser()
 	tg := tctx.TriSelectedGroup()
 
@@ -276,7 +274,7 @@ func vouch_update(ctx pf.PfCtx, args []string) (err error) {
 		"WHERE vouchor = $2 " +
 		"AND vouchee = $3 " +
 		"AND trustgroup = $4"
-	err = pf.DB.Exec(tctx,
+	err = pf.DB.Exec(ctx,
 		"Updated Vouch $1 -> $2, group: $3",
 		-1, q,
 		comment, user.GetUserName(), vouchee_name, tg.GetGroupName())
@@ -284,22 +282,22 @@ func vouch_update(ctx pf.PfCtx, args []string) (err error) {
 }
 
 func vouch_remove(ctx pf.PfCtx, args []string) (err error) {
-	tctx := TriGetCtx(ctx)
 
 	tg_name := args[0]
 	user_name := args[1]
 	vouchee_name := args[2]
 
-	err = tctx.SelectUser(user_name, pf.PERM_USER_SELF)
+	err = ctx.SelectUser(user_name, pf.PERM_USER_SELF)
 	if err != nil {
 		return
 	}
 
-	err = tctx.SelectGroup(tg_name, pf.PERM_GROUP_MEMBER)
+	err = ctx.SelectGroup(tg_name, pf.PERM_GROUP_MEMBER)
 	if err != nil {
 		return
 	}
 
+	tctx := TriGetCtx(ctx)
 	user := tctx.TriSelectedUser()
 	tg := tctx.TriSelectedGroup()
 
@@ -308,7 +306,7 @@ func vouch_remove(ctx pf.PfCtx, args []string) (err error) {
 		"AND vouchee = $2 " +
 		"AND trustgroup = $3 " +
 		"AND positive = true"
-	err = pf.DB.Exec(tctx,
+	err = pf.DB.Exec(ctx,
 		"Deleted Vouch $1 -> $2, group: $3",
 		-1, q,
 		user.GetUserName(), vouchee_name, tg.GetGroupName())

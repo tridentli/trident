@@ -22,7 +22,7 @@
 	<tbody>{{ range $i, $user := .Users }}
 	<tr>
 		<td><img src="/user/{{ $user.GetUserName }}/image.png" class="userimage" alt="Profile Image" /></td>
-		<td><a href="/group/{{ $user.GetGroupName }}/member/{{ $user.GetUserName }}">{{ $user.GetUserName }}</a>{{ if $isadmin }} (<a href="/user/{{ $user.GetUserName }}">user</a>){{ end }}</td>
+		<td><a href="/group/{{ $user.GetGroupName }}/members/{{ $user.GetUserName }}">{{ $user.GetUserName }}</a>{{ if $isadmin }} (<a href="/user/{{ $user.GetUserName }}">user</a>){{ end }}</td>
 		<td>{{ $user.GetFullName }}</td>
 		<td><a href="mailto:{{ $user.GetEmail }}">{{ $user.GetEmail }}</a>{{ if $user.HasPGP }}<span title="Member has a PGP key">&psi;</span>{{ end }}</td>
 		<td>{{ $user.GetAffiliation }}</td>
