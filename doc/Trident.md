@@ -627,17 +627,14 @@ Please file issues on our [GitHub](https://github.com/tridentli/) account.
 
 This is a note for development purposes.
 
-One requires ```golang``` (Go) to be installed for running.
+One requires ```golang``` (Go) 1.6+ to be installed for running.
 
 After checking Trident out of git one needs to configure the ```GOPATH``` properly.
 
-We store external libraries in ext/. To use these set ```GOPATH``` like this:
+We store external libraries in ext/. To update that, use 'make deps' to fetch them.
+Then to run  set ```GOPATH``` like this:
 ```shell
 export GOPATH=$(pwd)/ext/_gopath/
-```
-Then fetch dependencies:
-```
-doc/deps.sh
 ```
 You can then execute tridentd with:
 ```shell
@@ -645,6 +642,7 @@ src/cmd/tridentd/tridentd.go --disabletwofactor --insecurecookies --config=doc/c
 ```
 
 Of course, don't forget to setup the database as detailed in the Database section.
+And one might want to modify the config to adjust to taste.
 
 ### Repository Organization
 
