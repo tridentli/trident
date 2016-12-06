@@ -294,9 +294,8 @@ func group_add(ctx pf.PfCtx, args []string) (err error) {
 		return
 	}
 
-	tctx := TriGetCtx(ctx)
-
 	/* Fetch our newly created group */
+	tctx := TriGetCtx(ctx)
 	grp = tctx.TriSelectedGroup()
 
 	/* Select yourself */
@@ -330,6 +329,7 @@ func group_member_nominate(ctx pf.PfCtx, args []string) (err error) {
 }
 
 func group_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
+	menu.Replace("add", group_add)
 	menu.Add(pf.PfMEntry{"vouch", vouch_menu, 0, -1, nil, pf.PERM_USER, "Vouch Commands"})
 	menu.Add(pf.PfMEntry{"nominate", group_member_nominate, 2, 2, []string{"group", "username"}, pf.PERM_GROUP_MEMBER, "Nominate a member for a group"})
 }
