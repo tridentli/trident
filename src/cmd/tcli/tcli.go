@@ -36,5 +36,5 @@ import (
 )
 
 func main() {
-	pf_cmd_cli.CLI(".trident_token", "TRIDENT_TOKEN", "TRIDENT_VERBOSE", "TRIDENT_SERVER", "http://127.0.0.1:8334")
+	pf_cmd_cli.CLI(".trident_token", "TRIDENT_TOKEN", "TRIDENT_VERBOSE", "TRIDENT_SERVER", "http://127.0.0.1:8333")
 }
