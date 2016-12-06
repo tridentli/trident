@@ -476,7 +476,6 @@ should be within a transaction (```BEGIN```, ```COMMIT```).
 Database permissions (read: ```GRANTS```) are managed by Trident itself,
 these should not be given/revoked in these scripts.
 
-
 ### Webserver setup
 
 Following sections detail how to configure the webserver (HTTP Proxy).
