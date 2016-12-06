@@ -13,12 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td></td>
-	<td>${testURI}</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Sign In')])[2]</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -37,14 +32,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
 	<td>assertText</td>
 	<td>css=p</td>
-	<td>The following options are available:</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -108,7 +98,7 @@
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriUserS-PfUserS-im_info</td>
+	<td>id=TriUserS-PfUserS-tz_info</td>
 	<td></td>
 </tr>
 <tr>

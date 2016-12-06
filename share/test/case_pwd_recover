@@ -12,6 +12,11 @@
 <tr><td rowspan="1" colspan="3">case_pwd_recover</td></tr>
 </thead><tbody>
 <tr>
+	<td>open</td>
+	<td>${loginURI}</td>
+	<td></td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>link=Password Recover</td>
 	<td></td>
@@ -144,7 +149,7 @@
 <tr>
 	<td>assertText</td>
 	<td>css=p</td>
-	<td>The following is a list of your Trust Groups.</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>

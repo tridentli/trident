@@ -13,8 +13,8 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
-	<td>${testURI}/logout/</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -33,7 +33,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
@@ -58,8 +58,8 @@
 </tr>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
 	<td></td>
-	<td>${testURI}/logout/</td>
 </tr>
 </tbody></table>
 </body>

@@ -13,12 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/logout</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Sign In</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -38,7 +33,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
@@ -53,12 +48,12 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=TriTG-has_file</td>
+	<td>id=TriGroupS-PfGroupS-has_file</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=TriTG-button</td>
+	<td>id=TriGroupS-PfGroupS-button</td>
 	<td></td>
 </tr>
 <tr>
@@ -69,11 +64,6 @@
 <tr>
 	<td>clickAndWait</td>
 	<td>link=Logout</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Sign In</td>
 	<td></td>
 </tr>
 <tr>
@@ -93,7 +83,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
