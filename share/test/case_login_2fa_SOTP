@@ -13,8 +13,8 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${logoutURI}</td>
 	<td></td>
+	<td>${testURI}</td>
 </tr>
 <tr>
 	<td>open</td>
@@ -74,7 +74,7 @@
 <tr>
 	<td>assertText</td>
 	<td>css=p</td>
-	<td>${loginString}</td>
+	<td>The following options are available:</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -129,7 +129,7 @@
 <tr>
 	<td>assertText</td>
 	<td>css=p</td>
-	<td>${loginString}</td>
+	<td>The following options are available:</td>
 </tr>
 <tr>
 	<td>open</td>

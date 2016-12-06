@@ -13,12 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${logoutURI}</td>
 	<td></td>
+	<td>${testURI}</td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>${loginURI}</td>
+	<td>clickAndWait</td>
+	<td>css=article &gt; a.fakebutton</td>
 	<td></td>
 </tr>
 <tr>
@@ -38,7 +38,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Regular</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
