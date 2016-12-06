@@ -1,0 +1,13 @@
+/var/log/trident/*.log {
+	weekly
+	missingok
+	rotate 52000
+	compress
+	delaycompress
+	notifempty
+	create 0640 trident adm
+	sharedscripts
+	postrotate
+		invoke-rc.d trident rotate >/dev/null 2>&1
+	endscript
+}

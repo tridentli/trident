@@ -4,9 +4,11 @@
 set -e
 
 TRIDENT_USER=trident
+TRIDENT_GROUP=trident
 TRIDENT_ETC=/etc/trident
 TRIDENT_CFG="${TRIDENT_ETC}/trident.conf"
 TRIDENT_VAR=/var/lib/trident
+TRIDENT_LOG=/var/log/trident
 JWT_CRV="secp521r1"
 JWT_SEC="${TRIDENT_ETC}/jwt.prv"
 JWT_PUB="${TRIDENT_ETC}/jwt.pub"
@@ -24,7 +26,7 @@ then
 	adduser --quiet postgres trident
 else
 	echo "WARNING: No local 'postgres' user"
-	echo "         Please add the user to the 'trident' group"
+	echo "         Please add the user to the '${TRIDENT_GROUP}' group"
 	echo "         If you decide to install PostgreSQL locally"
 fi
 
@@ -64,20 +66,25 @@ then
 	echo "Creation of JWT public key: done"
 fi
 
+# Create log file directory
+mkdir -p ${TRIDENT_LOG}
+chown ${TRIDENT_USER}:${TRIDENT_GROUP} ${TRIDENT_LOG}
+chmod 750 ${TRIDENT_LOG}
+
 # Make sure the permissions are sane (read: no other user can read :)
-chown root:trident ${TRIDENT_ETC}
+chown root:${TRIDENT_GROUP} ${TRIDENT_ETC}
 chmod 755 ${TRIDENT_ETC}
 
-chown root:trident ${TRIDENT_CFG}
+chown root:${TRIDENT_GROUP} ${TRIDENT_CFG}
 chmod 640 ${TRIDENT_CFG}
 
-chown trident:trident ${TRIDENT_VAR}
+chown ${TRIDENT_USER}:${TRIDENT_GROUP} ${TRIDENT_VAR}
 chmod 750 ${TRIDENT_VAR}
 
-chown root:trident ${JWT_SEC}
+chown root:${TRIDENT_GROUP} ${JWT_SEC}
 chmod 640 ${JWT_SEC}
 
-chown root:trident ${JWT_PUB}
+chown root:${TRIDENT_GROUP} ${JWT_PUB}
 chmod 640 ${JWT_PUB}
 
 # dh_installdeb will replace this with shell code automatically
