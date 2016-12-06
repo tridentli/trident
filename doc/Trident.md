@@ -9,6 +9,8 @@ The Trident database and functionality are based on the
 [Portal code](https://github.com/ops-trust/portal/),
 but Trident is a full redesign and from scratch rewrite in [Go](https://golang.org/).
 
+The underlying lirbary has been cared out into a dedicated project [Pitchfork](https://github.com/tridentli/pitchfork) for use in other systems.
+
 Useful links:
  * [Trident Website](https://trident.li)
  * [Github](https://github.com/tridentli)
@@ -26,12 +28,12 @@ This section briefly describes the components inside Trident.
 ### tridentd
 
 ```tridentd``` is the Trident Daemon. It runs in the background and
-published a webserver on ```localhost``` and port ```8333```.
-This HTTP-based webserver provides an ```/api/``` URL for
+published a web-server on ```localhost``` and port ```8333```.
+This HTTP-based web-server provides an ```/api/``` URL for
 Trident API calls and the rest of the exported details consist
 of the Trident web interface.
 
-The tridentd webservice can be published to the general Internet
+The tridentd web-service can be published to the general Internet
 by using a HTTP proxy like Nginx or Apache and forwarding the
 correct requests to it.
 
@@ -218,6 +220,7 @@ One can import this archive in a running Trident system using:
 tcli wiki import <trustgroup> <format:foswiki> <archivename> <destination-path>
 ```
 for example:
+```
 tcli wiki import test foswiki /tmp/main.wiki /import/
 ```
 
@@ -263,12 +266,23 @@ Following arguments should only used during testing or development and not on a 
 
 ```tcli``` is the Trident CLI. It is in effect a simple HTTP client that speaks directly to the API of tridentd.
 
-As in the Web CLI typing ```tcli help``` will provide details on available commands.
-
 ```tcli``` is pronounced as "Tickly".
 
+As in the Web CLI typing ```tcli -help``` will provide details on available commands.
+
+```
+  # tcli -help
+Usage of tcli:
+  -r	Read an argument from the CLI, useful for passwords
+  -server string
+    	Server to talk to [env TRIDENT_SERVER] (default "http://localhost:8334")
+  -tokenfile string
+    	Token to use [env TRIDENT_TOKEN] (default "~/.trident_token")
+  -v	Enable verbosity [env TRIDENT_VERBOSE]
+```
+
 ```tcli``` stores its [JSON Web Token (JWT)](http://jwt.io/) authentication token in ```~/.trident_token```.
-A custom token location can be configured using the ```TRIDENT_TOKEN``` variable allowing one to keep multiple tokens active (e.g. a normal user and one with sysadmin priveleges).
+A custom token location can be configured using the ```TRIDENT_TOKEN``` environment variable allowing one to keep multiple tokens active (e.g. a normal user and one with sysadmin privileges).
 Deleting the token effectively logs one out if one does not have another copy.
 
 One can enable verbosity for ```tcli``` by setting the environment variable
@@ -289,6 +303,41 @@ To add a user to the system use (as user ```postgres```):
 tsetup adduser <username> <password>
 ```
 
+```tsetup -help``` will provide details on available functions and arguments.
+
+```
+# tsetup -help
+Note: No commands given
+Usage: tsetup [<options>...] <cmd> [<arg>...]
+
+ Options:
+       --config <dir>
+       --verbosedb
+       --force-db-destroy
+	--version
+	--debug
+	--help
+
+ Command:
+	help
+	setup_db
+	setup_test_db
+	upgrade_db
+	cleanup_db
+	adduser <username> <password>
+	setpassword <username> <password>
+	sudo <username> [<cli commands>]
+	version
+
+Typically to be run from the 'postgres' account
+that has access trusted access to PostgreSQL
+
+The exit code will be zero when no problems are
+encountered while non-zero (1 for simple errors,
+others depending on the command)
+
+```
+
 Note that the ```username``` must be lowercase letters, and numbers, but the first character may not be a number.
 
 This has to used to add an initial administrative (```sysadmin```) user after
@@ -305,8 +354,7 @@ which ```tcli``` or the Trident UI can be used to configure the rest of the syst
 
 ## Installation
 
-Debian packaging is provided (use 'dpkg-buildpackage -b -uc -us' to create.
-FreeBSD packaging might follow at a later date.
+Debian packaging is provided (use 'dpkg-buildpackage -b -uc -us' to generate a pacakge). FreeBSD packaging might follow at a later date.
 
 Trident requires PostgreSQL 9.1+ as a database and Postfix for SMTP.
 
@@ -331,6 +379,7 @@ The quick and dirty method of installing Trident:
 
 ```bash
 apt-get install postgresql nginx postfix
+dpkg -i pitchfork-data-VERSION.deb
 dpkg -i trident-VERSION.deb
 # edit /etc/trident/trident.conf
 su - postgres -c "/usr/sbin/tsetup setup_db"
@@ -427,65 +476,6 @@ should be within a transaction (```BEGIN```, ```COMMIT```).
 Database permissions (read: ```GRANTS```) are managed by Trident itself,
 these should not be given/revoked in these scripts.
 
-#### Member States
-
-(XXX: this section is out of date, see state_mon and schema.psql for truth.)
-
-The following member states exist:
-
-| State      | Description                                                    |
-|------------|----------------------------------------------------------------|
-| nominated  | means somebody has nominated you but you don't know yet.       |
-| vetted     | means you've been invouched and you still don't know about it  |
-| approved   | will someday mean that admin@ has noted your vettedness and noted the absence of controversy about you. Right now you just go from vetted to approved immediately (criteria is identical.) |
-| active     | means you've done everything you need to do and the system is not sending you any annoy-o-grams about your checklist |
-| inactive   | means you used to be approved but lost your pgp key or lost a vouch or the vouch criteria was raised and now excludes you |
-| blocked    | means somebody negvouched you and there's an investigation.    |
-| idle       | means it's been X days (imagine "60") since you either logged into the UI or sent e-mail to one of the lists. |
-| soonidle   | means you will soon be "idle" (we send mail warning of this so that you can log into the portal and prevent going idle.) |
-| failed     | means your nomination timed out without reaching "vetted"      |
-
-On this table the rows are membership states and the columns are member
-capabilities/permissions.
-
-|   state   | can_login | can_see | can_send | can_recv | blocked | hidden  |
-|-----------|-----------|---------|----------|----------|---------|-------- |
-| nominated | false     | false   | false    | false    | false   | false   |
-| vetted    | false     | false   | false    | false    | false   | false   |
-| approved  | true      | true    | false    | false    | false   | false   |
-| active    | true      | true    | true     | true     | false   | false   |
-| inactive  | true      | true    | true     | false    | false   | false   |
-| blocked   | false     | false   | false    | false    | true    | true    |
-| failed    | false     | false   | false    | false    | false   | true    |
-| soonidle  | true      | true    | true     | true     | false   | false   |
-| idle      | true      | true    | true     | false    | false   | false   |
-| deceased  | false     | false   | false    | false    | true    | false   |
-
-Transitions:
-
-| From      | To         | Description                                                                                     |
-|-----------|------------|-------------------------------------------------------------------------------------------------|
-| NULL      | nominated  | When somebody nominates you, and mail is sent to vetting@ asking that folks check you out       |
-| nominated | vetted     | When a cron job detects that you have enough invouches (target_invouches), and notifies admin@ about this) |
-| vetted    | approved   | When an admin notes that there are no negvouches and manually slots you into "approved" status, and you finally hear for the first time that you are a member, or if that's not implemented yet, it's when a cron job notices that you've been vetted and automatically approves you |
-| approved  | active     | when a cron job detects that you're approved but that you need to input a pgp (if that's required) and outvouch (if that's required) |
-| active    | inactive   | When you lose your pgp key or it's suddenly required, or when you used to have enough invouches (min_invouches) but now you don't.) |
-| inactive  | active     | When a cron job detects that you've outvouched and input a pgp key, and notifies by e-mail you about this |
-| ANY       | blocked    | When an admin wants the system to camp onto your e-mail address and not allow further state changes or new nominations) |
-| active    | soonidle   | When a cron job detects that you have not logged in or sent mail for some significant period of time, and sends you mail telling you that you will soon be idle.) |
-| soonidle  | active     | When you log back into the UI or transmit to a mailinglist.                         |
-| soonidle  | idle       | When you go a few more days without activity after being told you will soon be idle |
-| idle      | active     | Same as soonidle -> active                                                          |
-
-#### Member permissions
-
-| Permission| Description                                                                           |
-|-----------|---------------------------------------------------------------------------------------|
-| can_login | means your password works at the main web portal UI                                   |
-| can_see   | means you can see the membership list and other primary materials, including the wiki |
-| can_send  | means you're allowed to send mail to the non-public-access mailing lists              |
-| can_recv  | means you can receive mail to the subscription-checkbox mailing lists                 |
-| blocked   | means you can't be nominated, nor log in, nor receive or send e-mail, nor be seen     |
 
 ### Webserver setup
 
@@ -573,11 +563,30 @@ trident-handler: "|/usr/sbin/trident-wrapper"
 
 and to /etc/postfix/virtual something similar to:
 ```virtual
-mail-handler@example.net	trident-handler
-@example.net			trident-handler
+example.net                ----------------
+mail-handler@example.net   trident-handler
+@example.net               trident-handler
 ```
 
-Of course do configure the rest of Postfix properly.
+There are cases where, trident-handler might need to be trident-handler@localhost.
+
+Critical elements of ```/etc/postfix/main.cf```:
+```
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+myhostname = portal.example.net
+myorigin = portal.example.net
+mydestination = localhost.example.net, localhost, portal.example.net
+virtual_maps = hash:/etc/postfix/virtual
+```
+
+DOn't forget to update the aliases and virtual databases:
+
+```
+postmap /etc/postfix/virtual
+newaliases
+service postfix reload
+```
 
 ## Reporting of Security Issues
 
@@ -652,14 +661,14 @@ Mainline is tracked in the master branch, development happens in sub-branches pe
 The ```src``` directory contains all the source code, this directory is subdivided in:
 
 | Directory | Description          |
-|-----------|----------------------| 
+|-----------|----------------------|
 | ui        | Web User Interface (UI) components. Each module relates to a related component in ```lib``` and has templates for actually rendingering HTML in ```share/templates/<component>/``` |
 | lib       | The per-component libraries of functions. These contain each a component head which links into the Menu system and thus also CLI code. Only code in this directory can execute SQL queries |
 
 The ```share``` directory contains SQL Schemas in ```dbschemas```, the web root in ```webroot```
 and Golang templates in ```templates```.
 
-The ```ext``` directory contains external dependencies (update/fetch with ```doc/deps.sh```).
+The ```ext``` directory contains external dependencies (update/fetch with the Makefile).
 
 ### Coding Style
 
@@ -671,7 +680,7 @@ This provides a gofmt-before-save hook that can be installed by adding this line
 (add-hook 'before-save-hook #'gofmt-before-save)
 ```
 
-In general, please verify that whitespace is not affected while commiting next to what is being commited is correct and properly tested.
+In general, please verify that whitespace is not affected while committing next to what is being committed is correct and properly tested.
 
 We use a [Model View Controller (MVC)](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
 approach to the code, though on two levels. The UI is strict-MVC.
@@ -728,17 +737,85 @@ schroot -e --all-sessions
 ```
 
 #### Manual packages
+Cheanup first:
+```
+make clean_ext
+```
 Make sure that all dependencies are up to date:
 ```
-doc/deps.sh
+make ext
 ```
 
 Build a new Debian package:
 ```
-dpkb-buildpackage -b -uc -us
+make pac
+make vtests
 ```
 
 Voila, a new package.
+
+### Framework Reference
+
+#### Member States
+
+(XXX: this section is out of date, see state_mon and schema.psql for truth.)
+
+The following member states exist:
+
+| State      | Description                                                    |
+|------------|----------------------------------------------------------------|
+| nominated  | means somebody has nominated you but you don't know yet.       |
+| vetted     | means you've been invouched and you still don't know about it  |
+| approved   | will someday mean that admin@ has noted your vettedness and noted the absence of controversy about you. Right now you just go from vetted to approved immediately (criteria is identical.) |
+| active     | means you've done everything you need to do and the system is not sending you any annoy-o-grams about your checklist |
+| inactive   | means you used to be approved but lost your pgp key or lost a vouch or the vouch criteria was raised and now excludes you |
+| blocked    | means somebody negvouched you and there's an investigation.    |
+| idle       | means it's been X days (imagine "60") since you either logged into the UI or sent e-mail to one of the lists. |
+| soonidle   | means you will soon be "idle" (we send mail warning of this so that you can log into the portal and prevent going idle.) |
+| failed     | means your nomination timed out without reaching "vetted"      |
+
+On this table the rows are membership states and the columns are member
+capabilities/permissions.
+
+|   state   | can_login | can_see | can_send | can_recv | blocked | hidden  |
+|-----------|-----------|---------|----------|----------|---------|-------- |
+| nominated | false     | false   | false    | false    | false   | false   |
+| vetted    | false     | false   | false    | false    | false   | false   |
+| approved  | true      | true    | false    | false    | false   | false   |
+| active    | true      | true    | true     | true     | false   | false   |
+| inactive  | true      | true    | true     | false    | false   | false   |
+| blocked   | false     | false   | false    | false    | true    | true    |
+| failed    | false     | false   | false    | false    | false   | true    |
+| soonidle  | true      | true    | true     | true     | false   | false   |
+| idle      | true      | true    | true     | false    | false   | false   |
+| deceased  | false     | false   | false    | false    | true    | false   |
+
+Transitions:
+
+| From      | To         | Description                                                                                     |
+|-----------|------------|-------------------------------------------------------------------------------------------------|
+| NULL      | nominated  | When somebody nominates you, and mail is sent to vetting@ asking that folks check you out       |
+| nominated | vetted     | When a cron job detects that you have enough invouches (target_invouches), and notifies admin@ about this) |
+| vetted    | approved   | When an admin notes that there are no negvouches and manually slots you into "approved" status, and you finally hear for the first time that you are a member, or if that's not implemented yet, it's when a cron job notices that you've been vetted and automatically approves you |
+| approved  | active     | when a cron job detects that you're approved but that you need to input a pgp (if that's required) and outvouch (if that's required) |
+| active    | inactive   | When you lose your pgp key or it's suddenly required, or when you used to have enough invouches (min_invouches) but now you don't.) |
+| inactive  | active     | When a cron job detects that you've outvouched and input a pgp key, and notifies by e-mail you about this |
+| ANY       | blocked    | When an admin wants the system to camp onto your e-mail address and not allow further state changes or new nominations) |
+| active    | soonidle   | When a cron job detects that you have not logged in or sent mail for some significant period of time, and sends you mail telling you that you will soon be idle.) |
+| soonidle  | active     | When you log back into the UI or transmit to a mailinglist.                         |
+| soonidle  | idle       | When you go a few more days without activity after being told you will soon be idle |
+| idle      | active     | Same as soonidle -> active                                                          |
+
+#### Member permissions
+
+| Permission| Description                                                                           |
+|-----------|---------------------------------------------------------------------------------------|
+| can_login | means your password works at the main web portal UI                                   |
+| can_see   | means you can see the membership list and other primary materials, including the wiki |
+| can_send  | means you're allowed to send mail to the non-public-access mailing lists              |
+| can_recv  | means you can receive mail to the subscription-checkbox mailing lists                 |
+| blocked   | means you can't be nominated, nor log in, nor receive or send e-mail, nor be seen     |
+
 
 ## Credits
 
@@ -757,4 +834,3 @@ Following is a short list of credits related to the Trident Project:
 
 Further details are available in the [Debian package copyright file](debian/copyright) in the source
 or to be found in ```/usr/share/doc/trident/copyright``` for installed Trident package on Debian.
-
