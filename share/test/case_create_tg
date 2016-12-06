@@ -13,12 +13,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td></td>
-	<td>${testURI}</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=article &gt; a.fakebutton</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -58,7 +53,12 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=tgnew-button</td>
+	<td>id=grpnew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>id=grpnew-error</td>
 	<td></td>
 </tr>
 <tr>
@@ -133,7 +133,7 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 </tbody></table>

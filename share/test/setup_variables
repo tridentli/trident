@@ -21,6 +21,21 @@
 	<td>https://trident.localhost/</td>
 	<td>testURI</td>
 </tr>
+<tr>
+	<td>store</td>
+	<td>${testURI}login</td>
+	<td>loginURI</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>${testURI}logout</td>
+	<td>logoutURI</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>The following options are available:</td>
+	<td>loginString</td>
+</tr>
 </tbody></table>
 </body>
 </html>
