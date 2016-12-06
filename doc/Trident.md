@@ -816,7 +816,6 @@ Transitions:
 | can_recv  | means you can receive mail to the subscription-checkbox mailing lists                 |
 | blocked   | means you can't be nominated, nor log in, nor receive or send e-mail, nor be seen     |
 
-
 ## Credits
 
 Following is a short list of credits related to the Trident Project:
