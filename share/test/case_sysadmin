@@ -13,8 +13,8 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
 	<td></td>
+	<td>${testURI}/login/</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -43,13 +43,18 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add Group</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>link=Add Trust Group</td>
-	<td>Add Trust Group</td>
+	<td>link=Add Group</td>
+	<td>Add Group</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -178,8 +183,8 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
 	<td></td>
+	<td>${testURI}/logout/</td>
 </tr>
 </tbody></table>
 </body>

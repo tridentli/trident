@@ -13,8 +13,8 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/</td>
 	<td></td>
+	<td>${testURI}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -37,9 +37,14 @@
 	<td></td>
 </tr>
 <tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>css=p</td>
-	<td>The following is a list of your Trust Groups.</td>
+	<td>The following options are available:</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -53,87 +58,87 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-image</td>
+	<td>id=TriUserS-PfUserS-image</td>
 	<td>${testSuiteFolder}/files/sysadmin.png</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriUser-ident</td>
+	<td>id=TriUserS-PfUserS-ident</td>
 	<td>testuser</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriUser-descr</td>
+	<td>id=TriUserS-PfUserS-descr</td>
 	<td>Test User</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-descr</td>
+	<td>id=TriUserS-PfUserS-descr</td>
 	<td>Test D. User</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriUser-affiliation</td>
+	<td>id=TriUserS-PfUserS-affiliation</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-affiliation</td>
+	<td>id=TriUserS-PfUserS-affiliation</td>
 	<td>Mystery, Inc.</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriUser-post_info</td>
+	<td>id=TriUserS-PfUserS-post_info</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-post_info</td>
+	<td>id=TriUserS-PfUserS-post_info</td>
 	<td>123 Main St<br />Anytown USA</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriUser-im_info</td>
+	<td>id=TriUserS-PfUserS-im_info</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-im_info</td>
+	<td>id=TriUserS-PfUserS-im_info</td>
 	<td>skype: test</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriUser-tz_info</td>
+	<td>id=TriUserS-PfUserS-im_info</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-tz_info</td>
+	<td>id=TriUserS-PfUserS-tz_info</td>
 	<td>EST</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriUser-airport</td>
-	<td></td>
+	<td>id=TriUserS-PfUserS-airport</td>
+	<td>???</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-airport</td>
+	<td>id=TriUserS-PfUserS-airport</td>
 	<td>BOS</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriUser-bio_info</td>
+	<td>id=TriUserS-PfUserS-bio_info</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-bio_info</td>
+	<td>id=TriUserS-PfUserS-bio_info</td>
 	<td>It was the best of times...</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=TriUser-button</td>
+	<td>id=TriUserS-PfUserS-button</td>
 	<td></td>
 </tr>
 <tr>

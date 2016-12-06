@@ -73,7 +73,7 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>/user/sysadmin/group/create/vouch/testuser/nominate_form</td>
+	<td>/user/sysadmin/tg/create/vouch/testuser/nominate_form</td>
 	<td></td>
 </tr>
 <tr>
@@ -103,7 +103,7 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>/user/sysadmin/group/create/vouch/testuser/nominate_form</td>
+	<td>/user/sysadmin/tg/create/vouch/testuser/nominate_form</td>
 	<td></td>
 </tr>
 <tr>

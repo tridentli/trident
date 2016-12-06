@@ -13,7 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td></td>
+	<td>${testURI}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=article &gt; a.fakebutton</td>
 	<td></td>
 </tr>
 <tr>
@@ -33,7 +38,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
@@ -43,12 +48,12 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Add Trust Group</td>
+	<td>link=Add Group</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=tgnew-tg</td>
+	<td>id=grpnew-group</td>
 	<td>create</td>
 </tr>
 <tr>

@@ -13,8 +13,8 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
 	<td></td>
+	<td>${testURI}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -38,7 +38,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
