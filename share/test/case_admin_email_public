@@ -13,11 +13,6 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td></td>
-	<td>${testURI}/logout/</td>
-</tr>
-<tr>
-	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>
@@ -40,11 +35,6 @@
 	<td>assertText</td>
 	<td>css=p</td>
 	<td>${loginString}</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>css=#footer &gt; ul &gt; li &gt; a</td>
-	<td>sysadmin</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>

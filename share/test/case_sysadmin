@@ -13,8 +13,8 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
-	<td>${testURI}/login/</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -55,6 +55,11 @@
 	<td>assertText</td>
 	<td>link=Add Group</td>
 	<td>Add Group</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a[title=&quot;Group&quot;]</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -105,11 +110,6 @@
 	<td>clickAndWait</td>
 	<td>link=Settings</td>
 	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=PfSys-pw_length</td>
-	<td>8</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -194,8 +194,8 @@
 </tr>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
 	<td></td>
-	<td>${testURI}/logout/</td>
 </tr>
 </tbody></table>
 </body>

@@ -13,11 +13,6 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td></td>
-	<td>${testURI}</td>
-</tr>
-<tr>
-	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>

@@ -13,12 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${logoutURI}</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>${recoverURI}</td>
+	<td>clickAndWait</td>
+	<td>link=Password Recover</td>
 	<td></td>
 </tr>
 <tr>
