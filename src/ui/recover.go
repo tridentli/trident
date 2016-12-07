@@ -19,13 +19,14 @@ func h_recover(cui pu.PfUI) {
 		var err3 error
 
 		cmd := "user password recover"
-		arg := []string{"", "", "", ""}
+		arg := []string{"", "", ""}
 
 		usr, err = cui.FormValue("username")
 		usp, err2 = cui.FormValue("user")
 		nmp, err3 = cui.FormValue("nominator")
 		pw1, err4 := cui.FormValue("password")
 		pw2, err5 := cui.FormValue("passwordr")
+		arg[1] = usp + nmp
 
 		if err != nil && err2 != nil && err3 != nil || err4 != nil || err5 != nil {
 			if pw1 != "" {
