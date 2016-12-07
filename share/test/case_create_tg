@@ -38,12 +38,12 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Group</td>
+	<td>link=Regular</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Regular</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
@@ -82,9 +82,19 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Updated 2 fields, 13 fields where not modified</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>link=Nominate</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>Nominate and Vouch:</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -93,19 +103,23 @@
 </tr>
 <tr>
 	<td>assertText</td>
+	<td>css=p &gt; b</td>
+	<td>Bold</td>
+</tr>
+<tr>
+	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[3]</td>
 	<td>Sysadmin user</td>
 </tr>
-<!--Asserting that Creating TG members should be an admin.  kb_54-->
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[6]</td>
-	<td>yes</td>
+	<td>true</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[7]</td>
-	<td>active</td>
+	<td>approved</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -118,18 +132,13 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Mailing List</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>link=admin</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=User</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=sysadmin</td>
 	<td></td>
 </tr>
 <tr>
