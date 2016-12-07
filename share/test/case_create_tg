@@ -38,7 +38,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Group</td>
+	<td>link=Regular</td>
 	<td></td>
 </tr>
 <tr>
@@ -111,7 +111,6 @@
 	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[3]</td>
 	<td>Sysadmin user</td>
 </tr>
-<!--Asserting that Creating TG members should be an admin.  kb_54-->
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[6]</td>
@@ -136,6 +135,11 @@
 	<td>assertText</td>
 	<td>css=h1</td>
 	<td>Mailing List</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=admin</td>
+	<td></td>
 </tr>
 <tr>
 	<td>open</td>
