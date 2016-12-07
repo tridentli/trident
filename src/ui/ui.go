@@ -26,8 +26,11 @@ func TriUIMenuOverride(cui pu.PfUI, menu *pu.PfUIMenu) {
 		case "group":
 			if lp == 2 {
 				h_group(cui, menu)
-			} else if lp == 3 {
-				menu.Add(pu.PfUIMentry{"vouches", "Vouches", pu.PERM_GROUP_MEMBER, h_user_vouches, nil})
+			} else if lp == 4 {
+				menu.Replace("", h_user_vouches)
+				menu.Replace("profile", h_user_vouches)
+
+				menu.Filter([]string{"", "profile", "pwreset", "log", "pgp_keys", "email"})
 			}
 			break
 		}

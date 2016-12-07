@@ -1,7 +1,10 @@
 {{template "inc/header.tmpl" .}}
 {{template "inc/search.tmpl" .}}
 
+	{{ $this := . }}
 	{{ $isadmin := .IsAdmin }}
+	{{ $ui := .UI }}
+	{{ $group := .Group }}
 	<table>
 	<thead>
 	<tr>
@@ -19,55 +22,23 @@
 		{{ end }}
 	</tr>
 	</thead>
-	<tbody>{{ range $i, $user := .Users }}
+	<tbody>{{ range $i, $grmember := .GroupMembers }}
 	<tr>
-		<td><img src="/user/{{ $user.GetUserName }}/image.png" class="userimage" alt="Profile Image" /></td>
-		<td><a href="/group/{{ $user.GetGroupName }}/members/{{ $user.GetUserName }}">{{ $user.GetUserName }}</a>{{ if $isadmin }} (<a href="/user/{{ $user.GetUserName }}">user</a>){{ end }}</td>
-		<td>{{ $user.GetFullName }}</td>
-		<td><a href="mailto:{{ $user.GetEmail }}">{{ $user.GetEmail }}</a>{{ if $user.HasPGP }}<span title="Member has a PGP key">&psi;</span>{{ end }}</td>
-		<td>{{ $user.GetAffiliation }}</td>
-		<td>{{ $user.GetGroupAdmin }}</td>
-		<td>{{ $user.GetGroupState }}</td>
-		<td>{{ $user.GetActivity }}d</td>
+		<td>{{ user_image_link $ui $grmember.GetUserName $grmember.GetUserName "" }}</td>
+		<td><a href="/group/{{ $group.GetGroupName }}/members/{{ $grmember.GetUserName }}">{{ $grmember.GetUserName }}</a>{{ if $isadmin }} (<a href="/grmember/{{ $grmember.GetUserName }}">user</a>){{ end }}</td>
+		<td>{{ $grmember.GetFullName }}</td>
+		<td><a href="mailto:{{ $grmember.GetEmail }}">{{ $grmember.GetEmail }}</a>{{ if $grmember.HasPGP }}<span title="Member has a PGP key">&psi;</span>{{ end }}</td>
+		<td>{{ $grmember.GetAffiliation }}</td>
+		<td>{{ $grmember.GetGroupAdmin }}</td>
+		<td>{{ $grmember.GetGroupState }}</td>
+		<td>{{ $grmember.GetActivity }}d</td>
 		<td>
-		{{ if gt $user.GetVouchesForMe 0 }}<b>{{ $user.GetVouchesBy }}(by)</b>{{ else }}{{ $user.GetVouchesBy }}(by){{ end }} -&gt;
-		{{ if gt $user.GetVouchesByMe 0 }}<b>{{ $user.GetVouchesFor }}(for)</b>{{ else }}{{ $user.GetVouchesFor }}(for){{ end }}
+		{{ if gt $grmember.GetVouchesForMe 0 }}<b>{{ $grmember.GetVouchesBy }}(by)</b>{{ else }}{{ $grmember.GetVouchesBy }}(by){{ end }} -&gt;
+		{{ if gt $grmember.GetVouchesByMe 0 }}<b>{{ $grmember.GetVouchesFor }}(for)</b>{{ else }}{{ $grmember.GetVouchesFor }}(for){{ end }}
 		</td>
 		{{ if $isadmin }}
 		<td>
-			{{ if eq $user.GetGroupState "vetted"}}
-				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/approve" method="post">
-					<fieldset>
-						<input id="button" type="submit" name="button" value="Approve Member" />
-					</fieldset>
-				</form>
-			{{ end }}
-			{{ if eq $user.GetGroupState "blocked" }}
-				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/unblock" method="post">
-					<fieldset>
-						<input id="button" type="submit" name="button" value="Unblock Member" />
-					</fieldset>
-				</form>
-			{{ else }}
-				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/block" method="post">
-					<fieldset>
-						<input id="button" type="submit" name="button" value="Block Member" />
-					</fieldset>
-				</form>
-			{{ end }}
-			{{ if $user.GetGroupAdmin }}
-				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/demote" method="post">
-					<fieldset>
-						<input id="button" type="submit" name="button" value="Demote from Admin" />
-					</fieldset>
-				</form>
-			{{ else }}
-				<form class="styled_form" action="/user/{{ $user.GetUserName }}/group/{{ $user.GetGroupName }}/promote" method="post">
-					<fieldset>
-						<input id="button" type="submit" name="button" value="Promote to Admin" />
-					</fieldset>
-				</form>
-			{{ end }}
+			{{ template "group/member_cmd.tmpl" dict "This" $this "UI" $ui "GroupMember" $grmember "Group" $group }}
 		</td>
 		{{ end }}
 	</tr>

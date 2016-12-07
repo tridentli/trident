@@ -16,24 +16,24 @@
 	</tr>
 	<thead>
 	<tbody>
-{{ $ident := .Ident }}
+{{ $ui := .UI }}
 {{ $grp := .GroupName }}
-{{ range $id, $obj := .Users }}
+{{ range $id, $user := .Users }}
 	<tr>
-		<td>{{ $obj.GetUserName }}</td>
-		<td>{{ $obj.GetFullName }}</td>
+		<td>{{ $user.GetUserName }}</td>
+		<td>{{ $user.GetFullName }}</td>
 		<td>
-{{ if $obj.Hide_Email }}
-Hidden
+{{ if $user.GetHideEmail }}
+[Email Hidden]
 {{ else }}
-<!-- TODO Get email address -->
+{{ $user.GetPriEmailString $ui false }}
 {{ end }}
 		</td>
-		<td>{{ $obj.GetAffiliation }}</td>
+		<td>{{ $user.GetAffiliation }}</td>
 		<td>
-			{{ csrf_form .UI (print "/user/" $ident "/group/" $grp "/vouch/" $obj.UserName "/nominate_form") }}
+			{{ csrf_form $ui (print "/group/" $grp "/nominate_existing/") }}
 				<fieldset>
-					<label for="button">&nbsp;</label>
+					<input type="hidden" name="vouchee" value="{{ $user.GetUserName }}" />
 					<input type="submit" name="button" value="Select" />
 				</fieldset>
 			</form>
@@ -44,47 +44,7 @@ Hidden
 
 {{ if .NotFound }}
 	<h2>Add a new Nomination:</h2>
-	{{ csrf_form .UI (print "/user/" $ident "/group/" $grp "/vouch/nominate_new") }}
-		<fieldset>
-		<ul>
-		<li>
-			<label for="search">Email address of nominee:</label>
-			<input type="text" name="address" class="address" readonly value="{{ .Search }}" pattern=".{3,}" />
-		</li>
-		<li>
-			<label for="TriUser-descr">Full Name:</label>
-			<input id="TriUser-descr" name="descr" type="text"  />
-			<span class="form_hint">Full Name of this user</span>
-		</li>
-		<li>
-			<label for="TriUser-affiliation">Affiliation:</label>
-			<input id="TriUser-affiliation" name="affiliation" type="text" />
-			<span class="form_hint">Who the user is affiliated to</span>
-		</li>
-		<li>
-			<label for="TriUser-bio_info">Biography:</label>
-			<textarea id="TriUser-bio_info" name="bio_info" ></textarea>
-			<span class="form_hint">Biography for this user</span>
-		</li>
-		<li>
-			><label for="vouch">Vouch:</label>
-			<textarea id="vouch" name="comment" ></textarea>
-			<span class="form_hint">Vouch for this user</span>
-		</li>
-		{{ range $i, $att := .Attestations }}
-		<li>
-			<label for="attestation-{{ $att.Ident }}">{{ $att.Ident }}</label>
-			{{ $att.Descr }}
-			<input id="attestation-{{ $att.Ident }}" type="checkbox" name="attestation-{{ $att.Ident }}"></input>
-		</li>
-		{{ end }}
-		<li>
-			<label for="button">&nbsp;</label>
-			<input type="submit" name="button" value="Nominate" />
-		</li>
-		</ul>
-		</fieldset>
-	</form>
+	{{ pfform $ui .NewForm . true }}
 {{ end }}
 
 {{template "inc/footer.tmpl" .}}

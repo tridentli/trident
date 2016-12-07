@@ -1,6 +1,7 @@
 package trident
 
 import (
+	"trident.li/keyval"
 	pf "trident.li/pitchfork/lib"
 )
 
@@ -36,6 +37,19 @@ func (grp *TriGroupS) GetAttestations() (output []TriGroupAttestation, err error
 		}
 
 		output = append(output, at)
+	}
+
+	return
+}
+
+func (grp *TriGroupS) GetAttestationsKVS() (kvs keyval.KeyVals, err error) {
+	attestations, err := grp.GetAttestations()
+	if err != nil {
+		return
+	}
+
+	for _, att := range attestations {
+		kvs.Add(att.Ident, att.Descr)
 	}
 
 	return
