@@ -77,6 +77,6 @@ func h_recover(cui pu.PfUI) {
 		"This form can be used after receiving both the user and nominator portions of the password recovery procedure.\n" +
 		"</p>\n")
 
-	p := Page{cui.Page_def(), intro, rec{usr, usp, nmp, "", "", ""}, msg, errmsg}
+	p := Page{cui.Page_def(), intro, rec{usr, usp, nmp, "", "", "", msg, errmsg}, msg, errmsg}
 	cui.Page_show("misc/recover.tmpl", p)
 }
