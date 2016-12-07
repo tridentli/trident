@@ -22,11 +22,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Password Recover</td>
-	<td></td>
-</tr>
-<tr>
 	<td>type</td>
 	<td>id=rec-username</td>
 	<td>test@user.com</td>
@@ -59,7 +54,7 @@
 <tr>
 	<td>assertText</td>
 	<td>id=rec-error</td>
-	<td>Username should not be an email address</td>
+	<td>Invalid recovery details</td>
 </tr>
 <tr>
 	<td>type</td>
