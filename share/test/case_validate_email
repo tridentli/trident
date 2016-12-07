@@ -13,6 +13,11 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>
@@ -24,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar1234</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>

@@ -13,6 +13,11 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>
@@ -24,12 +29,17 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${sysadminPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>id=login-button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -38,7 +48,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>

@@ -13,6 +13,11 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>
@@ -24,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${sysadminPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -63,17 +68,17 @@
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=TriTG-pgp_required</td>
+	<td>id=TriGroupS-PfGroupS-pgp_required</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=TriTG-has_wiki</td>
+	<td>id=TriGroupS-PfGroupS-has_wiki</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=TriTG-button</td>
+	<td>id=TriGroupS-PfGroupS-button</td>
 	<td></td>
 </tr>
 <tr>
@@ -91,6 +96,7 @@
 	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[3]</td>
 	<td>Sysadmin user</td>
 </tr>
+<!--Asserting that Creating TG members should be an admin.  kb_54-->
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[6]</td>
@@ -124,11 +130,6 @@
 <tr>
 	<td>clickAndWait</td>
 	<td>link=sysadmin</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Logout</td>
 	<td></td>
 </tr>
 <tr>
