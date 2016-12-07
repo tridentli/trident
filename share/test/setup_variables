@@ -18,6 +18,11 @@
 </tr>
 <tr>
 	<td>store</td>
+	<td>http://10.10.0.180/</td>
+	<td>testURI</td>
+</tr>
+<tr>
+	<td>store</td>
 	<td>https://trident.localhost/</td>
 	<td>testURI</td>
 </tr>
@@ -33,8 +38,28 @@
 </tr>
 <tr>
 	<td>store</td>
+	<td>${testURI}recover</td>
+	<td>recoverURI</td>
+</tr>
+<tr>
+	<td>store</td>
 	<td>The following options are available:</td>
 	<td>loginString</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>foobar</td>
+	<td>testuserPassword</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>foobar</td>
+	<td>sysadminPassword</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
 </tr>
 </tbody></table>
 </body>

@@ -13,6 +13,11 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>
@@ -110,6 +115,11 @@
 	<td>clickAndWait</td>
 	<td>link=Settings</td>
 	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=PfSys-pw_length</td>
+	<td>8</td>
 </tr>
 <tr>
 	<td>type</td>

@@ -13,6 +13,11 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>
@@ -216,6 +221,7 @@
 	<td>link=Add a new directory</td>
 	<td></td>
 </tr>
+<!--KB_55 second level folders don't appear but have function as if they exist. -->
 <tr>
 	<td>type</td>
 	<td>id=np-name</td>

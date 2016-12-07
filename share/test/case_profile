@@ -13,6 +13,11 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>
@@ -133,9 +138,10 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>css=h1</td>
-	<td>Test D. User (testuser)</td>
+	<td>id=-message</td>
+	<td>Updated 8 fields, 9 fields where not modified</td>
 </tr>
+<!--Pending kb_35-->
 <tr>
 	<td>verifyValue</td>
 	<td>id=TriUserS-PfUserS-tz_info</td>
