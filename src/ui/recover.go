@@ -61,6 +61,8 @@ func h_recover(cui pu.PfUI) {
 		Password  string `label:"New Password" hint:"The new password to set" pfmin:"6" pftype:"password" pfreq:"yes"`
 		PasswordR string `label:"Repeat Password" hint:"Repeat the password so that one knows it is the same as the other" pfmin:"6" pftype:"password" pfreq:"yes"`
 		Button    string `label:"Recover password" pftype:"submit"`
+		Message   string `label:"Message" pfomitempty:"yes" pftype:"note"`
+		Error     string `label:"Error" htmlclass:"error" pfomitempty:"yes" pftype:"note"`
 	}
 
 	type Page struct {
