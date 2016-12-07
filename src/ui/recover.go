@@ -28,7 +28,7 @@ func h_recover(cui pu.PfUI) {
 		pw2, err5 := cui.FormValue("passwordr")
 		arg[1] = usp + nmp
 
-		if err != nil && err2 != nil && err3 != nil || err4 != nil || err5 != nil {
+		if err == nil && err2 == nil && err3 == nil && err4 == nil && err5 == nil {
 			if pw1 != "" {
 				if pw1 == pw2 {
 					msg, err = cui.HandleCmd(cmd, arg)
@@ -40,7 +40,12 @@ func h_recover(cui pu.PfUI) {
 				} else {
 					err = errors.New("Passwords did not match")
 				}
+			} else {
+				err = errors.New("Password not set")
 			}
+		} else {
+			//Intentionally vague, don't want to leak internal details.
+			err = errors.New("Invalid Input")
 		}
 	}
 
