@@ -13,6 +13,11 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>
@@ -24,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar1234</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -44,7 +49,7 @@
 <tr>
 	<td>type</td>
 	<td>id=TFATok-curpassword</td>
-	<td>foobar1234</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -77,13 +82,23 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//input[@id='button'])[2]</td>
+	<td>selectWindow</td>
+	<td>null</td>
 	<td></td>
 </tr>
 <tr>
+	<td>type</td>
+	<td>id=popt_remove-curpassword</td>
+	<td>${testuserPassword}</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Logout')])[2]</td>
+	<td>id=popt_remove-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 </tbody></table>
