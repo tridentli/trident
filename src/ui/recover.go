@@ -19,15 +19,16 @@ func h_recover(cui pu.PfUI) {
 		var err3 error
 
 		cmd := "user password recover"
-		arg := []string{"", "", "", ""}
+		arg := []string{"", "", ""}
 
 		usr, err = cui.FormValue("username")
 		usp, err2 = cui.FormValue("user")
 		nmp, err3 = cui.FormValue("nominator")
 		pw1, err4 := cui.FormValue("password")
 		pw2, err5 := cui.FormValue("passwordr")
+		arg[1] = usp + nmp
 
-		if err != nil && err2 != nil && err3 != nil || err4 != nil || err5 != nil {
+		if err == nil && err2 == nil && err3 == nil && err4 == nil && err5 == nil {
 			if pw1 != "" {
 				if pw1 == pw2 {
 					msg, err = cui.HandleCmd(cmd, arg)
@@ -39,7 +40,12 @@ func h_recover(cui pu.PfUI) {
 				} else {
 					err = errors.New("Passwords did not match")
 				}
+			} else {
+				err = errors.New("Password not set")
 			}
+		} else {
+			//Intentionally vague, don't want to leak internal details.
+			err = errors.New("Invalid Input")
 		}
 	}
 
@@ -60,6 +66,8 @@ func h_recover(cui pu.PfUI) {
 		Password  string `label:"New Password" hint:"The new password to set" pfmin:"6" pftype:"password" pfreq:"yes"`
 		PasswordR string `label:"Repeat Password" hint:"Repeat the password so that one knows it is the same as the other" pfmin:"6" pftype:"password" pfreq:"yes"`
 		Button    string `label:"Recover password" pftype:"submit"`
+		Message   string `label:"Message" pfomitempty:"yes" pftype:"note"`
+		Error     string `label:"Error" htmlclass:"error" pfomitempty:"yes" pftype:"note"`
 	}
 
 	type Page struct {
@@ -74,6 +82,6 @@ func h_recover(cui pu.PfUI) {
 		"This form can be used after receiving both the user and nominator portions of the password recovery procedure.\n" +
 		"</p>\n")
 
-	p := Page{cui.Page_def(), intro, rec{usr, usp, nmp, "", "", ""}, msg, errmsg}
+	p := Page{cui.Page_def(), intro, rec{usr, usp, nmp, "", "", "", msg, errmsg}, msg, errmsg}
 	cui.Page_show("misc/recover.tmpl", p)
 }
