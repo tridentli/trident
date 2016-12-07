@@ -13,7 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>${loginURI}</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${recoverURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -55,11 +60,6 @@
 	<td>assertText</td>
 	<td>id=rec-error</td>
 	<td>Username should not be an email address</td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
 </tr>
 <tr>
 	<td>type</td>

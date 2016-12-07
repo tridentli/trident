@@ -13,6 +13,11 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
 	<td>${loginURI}</td>
 	<td></td>
 </tr>
@@ -84,7 +89,7 @@
 <tr>
 	<td>assertText</td>
 	<td>css=h1</td>
-	<td>Test User with 2FA-SOTP (seconduser)'s Profile</td>
+	<td>Test User with 2FA-SOTP (seconduser)</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
