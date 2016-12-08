@@ -94,6 +94,7 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 		"  EXTRACT(day FROM now() - m.activity) as activity, " +
 		"  tel_info, " +
 		"  sms_info, " +
+		"  m.airport, " +
 		"  COALESCE(for_vouches.num, 0) AS vouches_for, " +
 		"  COALESCE(for_me_vouches.num, 0) AS vouches_for_me, " +
 		"  COALESCE(by_vouches.num, 0) AS vouches_by, " +
@@ -192,6 +193,7 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 		var activity string
 		var tel string
 		var sms string
+		var airport string
 
 		member := NewTriGroupMember().(*TriGroupMemberS)
 
@@ -205,6 +207,7 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 			&activity,
 			&tel,
 			&sms,
+			&airport,
 			&member.VouchesFor,
 			&member.VouchesForMe,
 			&member.VouchesBy,
@@ -214,7 +217,7 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 			return nil, err
 		}
 
-		member.Set(grpn, username, fullname, affiliation, groupadmin, groupstate, email, pgpkey_id, activity, sms, tel)
+		member.Set(grpn, username, fullname, affiliation, groupadmin, groupstate, email, pgpkey_id, activity, sms, tel, airport)
 		members = append(members, member)
 	}
 
