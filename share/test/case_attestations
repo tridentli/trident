@@ -133,7 +133,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=create</td>
+	<td>link=create - Test 3 vouch group</td>
 	<td></td>
 </tr>
 <tr>
@@ -176,6 +176,7 @@
 	<td>xpath=(//input[@name='button'])[2]</td>
 	<td></td>
 </tr>
+<!--kb_79-->
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
