@@ -167,11 +167,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>id=this-page-is-still-empty-please-edit-me-s-edit</td>
-	<td>## ### #### (This page is still empty, please edit me)</td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>link=History</td>
 	<td></td>
