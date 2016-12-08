@@ -43,6 +43,11 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
 	<td>link=create - Test 3 vouch group</td>
 	<td></td>
 </tr>

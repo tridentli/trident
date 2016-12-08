@@ -100,8 +100,6 @@ INSERT INTO trustgroup (ident, shortname, descr, min_invouch, target_invouch,
 
 INSERT into attestations (ident,descr,trustgroup) 
   VALUES ('know','LONG DESCRIPTION','test');
-INSERT into attestations (ident,descr,trustgroup) 
-  VALUES ('know','LONG DESCRIPTION','test2');
 
 -- Add mailinglists for tg:test
 INSERT INTO mailinglist (lhs, trustgroup, descr, members_only, can_add_self,

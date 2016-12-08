@@ -221,7 +221,6 @@
 	<td>link=Add a new directory</td>
 	<td></td>
 </tr>
-<!--KB_55 second level folders don't appear but have function as if they exist. -->
 <tr>
 	<td>type</td>
 	<td>id=np-name</td>
@@ -304,7 +303,7 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/tg/test/file/test/deep/</td>
+	<td>https://trident.localhost/group/test/file/test/deep/</td>
 	<td></td>
 </tr>
 <tr>
@@ -335,36 +334,6 @@
 <tr>
 	<td>clickAndWait</td>
 	<td>id=del-button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Add a new file</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=np-name</td>
-	<td>/a/b/c/d/e/f/g.txt</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=np-description</td>
-	<td>TEST.txt</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=np-file</td>
-	<td>${testSuiteFolder}/files/test.txt</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>id=np-button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=/a/</td>
 	<td></td>
 </tr>
 <tr>
