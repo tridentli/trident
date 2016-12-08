@@ -1,59 +1,27 @@
 {{ template "inc/header.tmpl" . }}
-        {{ $isadmin := .IsAdmin }}
-        {{ $tmember := .GroupMember }}
-        {{ $ui := .UI }}
+	{{ $isadmin := .IsAdmin }}
+	{{ $user := .User }}
+	{{ $grmember := .GroupMember }}
+	{{ $group := .Group }}
+	{{ $this := . }}
+	{{ $ui := .UI }}
+
+	{{ user_image_link .UI .User.GetUserName .User.GetFullName "right" }}
+	{{ pfform .UI .User . true }}
+
+	{{ template "user/detail_list.tmpl" . }}
+	{{ template "user/language_list.tmpl" . }}
 
 	<h1>Group {{ .Group.GetGroupName }}</h1>
 	<table>
 	<tbody>
-	<tr><th>E-mail Address:</th><td>{{ $tmember.GetEmail }}</td></tr>
+	<tr><th>E-mail Address:</th><td>{{ $user.GetPriEmailString $ui false }}</td></tr>
 	</tbody>
 	</table>
 
 	{{ if $isadmin }}
 	<h2>Admin functions for {{ .User.GetUserName }}</h2>
-	<fieldset>
-		<ul>
-		{{ if eq $tmember.GetGroupState "vetted"}}
-			{{ csrf_form $ui (print "/user/" .User.GetUserName "/group/" .Group.GroupName "/approve") }}
-				<li>
-					<label for="button">&nbsp;</label>
-					<input id="button" type="submit" name="button" value="Approve Member" />
-				</li>
-			</form>
-		{{ end }}
-		{{ if eq $tmember.GetGroupState "blocked" }}
-			{{ csrf_form $ui (print "/user/" .User.GetUserName "/group/" .Group.GroupName "/unblock") }}
-				<li>
-					<label for="button">&nbsp;</label>
-					<input id="button" type="submit" name="button" value="Unblock Member" />
-				</li>
-			</form>
-		{{ else }}
-			{{ csrf_form $ui (print "/user/" .User.GetUserName "/group/" .Group.GetGroupName "/block") }}
-				<li>
-					<label for="button">&nbsp;</label>
-					<input id="button" type="submit" name="button" value="Block Member" />
-				</li>
-			</form>
-		{{ end }}
-		{{ if eq $tmember.GetGroupAdmin true }}
-			{{ csrf_form $ui (print "/user/" .User.GetUserName "/group/" .Group.GetGroupName "/demote") }}
-				<li>
-					<label for="button">&nbsp;</label>
-					<input id="button" type="submit" name="button" value="Demote from Admin" />
-				</li>
-			</form>
-		{{ else }}
-			{{ csrf_form $ui (print "/user/" .User.GetUserName "/group/" .Group.GetGroupName "/promote") }}
-				<li>
-					<label for="button">&nbsp;</label>
-					<input id="button" type="submit" name="button" value="Promote to Admin" />
-				</li>
-			</form>
-		{{ end }}
-		</ul>
-	</fieldset>
+		{{ template "group/member_cmd.tmpl" dict "This" $this "UI" $ui "GroupMember" $grmember "Group" $group }}
 	{{ end }}
 
 	<h2>Vouches by {{ .User.GetUserName }}</h2>
@@ -69,36 +37,45 @@
 	</tr>
 	</thead>
 	<tbody>{{ range $i, $vouch := .VouchOut }}
-	{{ if $vouch.MyVouch }}
-	{{ csrf_form $ui (print "/user/" $vouch.Vouchor "/group/" $vouch.GroupName "/vouch/" $vouch.Vouchee "/edit") }}
-	<tr>
-		<td>{{ user_image_link $ui $vouch.Vouchee $vouch.Vouchee }}</td>
-		<td><a href="/group/{{ $vouch.GroupName }}/member/{{ $vouch.Vouchee }}/">{{ $vouch.Vouchee }}</a></td>
-		<td>{{ $vouch.Affiliation }}</td>
-		<td>{{ fmt_time $vouch.Entered }}</td>
-		<td><label for="TriVouch-comment"></label>
-			<textarea id="TriVouch-comment" name="comment">{{ $vouch.Comment }}</textarea>
+		{{ if $vouch.MyVouch }}
+		{{ csrf_form $ui "" }}
+		<tr>
+			<td>{{ user_image_link $ui $vouch.Vouchee $vouch.Vouchee "" }}</td>
+			<td><a href="/group/{{ $vouch.GroupName }}/members/{{ $vouch.Vouchee }}/">{{ $vouch.Vouchee }}</a></td>
+			<td>{{ $vouch.Affiliation }}</td>
+			<td>{{ fmt_time $vouch.Entered }}</td>
+			<td><label for="TriVouch-comment"></label>
+				<textarea id="TriVouch-comment" name="comment">{{ $vouch.Comment }}</textarea>
 			</td>
-		<td>
-			<label for="TriVouch-button"></label>
-			<input id="TriVouch-button" type="submit" value="Update Vouch" name="button"></input>
-			</form>
-			{{ csrf_form $ui (print "/user/" $vouch.Vouchor "/group/" $vouch.GroupName "/vouch/" $vouch.Vouchee "/remove") }}
-			<label for="TriVouch-button"></labl>
-			<input id="TriVouch-button" type="submit" value="Delete Vouch" name="button"></input>
-			</form>
-		</td>
-	</tr>
-	{{ else }}
-	<tr>
-		<td>{{ user_image_link $ui $vouch.Vouchee $vouch.Vouchee }}</td>
-		<td><a href="/group/{{ $vouch.GroupName }}/member/{{ $vouch.Vouchee }}/">{{ $vouch.Vouchee }}</a></td>
-		<td>{{ $vouch.Affiliation }}</td>
-		<td>{{ fmt_time $vouch.Entered }}</td>
-		<td>{{ $vouch.Comment }}</td>
-		<td>&nbsp;</td>
-	</tr>
-	{{ end }}
+			<td class="styled_form">
+				<input type="hidden" name="action" value="vouch_edit"></input>
+				<input type="hidden" name="group" value="{{ $vouch.GroupName }}"></input>
+				<input type="hidden" name="vouchor" value="{{ $vouch.Vouchor }}"></input>
+				<input type="hidden" name="vouchee" value="{{ $vouch.Vouchee }}"></input>
+				<label for="TriVouch-button"></label>
+				<input id="TriVouch-button" type="submit" value="Update Vouch" name="button"></input>
+				</form>
+
+			{{ csrf_form $ui "" }}
+				<input type="hidden" name="action" value="remove"></input>
+				<input type="hidden" name="group" value="{{ $vouch.GroupName }}"></input>
+				<input type="hidden" name="vouchor" value="{{ $vouch.Vouchor }}"></input>
+				<input type="hidden" name="vouchee" value="{{ $vouch.Vouchee }}"></input>
+				<label for="TriVouch-button"></labl>
+				<input id="TriVouch-button" type="submit" value="Delete Vouch" name="button"></input>
+				</form>
+			</td>
+		</tr>
+		{{ else }}
+			<tr>
+			<td>{{ user_image_link $ui $vouch.Vouchee $vouch.Vouchee "" }}</td>
+			<td><a href="/group/{{ $vouch.GroupName }}/members/{{ $vouch.Vouchee }}/">{{ $vouch.Vouchee }}</a></td>
+			<td>{{ $vouch.Affiliation }}</td>
+			<td>{{ fmt_time $vouch.Entered }}</td>
+			<td>{{ $vouch.Comment }}</td>
+			<td>&nbsp;</td>
+		</tr>
+		{{ end }}
 	{{ end }}</tbody>
 	</table>
 
@@ -115,53 +92,47 @@
 	</tr>
 	</thead>
 	<tbody>{{ range $i, $vouch := .VouchIn }}
-	{{ if $vouch.MyVouch }}
-	{{ csrf_form $ui (print "/user/" $vouch.Vouchor "/group/" $vouch.GroupName "/vouch/" $vouch.Vouchee "/edit") }}
-	<tr>
-		<td>{{ user_image_link $ui $vouch.Vouchor $vouch.Vouchor }}</td>
-		<td><a href="/group/{{ $vouch.GroupName }}/member/{{ $vouch.Vouchor }}/">{{ $vouch.Vouchor }}</a></td>
-		<td>{{ $vouch.Entered }}</td>
-		<td><label for="TriVouch-comment"></label>
-			<textarea id="TriVouch-comment" name="comment">{{ $vouch.Comment }}</textarea>
-		</td>
-		<td>
-			<label for="TriVouch-button"></label>
-			<input id="TriVouch-button" type="submit" value="Update Vouch" name="button"></input>
-			</form>
-			{{ csrf_form $ui (print "/user/" $vouch.Vouchor "/group/" $vouch.GroupName "/vouch/" $vouch.Vouchee "/remove") }}
-			<label for="TriVouch-button"></label>
-			<input id="TriVouch-button" type="submit" value="Delete Vouch" name="button"></input>
-			</form>
-		</td>
-	</tr>
-
-	{{ else }}
-	<tr>
-		<td>{{ user_image_link $ui $vouch.Vouchor $vouch.Vouchor }}</td>
-		<td><a href="/group/{{ $vouch.GroupName }}/member/{{ $vouch.Vouchor }}/">{{ $vouch.Vouchor }}</a></td>
-		<td>{{ $vouch.Entered }}</td>
-		<td>{{ $vouch.Comment }}</td>
-		<td>&nbsp;</td>
-	</tr>
-	{{ end }}
+		{{ if $vouch.MyVouch }}
+		{{ csrf_form $ui "" }}
+		<tr>
+			<td>{{ user_image_link $ui $vouch.Vouchor $vouch.Vouchor "" }}</td>
+			<td><a href="/group/{{ $vouch.GroupName }}/members/{{ $vouch.Vouchor }}/">{{ $vouch.Vouchor }}</a></td>
+			<td>{{ $vouch.Entered }}</td>
+			<td><label for="TriVouch-comment"></label>
+				<textarea id="TriVouch-comment" name="comment">{{ $vouch.Comment }}</textarea>
+			</td>
+			<td class="styled_form">
+				<input type="hidden" name="action" value="vouch_edit"></input>
+				<input type="hidden" name="group" value="{{ $vouch.GroupName }}"></input>
+				<input type="hidden" name="vouchor" value="{{ $vouch.Vouchor }}"></input>
+				<input type="hidden" name="vouchee" value="{{ $vouch.Vouchee }}"></input>
+				<label for="TriVouch-button"></label>
+				<input id="TriVouch-button" type="submit" value="Update Vouch" name="button"></input>
+				</form>
+				{{ csrf_form $ui "" }}
+				<input type="hidden" name="action" value="vouch_remove"></input>
+				<input type="hidden" name="group" value="{{ $vouch.GroupName }}"></input>
+				<input type="hidden" name="vouchor" value="{{ $vouch.Vouchor }}"></input>
+				<input type="hidden" name="vouchee" value="{{ $vouch.Vouchee }}"></input>
+				<label for="TriVouch-button"></label>
+				<input id="TriVouch-button" type="submit" value="Delete Vouch" name="button"></input>
+				</form>
+			</td>
+		</tr>
+		{{ else }}
+		<tr>
+			<td>{{ user_image_link $ui $vouch.Vouchor $vouch.Vouchor "" }}</td>
+			<td><a href="/group/{{ $vouch.GroupName }}/members/{{ $vouch.Vouchor }}/">{{ $vouch.Vouchor }}</a></td>
+			<td>{{ $vouch.Entered }}</td>
+			<td>{{ $vouch.Comment }}</td>
+			<td>&nbsp;</td>
+		</tr>
+		{{ end }}
 	{{ end }}</tbody>
 	</table>
 
 	{{ if .CanVouch }}
 		<h2>Vouch For {{ .User.GetUserName }}</h2>
-		{{ csrf_form $ui (print "/user/" .MyUserName "/group/" .Group.GroupName "/vouch/" .User.GetUserName "/add") }}
-			<fieldset>
-				<ul>
-					<li>
-						<label for="TriVouch-comment">Comment</label>
-						<textarea id="TriVouch-comment" name="comment"></textarea>
-					</li>
-					<li>
-						<label for="button">&nbsp;</label>
-						<input id="button" type="submit" name="button" value="Vouch" />
-					</li>
-				</ul>
-			</fieldset>
-		</form>
+		{{ pfform .UI .VouchAdd . true }}
 	{{ end }}
 {{ template "inc/footer.tmpl" . }}

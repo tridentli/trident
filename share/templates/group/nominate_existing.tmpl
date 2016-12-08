@@ -1,0 +1,12 @@
+{{template "inc/header.tmpl" .}}
+
+	<h2>Add a new Nomination:</h2>
+
+	<ul>
+	<li>Nominate: {{ .Vouchee }}</li>
+	<li>For group: {{ .GroupName }}</li>
+	</ul>
+
+	{{ pfform .UI .NominateAdd .NominateAdd true }}
+
+{{template "inc/footer.tmpl" .}}

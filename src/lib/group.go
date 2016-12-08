@@ -3,6 +3,7 @@ package trident
 import (
 	"errors"
 	"time"
+	"trident.li/keyval"
 	pf "trident.li/pitchfork/lib"
 )
 
@@ -11,6 +12,7 @@ type TriGroup interface {
 	Add_default_attestations(ctx pf.PfCtx) (err error)
 	GetVouch_adminonly() bool
 	GetAttestations() (output []TriGroupAttestation, err error)
+	GetAttestationsKVS() (kvs keyval.KeyVals, err error)
 }
 
 type TriGroupS struct {
@@ -73,8 +75,7 @@ func (grp *TriGroupS) GetVouch_adminonly() bool {
 	return grp.Vouch_adminonly
 }
 
-/* TODO need to allow admins to see hidden users (blocked) */
-func (grp *TriGroupS) GetMembers(search string, username string, offset int, max int, nominated bool, exact bool) (members []pf.PfGroupMember, err error) {
+func (grp *TriGroupS) GetMembers(search string, username string, offset int, max int, nominated bool, inclhidden bool, exact bool) (members []pf.PfGroupMember, err error) {
 	var rows *pf.Rows
 
 	grpn := grp.GetGroupName()
@@ -130,10 +131,17 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 		") as by_me_vouches on (m.ident = by_me_vouches.member) " +
 		"WHERE grp.ident = $1 " +
 		"AND me.email = mt.email "
-	if nominated {
-		q += "AND (NOT ms.hidden OR ms.ident = 'nominated') "
+
+	if inclhidden {
+		if nominated {
+			q += "AND ms.ident = 'nominated' "
+		}
 	} else {
-		q += "AND NOT ms.hidden "
+		if nominated {
+			q += "AND (NOT ms.hidden OR ms.ident = 'nominated') "
+		} else {
+			q += "AND NOT ms.hidden "
+		}
 	}
 
 	if search == "" {
@@ -330,6 +338,11 @@ func group_member_nominate(ctx pf.PfCtx, args []string) (err error) {
 
 func group_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
 	menu.Replace("add", group_add)
-	menu.Add(pf.PfMEntry{"vouch", vouch_menu, 0, -1, nil, pf.PERM_USER, "Vouch Commands"})
-	menu.Add(pf.PfMEntry{"nominate", group_member_nominate, 2, 2, []string{"group", "username"}, pf.PERM_GROUP_MEMBER, "Nominate a member for a group"})
+
+	m := []pf.PfMEntry{
+		{"vouch", vouch_menu, 0, -1, nil, pf.PERM_USER, "Vouch Commands"},
+		{"nominate", group_member_nominate, 2, 2, []string{"group", "username"}, pf.PERM_GROUP_MEMBER, "Nominate a member for a group"},
+	}
+
+	menu.Add(m...)
 }
