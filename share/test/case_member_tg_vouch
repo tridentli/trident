@@ -56,6 +56,7 @@
 	<td>link=testuser</td>
 	<td>testuser</td>
 </tr>
+<!--If next test fails, check user_home links-->
 <tr>
 	<td>assertText</td>
 	<td>link=seconduser</td>
