@@ -35,12 +35,16 @@
 			{{ if eq $user.GetUserName $theuser.GetUserName }}
 			(You)
 			{{ else }}
+			{{ if $user.IsMember $ui $grp }}
+			(Already a member)
+			{{ else }}
 			{{ csrf_form $ui (print "/group/" $grp "/nominate_existing/") }}
 				<fieldset>
 					<input type="hidden" name="vouchee" value="{{ $user.GetUserName }}" />
 					<input type="submit" name="button" value="Select" />
 				</fieldset>
 			</form>
+			{{ end }}
 			{{ end }}
 		</td>
 	</tr>{{ end }}
