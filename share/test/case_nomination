@@ -29,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${sysadminPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -90,6 +90,16 @@
 	<td>assertTextPresent</td>
 	<td>Updated 3 fields</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=TriGroupS-please_vouch</td>
+	<td>on</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=TriGroupS-vouch_adminonly</td>
+	<td>on</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
