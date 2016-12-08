@@ -25,11 +25,13 @@ func TriUIMenuOverride(cui pu.PfUI, menu *pu.PfUIMenu) {
 		switch path[0] {
 		case "group":
 			if lp == 2 {
+				/* group/<groupname>/ */
 				h_group(cui, menu)
-			} else if lp == 4 {
+
+			} else if lp >= 4 && path[2] == "member" {
+				/* /group/<groupname>/member/<username> */
 				menu.Replace("", h_user_vouches)
 				menu.Replace("profile", h_user_vouches)
-
 				menu.Filter([]string{"", "profile", "pwreset", "log", "pgp_keys", "email"})
 			}
 			break

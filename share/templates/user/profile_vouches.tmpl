@@ -4,7 +4,6 @@
 	{{ $grmember := .GroupMember }}
 	{{ $group := .Group }}
 	{{ $this := . }}
-	{{ $ui := .UI }}
 
 	{{ user_image_link .UI .User.GetUserName .User.GetFullName "right" }}
 	{{ pfform .UI .User . true }}
@@ -15,13 +14,13 @@
 	<h1>Group {{ .Group.GetGroupName }}</h1>
 	<table>
 	<tbody>
-	<tr><th>E-mail Address:</th><td>{{ $user.GetPriEmailString $ui false }}</td></tr>
+	<tr><th>E-mail Address:</th><td>{{ $user.GetPriEmailString $.UI false }}</td></tr>
 	</tbody>
 	</table>
 
 	{{ if $isadmin }}
 	<h2>Admin functions for {{ .User.GetUserName }}</h2>
-		{{ template "group/member_cmd.tmpl" dict "This" $this "UI" $ui "GroupMember" $grmember "Group" $group }}
+		{{ template "group/member_cmd.tmpl" dict "This" $this "UI" $.UI "GroupMember" $grmember "Group" $group }}
 	{{ end }}
 
 	<h2>Vouches by {{ .User.GetUserName }}</h2>
@@ -38,10 +37,10 @@
 	</thead>
 	<tbody>{{ range $i, $vouch := .VouchOut }}
 		{{ if $vouch.MyVouch }}
-		{{ csrf_form $ui "" }}
+		{{ csrf_form $.UI "" }}
 		<tr>
-			<td>{{ user_image_link $ui $vouch.Vouchee $vouch.Vouchee "" }}</td>
-			<td><a href="/group/{{ $vouch.GroupName }}/members/{{ $vouch.Vouchee }}/">{{ $vouch.Vouchee }}</a></td>
+			<td>{{ user_image_link $.UI $vouch.Vouchee $vouch.Vouchee "" }}</td>
+			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchee $vouch.Vouchee }}</a></td>
 			<td>{{ $vouch.Affiliation }}</td>
 			<td>{{ fmt_time $vouch.Entered }}</td>
 			<td><label for="TriVouch-comment"></label>
@@ -56,7 +55,7 @@
 				<input id="TriVouch-button" type="submit" value="Update Vouch" name="button"></input>
 				</form>
 
-			{{ csrf_form $ui "" }}
+			{{ csrf_form $.UI "" }}
 				<input type="hidden" name="action" value="remove"></input>
 				<input type="hidden" name="group" value="{{ $vouch.GroupName }}"></input>
 				<input type="hidden" name="vouchor" value="{{ $vouch.Vouchor }}"></input>
@@ -68,8 +67,8 @@
 		</tr>
 		{{ else }}
 			<tr>
-			<td>{{ user_image_link $ui $vouch.Vouchee $vouch.Vouchee "" }}</td>
-			<td><a href="/group/{{ $vouch.GroupName }}/members/{{ $vouch.Vouchee }}/">{{ $vouch.Vouchee }}</a></td>
+			<td>{{ user_image_link $.UI $vouch.Vouchee $vouch.Vouchee "" }}</td>
+			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchee $vouch.Vouchee }}</a></td>
 			<td>{{ $vouch.Affiliation }}</td>
 			<td>{{ fmt_time $vouch.Entered }}</td>
 			<td>{{ $vouch.Comment }}</td>
@@ -93,10 +92,10 @@
 	</thead>
 	<tbody>{{ range $i, $vouch := .VouchIn }}
 		{{ if $vouch.MyVouch }}
-		{{ csrf_form $ui "" }}
+		{{ csrf_form $.UI "" }}
 		<tr>
-			<td>{{ user_image_link $ui $vouch.Vouchor $vouch.Vouchor "" }}</td>
-			<td><a href="/group/{{ $vouch.GroupName }}/members/{{ $vouch.Vouchor }}/">{{ $vouch.Vouchor }}</a></td>
+			<td>{{ user_image_link $.UI $vouch.Vouchor $vouch.Vouchor "" }}</td>
+			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchor $vouch.Vouchor }}</a></td>
 			<td>{{ $vouch.Entered }}</td>
 			<td><label for="TriVouch-comment"></label>
 				<textarea id="TriVouch-comment" name="comment">{{ $vouch.Comment }}</textarea>
@@ -109,7 +108,7 @@
 				<label for="TriVouch-button"></label>
 				<input id="TriVouch-button" type="submit" value="Update Vouch" name="button"></input>
 				</form>
-				{{ csrf_form $ui "" }}
+				{{ csrf_form $.UI "" }}
 				<input type="hidden" name="action" value="vouch_remove"></input>
 				<input type="hidden" name="group" value="{{ $vouch.GroupName }}"></input>
 				<input type="hidden" name="vouchor" value="{{ $vouch.Vouchor }}"></input>
@@ -121,8 +120,8 @@
 		</tr>
 		{{ else }}
 		<tr>
-			<td>{{ user_image_link $ui $vouch.Vouchor $vouch.Vouchor "" }}</td>
-			<td><a href="/group/{{ $vouch.GroupName }}/members/{{ $vouch.Vouchor }}/">{{ $vouch.Vouchor }}</a></td>
+			<td>{{ user_image_link $.UI $vouch.Vouchor $vouch.Vouchor "" }}</td>
+			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchor $vouch.Vouchor }}</a></td>
 			<td>{{ $vouch.Entered }}</td>
 			<td>{{ $vouch.Comment }}</td>
 			<td>&nbsp;</td>
