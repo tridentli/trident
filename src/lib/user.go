@@ -48,7 +48,7 @@ func (user *TriUserS) BestNominator(ctx pf.PfCtx) (nom_name string, err error) {
 }
 
 /* TODO: Verify: Only show member of groups my user is associated with and are non-anonymous */
-func (user *TriUserS) GetList(ctx pf.PfCtx, search string, offset int, max int) (users []pf.PfUser, err error) {
+func (user *TriUserS) GetList(ctx pf.PfCtx, search string, offset int, max int, exact bool) (users []pf.PfUser, err error) {
 	users = nil
 
 	/* The fields we match on */
@@ -61,7 +61,11 @@ func (user *TriUserS) GetList(ctx pf.PfCtx, search string, offset int, max int) 
 	for _, m := range matches {
 		p = append(p, m)
 		t = append(t, pf.DB_OP_ILIKE)
-		v = append(v, "%"+search+"%")
+		if exact {
+			v = append(v, search)
+		} else {
+			v = append(v, "%"+search+"%")
+		}
 	}
 
 	j := "INNER JOIN member_email me ON member.ident = me.member " +
