@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>New Test</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">New Test</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${loginURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>sysadmin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>${sysadminPassword}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>${loginString}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=CLI</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt-cmd</td>
+	<td>system</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=popt-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>NOT sysadmin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt-cmd</td>
+	<td>system swapadmin</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=popt-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=b</td>
+	<td>SysAdmin</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Now a SysAdmin user</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt-cmd</td>
+	<td>system report</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>Trident Version: 1.4.0 Copyright: (C) 2015-2016 The Trident Project</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=popt-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt-cmd</td>
+	<td>system swapadmin</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=popt-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>css=b</td>
+	<td>SysAdmin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt-cmd</td>
+	<td>system logout</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=popt-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=login-cookies</td>
+	<td>exact:Note: Web cookies are required beyond this point</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
+
