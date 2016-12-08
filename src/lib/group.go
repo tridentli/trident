@@ -78,7 +78,8 @@ func (grp *TriGroupS) GetVouch_adminonly() bool {
 func (grp *TriGroupS) GetMembers(search string, username string, offset int, max int, nominated bool, inclhidden bool, exact bool) (members []pf.PfGroupMember, err error) {
 	var rows *pf.Rows
 
-	grpn := grp.GetGroupName()
+	grpname := grp.GetGroupName()
+	grpdesc := grp.GetGroupDesc()
 
 	members = nil
 
@@ -89,6 +90,7 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 		"m.affiliation, " +
 		"mt.admin, " +
 		"mt.state, " +
+		"mt.cansee, " +
 		"me.email, " +
 		"me.pgpkey_id, " +
 		"  EXTRACT(day FROM now() - m.activity) as activity, " +
@@ -150,10 +152,10 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 	if search == "" {
 		if max != 0 {
 			q += ord + " LIMIT $4 OFFSET $3"
-			rows, err = pf.DB.Query(q, grpn, username, offset, max)
+			rows, err = pf.DB.Query(q, grpname, username, offset, max)
 		} else {
 			q += ord
-			rows, err = pf.DB.Query(q, grpn, username)
+			rows, err = pf.DB.Query(q, grpname, username)
 		}
 	} else {
 		if exact {
@@ -169,9 +171,9 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 
 		if max != 0 {
 			q += " LIMIT $5 OFFSET $4"
-			rows, err = pf.DB.Query(q, grpn, username, search, offset, max)
+			rows, err = pf.DB.Query(q, grpname, username, search, offset, max)
 		} else {
-			rows, err = pf.DB.Query(q, grpn, username, search)
+			rows, err = pf.DB.Query(q, grpname, username, search)
 		}
 	}
 
@@ -188,8 +190,10 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 		var affiliation string
 		var groupadmin bool
 		var groupstate string
+		var groupcansee bool
 		var email string
 		var pgpkey_id string
+		var entered string
 		var activity string
 		var tel string
 		var sms string
@@ -202,8 +206,10 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 			&affiliation,
 			&groupadmin,
 			&groupstate,
+			&groupcansee,
 			&email,
 			&pgpkey_id,
+			&entered,
 			&activity,
 			&tel,
 			&sms,
@@ -217,7 +223,7 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 			return nil, err
 		}
 
-		member.Set(grpn, username, fullname, affiliation, groupadmin, groupstate, email, pgpkey_id, activity, sms, tel, airport)
+		member.Set(grpname, grpdesc, username, fullname, affiliation, groupadmin, groupstate, groupcansee, email, pgpkey_id, entered, activity, sms, tel, airport)
 		members = append(members, member)
 	}
 
