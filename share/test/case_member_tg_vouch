@@ -127,9 +127,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>addSelection</td>
+	<td>click</td>
 	<td>id=VouchAdd-attestations</td>
-	<td>label=LONG DESCRIPTION</td>
+	<td></td>
 </tr>
 <tr>
 	<td>type</td>
