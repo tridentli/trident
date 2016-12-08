@@ -147,7 +147,7 @@ func vouch_remove(cui pu.PfUI) (err error) {
 	return
 }
 
-func vouch_nominate_new(cui pu.PfUI) {
+func vouch_nominate_new(cui pu.PfUI) (msg string, err error) {
 	tctx := tr.TriGetCtx(cui)
 
 	var cmd string
@@ -163,53 +163,54 @@ func vouch_nominate_new(cui pu.PfUI) {
 	attestations, err6 := vouch_attestations_get(cui, grp)
 
 	if err != nil || err2 != nil || err3 != nil || err4 != nil || err5 != nil || err6 != nil {
-		pu.H_errtxt(cui, "Invalid parameters")
+		err = errors.New("Invalid parameters provided")
 		return
 	}
 
 	/* Generate a username */
 	vouchee_ident, err := pf.Fullname_to_ident(descr)
+	if err != nil {
+		cui.Errf("Fullname to ident for %q failed: %s", err.Error())
+		err = errors.New("Could not convert full name to ident")
+		return
+	}
 
 	cmd = "user nominate"
 	args = []string{vouchee_ident, email, bio, affil, descr}
 
-	_, err = cui.HandleCmd(cmd, args)
+	msg, err = cui.HandleCmd(cmd, args)
 	if err != nil {
-		pu.H_errmsg(cui, err)
 		return
 	}
 
 	cmd = "user email confirm_force"
 	args = []string{vouchee_ident, email}
 
-	_, err = cui.HandleCmd(cmd, args)
+	msg, err = cui.HandleCmd(cmd, args)
 	if err != nil {
-		pu.H_errmsg(cui, err)
 		return
 	}
 
 	cmd = "group member nominate"
 	args = []string{grp.GetGroupName(), vouchee_ident}
 
-	_, err = cui.HandleCmd(cmd, args)
+	msg, err = cui.HandleCmd(cmd, args)
 	if err != nil {
-		pu.H_errmsg(cui, err)
 		return
 	}
 
 	cmd = "group vouch add"
 	args = []string{grp.GetGroupName(), cui.TheUser().GetUserName(), vouchee_ident, comment, attestations}
 
-	_, err = cui.HandleCmd(cmd, args)
+	msg, err = cui.HandleCmd(cmd, args)
 	if err != nil {
-		pu.H_errmsg(cui, err)
 		return
 	}
 
 	return
 }
 
-func vouch_nominate(cui pu.PfUI) (err error) {
+func vouch_nominate(cui pu.PfUI) (msg string, err error) {
 	tctx := tr.TriGetCtx(cui)
 
 	var cmd string
@@ -226,13 +227,14 @@ func vouch_nominate(cui pu.PfUI) (err error) {
 
 	attestations, err := vouch_attestations_get(cui, grp)
 	if err != nil {
+		err = errors.New("Invalid attestation parameters")
 		return
 	}
 
 	cmd = "group member add"
 	arg = []string{grp.GetGroupName(), vouchee.GetUserName()}
 
-	_, err = cui.HandleCmd(cmd, arg)
+	msg, err = cui.HandleCmd(cmd, arg)
 	if err != nil {
 		return
 	}
@@ -240,10 +242,12 @@ func vouch_nominate(cui pu.PfUI) (err error) {
 	cmd = "group vouch add"
 	arg = []string{grp.GetGroupName(), cui.TheUser().GetUserName(), vouchee.GetUserName(), comment, attestations}
 
-	_, err = cui.HandleCmd(cmd, arg)
+	msg, err = cui.HandleCmd(cmd, arg)
 	if err != nil {
 		return
 	}
+
+	msg = "Nomination added"
 
 	return
 }

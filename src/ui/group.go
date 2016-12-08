@@ -69,6 +69,7 @@ type NominateAdd struct {
 	Comment      string          `label:"Vouch comment" pftype:"text" hint:"Vouch description for this user" pfreq:"yes"`
 	Attestations map[string]bool `label:"Attestations (all required)" hint:"Attestations for this user" options:"GetAttestationOpts" pfcheckboxmode:"yes"`
 	Button       string          `label:"Nominate" pftype:"submit"`
+	Message      string          /* Used by pfform() */
 	Error        string          /* Used by pfform() */
 }
 
@@ -77,6 +78,7 @@ func (na *NominateAdd) GetAttestationOpts(obj interface{}) (kvs keyval.KeyVals, 
 }
 
 func h_group_nominate_existing(cui pu.PfUI) {
+	msg := ""
 	errmsg := ""
 	tctx := tr.TriGetCtx(cui)
 	grp := tctx.TriSelectedGroup()
@@ -96,7 +98,7 @@ func h_group_nominate_existing(cui pu.PfUI) {
 	if cui.IsPOST() {
 		action, err := cui.FormValue("action")
 		if err == nil && action == "nominate" {
-			err = vouch_nominate(cui)
+			msg, err = vouch_nominate(cui)
 			if err != nil {
 				errmsg = err.Error()
 			}
@@ -112,7 +114,7 @@ func h_group_nominate_existing(cui pu.PfUI) {
 		NominateAdd *NominateAdd
 	}
 
-	na := &NominateAdd{group: grp, Vouchee: vouchee.GetUserName(), Action: "nominate", Error: errmsg}
+	na := &NominateAdd{group: grp, Vouchee: vouchee.GetUserName(), Action: "nominate", Message: msg, Error: errmsg}
 
 	p := Page{cui.Page_def(), vouchee.GetUserName(), grp.GetGroupName(), na}
 	cui.Page_show("group/nominate_existing.tmpl", p)
@@ -128,6 +130,8 @@ type NominateNew struct {
 	Vouch        string          `label:"Vouch" pftype:"text" hint:"Vouch for this user" pfreq:"yes"`
 	Attestations map[string]bool `label:"Attestations (all required)" hint:"Attestations for this user" options:"GetAttestationOpts" pfcheckboxmode:"yes"`
 	Button       string          `label:"Nominate" pftype:"submit"`
+	Message      string          /* Used by pfform() */
+	Error        string          /* Used by pfform() */
 }
 
 func (na *NominateNew) GetAttestationOpts(obj interface{}) (kvs keyval.KeyVals, err error) {
@@ -135,32 +139,46 @@ func (na *NominateNew) GetAttestationOpts(obj interface{}) (kvs keyval.KeyVals, 
 }
 
 func h_group_nominate(cui pu.PfUI) {
-	tctx := tr.TriGetCtx(cui)
-
+	var msg string
+	var err error
+	var errmsg string
 	var list []pf.PfUser
-	notfound := false
+	var search string
 
+	tctx := tr.TriGetCtx(cui)
 	user := tctx.TriSelectedUser()
 	grp := tctx.TriSelectedGroup()
 
+	/* Something posted? */
 	if cui.IsPOST() {
+		/* An action to perform? */
 		action, err := cui.FormValue("action")
 		if err == nil && action == "nominate" {
-			vouch_nominate_new(cui)
-			return
+			msg, err = vouch_nominate_new(cui)
+
+			if err != nil {
+				errmsg += err.Error()
+			}
+		}
+
+		/* Search field? */
+		search, err = cui.FormValue("search")
+		if err != nil {
+			search = ""
 		}
 	}
 
-	search, err := cui.FormValue("search")
-	if err != nil {
-		search = ""
-	}
-
+	/* Need to search the list? */
+	notfound := false
 	if search != "" {
+		/* Get list of users matching the given search query */
 		list, err = user.GetList(cui, search, 0, 0)
 		if err != nil {
+			cui.Errf("Listing users failed: %s", err.Error())
+			pu.H_error(cui, pu.StatusBadRequest)
 			return
 		}
+
 		if len(list) == 0 {
 			notfound = true
 		}
@@ -170,16 +188,14 @@ func h_group_nominate(cui pu.PfUI) {
 		*pu.PfPage
 		Search    string
 		GroupName string
-		Message   string
-		Error     string
 		Users     []pf.PfUser
 		NotFound  bool
 		NewForm   *NominateNew
 	}
 
-	newform := &NominateNew{group: grp, Action: "nominate", Email: search}
+	newform := &NominateNew{group: grp, Action: "nominate", Email: search, Message: msg, Error: errmsg}
 
-	p := Page{cui.Page_def(), search, grp.GetGroupName(), "", "", list, notfound, newform}
+	p := Page{cui.Page_def(), search, grp.GetGroupName(), list, notfound, newform}
 	cui.Page_show("group/nominate.tmpl", p)
 }
 

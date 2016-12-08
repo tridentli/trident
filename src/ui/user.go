@@ -65,7 +65,7 @@ func h_user_vouches(cui pu.PfUI) {
 
 	if err != nil {
 		/* Failed */
-		errmsg = err.Error()
+		errmsg += err.Error()
 	} else {
 		/* Success */
 	}
@@ -85,20 +85,22 @@ func h_user_vouches(cui pu.PfUI) {
 
 	languages, err := user.GetLanguages()
 	if err != nil {
-		cui.Errf("Failed to GetLanguages(): %s", err.Error())
+		cui.Errf("user.GetLanguages(): %s", err.Error())
 		pu.H_error(cui, pu.StatusBadRequest)
 		return
 	}
 
 	vi, err := vouch.ListFor(user, grp, theuser.GetUserName())
 	if err != nil {
-		cui.Err(err.Error())
+		cui.Errf("vouch.ListFor: %s", err.Error())
+		pu.H_error(cui, pu.StatusBadRequest)
 		return
 	}
 
 	vo, err := vouch.ListBy(user, grp, theuser.GetUserName())
 	if err != nil {
-		cui.Err(err.Error())
+		cui.Errf("vouch.ListBy: %s", err.Error())
+		pu.H_error(cui, pu.StatusBadRequest)
 		return
 	}
 

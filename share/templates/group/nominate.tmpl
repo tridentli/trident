@@ -12,10 +12,11 @@
 		<th>Full Name</th>
 		<th>Email address</th>
 		<th>Affiliation</th>
-		<th>Select</th>
+		<th>Actions</th>
 	</tr>
 	<thead>
 	<tbody>
+{{ $theuser := .TheUser }}
 {{ $ui := .UI }}
 {{ $grp := .GroupName }}
 {{ range $id, $user := .Users }}
@@ -31,12 +32,16 @@
 		</td>
 		<td>{{ $user.GetAffiliation }}</td>
 		<td>
+			{{ if eq $user.GetUserName $theuser.GetUserName }}
+			(You)
+			{{ else }}
 			{{ csrf_form $ui (print "/group/" $grp "/nominate_existing/") }}
 				<fieldset>
 					<input type="hidden" name="vouchee" value="{{ $user.GetUserName }}" />
 					<input type="submit" name="button" value="Select" />
 				</fieldset>
 			</form>
+			{{ end }}
 		</td>
 	</tr>{{ end }}
 	</tbody>
