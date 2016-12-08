@@ -19,7 +19,10 @@ func vouch_attestations_get(cui pu.PfUI, grp tr.TriGroup) (attestations string, 
 	/* The attentations in the form */
 	fatts, err := cui.FormValueM("attestations")
 	if err != nil {
-		return
+		fatts, err = cui.FormValueM("attestations[]")
+		if err != nil {
+			return
+		}
 	}
 
 	/* Walk required_attestations verify all are present */
