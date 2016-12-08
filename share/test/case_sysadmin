@@ -163,16 +163,6 @@
 	<td>people.localhost</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=PfSys-button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=PfSys-button</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>id=PfSys-button</td>
 	<td></td>

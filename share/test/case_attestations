@@ -82,9 +82,14 @@
 	<td></td>
 </tr>
 <tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>id=-error</td>
-	<td>Missing value</td>
+	<td>Invalid attestation parameters</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -92,19 +97,19 @@
 	<td>test</td>
 </tr>
 <tr>
-	<td>addSelection</td>
+	<td>click</td>
 	<td>id=NominateAdd-attestations</td>
-	<td>label=I have met them in person more than once</td>
+	<td></td>
 </tr>
 <tr>
-	<td>addSelection</td>
-	<td>id=NominateAdd-attestations</td>
-	<td>label=I trust them to take action</td>
+	<td>click</td>
+	<td>xpath=(//input[@id='NominateAdd-attestations'])[2]</td>
+	<td></td>
 </tr>
 <tr>
-	<td>addSelection</td>
-	<td>id=NominateAdd-attestations</td>
-	<td>label=I will share membership fate with them</td>
+	<td>click</td>
+	<td>xpath=(//input[@id='NominateAdd-attestations'])[3]</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -112,74 +117,19 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Nomination added</td>
+</tr>
+<tr>
 	<td>assertNotText</td>
 	<td>id=-error</td>
 	<td>Not a group member</td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>/user/sysadmin/tg/create/vouch/testuser/nominate_form</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=vouch</td>
-	<td>vouch</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=attestation-met</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=attestation-trust</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
-	<td>name=button</td>
+	<td>link=Group</td>
 	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
-	<td>Incomplete attestations</td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/user/sysadmin/tg/create/vouch/testuser/nominate_form</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=vouch</td>
-	<td>vouch</td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=attestation-met</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=attestation-trust</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=attestation-fate</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>name=button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[7]</td>
-	<td>nominated</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -203,18 +153,23 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-descr</td>
+	<td>id=NominateNew-fullname</td>
 	<td>bob smith</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-affiliation</td>
+	<td>id=NominateNew-affiliation</td>
 	<td>trident</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriUser-bio_info</td>
+	<td>id=NominateNew-biography</td>
 	<td>bio</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-vouch</td>
+	<td>Vouch</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
