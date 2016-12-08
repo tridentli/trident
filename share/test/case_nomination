@@ -157,6 +157,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Nomination added</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>link=Group</td>
 	<td></td>
