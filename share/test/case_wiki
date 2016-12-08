@@ -82,9 +82,14 @@
 	<td></td>
 </tr>
 <tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
 	<td>assertText</td>
-	<td>link=edit me</td>
-	<td>edit me</td>
+	<td>css=article</td>
+	<td>(This page is still empty, please edit me) Please note that all times shown are in Universal Coordinated Time (UTC). Page rendered at: 2016-12-07 18:19.</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -92,8 +97,103 @@
 	<td></td>
 </tr>
 <tr>
-	<td>open</td>
-	<td>${logoutURI}</td>
+	<td>clickAndWait</td>
+	<td>link=Source</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h2</td>
+	<td>Markdown Source</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=History</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
+	<td>exact:Offset: 0, Total: 0</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Options</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>Each group has their own Wiki namespace. Pages each have their own histories and can be placed in multiple locations of each namespace. Updates to a page are thus automatically visible in all groups.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Child Pages</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>This page does not have any child pages.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Edit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=tool-h1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=tool-h2</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=tool-h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=tool-h4</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=message</td>
+	<td>Test log message</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=this-page-is-still-empty-please-edit-me-s-edit</td>
+	<td>## ### #### (This page is still empty, please edit me)</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=History</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[5]</td>
+	<td>Test log message</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
+	<td>exact:Offset: 0, Total: 1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
 	<td></td>
 </tr>
 </tbody></table>
