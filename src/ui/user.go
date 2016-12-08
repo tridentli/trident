@@ -14,7 +14,7 @@ type VouchAdd struct {
 	Group        string          `label:"Group" pftype:"hidden"`
 	Vouchee      string          `label:"Username" pftype:"hidden"`
 	Comment      string          `label:"Vouch" pftype:"text" hint:"Vouch for this user" pfreq:"yes"`
-	Attestations map[string]bool `label:"Attestations (all required)" hint:"Attestations for this user" options:"GetAttestationOpts"`
+	Attestations map[string]bool `label:"Attestations (all required)" hint:"Attestations for this user" options:"GetAttestationOpts" pfcheckboxmode:"yes"`
 	Button       string          `label:"Vouch" pftype:"submit"`
 }
 

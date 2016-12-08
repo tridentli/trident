@@ -67,7 +67,7 @@ type NominateAdd struct {
 	Action       string          `label:"Action" pftype:"hidden"`
 	Vouchee      string          `label:"Username" pfset:"nobody" pfget:"none"`
 	Comment      string          `label:"Vouch comment" pftype:"text" hint:"Vouch description for this user" pfreq:"yes"`
-	Attestations map[string]bool `label:"Attestations (all required)" hint:"Attestations for this user" options:"GetAttestationOpts"`
+	Attestations map[string]bool `label:"Attestations (all required)" hint:"Attestations for this user" options:"GetAttestationOpts" pfcheckboxmode:"yes"`
 	Button       string          `label:"Nominate" pftype:"submit"`
 	Error        string          /* Used by pfform() */
 }
@@ -126,7 +126,7 @@ type NominateNew struct {
 	Affiliation  string          `label:"Affiliation" hint:"Who the user is affiliated to" pfreq:"yes"`
 	Biography    string          `label:"Biography" pftype:"text" hint:"Biography for this user" pfreq:"yes"`
 	Vouch        string          `label:"Vouch" pftype:"text" hint:"Vouch for this user" pfreq:"yes"`
-	Attestations map[string]bool `label:"Attestations (all required)" hint:"Attestations for this user" options:"GetAttestationOpts"`
+	Attestations map[string]bool `label:"Attestations (all required)" hint:"Attestations for this user" options:"GetAttestationOpts" pfcheckboxmode:"yes"`
 	Button       string          `label:"Nominate" pftype:"submit"`
 }
 
