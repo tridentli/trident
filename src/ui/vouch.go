@@ -247,5 +247,7 @@ func vouch_nominate(cui pu.PfUI) (msg string, err error) {
 		return
 	}
 
+	msg = "Nomination added"
+
 	return
 }
