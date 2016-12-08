@@ -29,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar1234</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -127,13 +127,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>addSelection</td>
+	<td>id=VouchAdd-attestations</td>
+	<td>label=LONG DESCRIPTION</td>
+</tr>
+<tr>
 	<td>type</td>
-	<td>id=TriVouch-comment</td>
+	<td>id=VouchAdd-comment</td>
 	<td>Test Vouch</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=button</td>
+	<td>id=VouchAdd-button</td>
 	<td></td>
 </tr>
 <tr>
@@ -147,8 +152,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Logout')])[2]</td>
+	<td>open</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 </tbody></table>

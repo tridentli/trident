@@ -103,7 +103,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>link=ψ</td>
+	<td>css=span[title=&quot;Member has a PGP key&quot;]</td>
 	<td>ψ</td>
 </tr>
 </tbody></table>
