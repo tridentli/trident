@@ -22,16 +22,60 @@ type TriGroupS struct {
 	Min_invouch     int    `label:"Minimum Inbound Vouches" pfset:"group_admin" hint:"Number of incoming vouches required to vett."`
 	Min_outvouch    int    `label:"Minimum Outbound Vouches" pfset:"group_admin" hint:"Number of outgoing vouches required"`
 	Target_invouch  int    `label:"Target Invouches" pfset:"group_admin"`
-	Max_inactivity  string `label:"Maximum Inactivity" pfset:"group_admin"`
+	Max_inactivity  string `label:"Maximum Inactivity" pfset:"group_admin" coalesce:"30 days"`
 	Can_time_out    bool   `label:"Can Time Out" pfset:"group_admin"`
 	Max_vouchdays   int    `label:"Maximum Vouch Days" pfset:"group_admin"`
-	Idle_guard      string `label:"Idle Guard" pfset:"group_admin"`
+	Idle_guard      string `label:"Idle Guard" pfset:"group_admin" coalesce:"30 days"`
 	Nom_enabled     bool   `label:"Nominations Enabled" pfset:"group_admin"`
 }
 
 /* Don't call directly, use ctx.NewGroup() */
 func NewTriGroup() pf.PfGroup {
 	return &TriGroupS{PfGroup: pf.NewPfGroup()}
+}
+
+func (grp *TriGroupS) fetch(group_name string, nook bool) (err error) {
+
+	pf.Logf("TriGroup:fetch(%s)", group_name)
+	/* Make sure the name is mostly sane */
+	group_name, err = pf.Chk_ident("Group Name", group_name)
+	if err != nil {
+		return
+	}
+
+	p := []string{"ident"}
+	v := []string{group_name}
+	err = pf.StructFetchA(grp, "trustgroup", "", p, v, "", true)
+	if nook && err == pf.ErrNoRows {
+		/* No rows is sometimes okay */
+	} else if err != nil {
+		pf.Log("Group:fetch() " + err.Error() + " '" + group_name + "'")
+	}
+
+	return
+}
+
+func (grp *TriGroupS) Select(ctx pf.PfCtx, group_name string, perms pf.Perm) (err error) {
+	err = grp.fetch(group_name, false)
+	if err != nil {
+		/* Failed to fetch */
+		return
+	}
+
+	return grp.PfGroup.Select(ctx, group_name, perms)
+}
+
+func (grp *TriGroupS) Exists(group_name string) (exists bool) {
+	err := grp.fetch(group_name, true)
+	if err == pf.ErrNoRows {
+		return false
+	}
+
+	return true
+}
+
+func (grp *TriGroupS) Refresh() (err error) {
+	return grp.fetch(grp.GetGroupName(), false)
 }
 
 func (grp *TriGroupS) GetVouch_adminonly() bool {
