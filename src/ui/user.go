@@ -152,7 +152,7 @@ func h_user_vouches(cui pu.PfUI) {
 	 * TODO: Update SQL for the case when there are no vouches for the user
 	 *       we now generate an empty GroupMember object instead
 	 */
-	grpusers, err := grp.GetMembers("", user.GetUserName(), 0, 1, true, true, true)
+	grpusers, err := grp.ListGroupMembers("", user.GetUserName(), 0, 1, true, true, true)
 	if err == nil && len(grpusers) > 0 {
 		p.GroupMember = grpusers[0].(tr.TriGroupMember)
 	} else {

@@ -34,13 +34,13 @@ func h_group_members(cui pu.PfUI) {
 
 	grp := tctx.TriSelectedGroup()
 
-	total, err = grp.GetMembersTot(search)
+	total, err = grp.ListGroupMembersTot(search)
 	if err != nil {
 		cui.Err("error: " + err.Error())
 		return
 	}
 
-	members, err := grp.GetMembers(search, cui.TheUser().GetUserName(), offset, 10, false, cui.IAmGroupAdmin(), false)
+	members, err := grp.ListGroupMembers(search, cui.TheUser().GetUserName(), offset, 10, false, cui.IAmGroupAdmin(), false)
 	if err != nil {
 		cui.Err(err.Error())
 		return
