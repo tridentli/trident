@@ -2,6 +2,7 @@ package TriUI
 
 import (
 	"strconv"
+	"strings"
 	"trident.li/keyval"
 	pf "trident.li/pitchfork/lib"
 	pu "trident.li/pitchfork/ui"
@@ -166,13 +167,19 @@ func h_group_nominate(cui pu.PfUI) {
 		if err != nil {
 			search = ""
 		}
+
+		/* Simple 'is there an @ sign, it must be an email address' check */
+		if strings.Index(search, "@") == -1 {
+			/* Not an email, do not allow searching */
+			search = ""
+		}
 	}
 
 	/* Need to search the list? */
 	notfound := false
 	if search != "" {
 		/* Get list of users matching the given search query */
-		list, err = user.GetList(cui, search, 0, 0)
+		list, err = user.GetList(cui, search, 0, 0, true)
 		if err != nil {
 			cui.Errf("Listing users failed: %s", err.Error())
 			pu.H_error(cui, pu.StatusBadRequest)
