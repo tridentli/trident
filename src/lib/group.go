@@ -79,7 +79,6 @@ func (grp *TriGroupS) ListGroupMembers(search string, username string, offset in
 	var rows *pf.Rows
 
 	grpname := grp.GetGroupName()
-	grpdesc := grp.GetGroupDesc()
 
 	members = nil
 
@@ -175,6 +174,8 @@ func (grp *TriGroupS) ListGroupMembers(search string, username string, offset in
 		var fullname string
 		var username string
 		var affiliation string
+		var groupname string
+		var groupdesc string
 		var groupadmin bool
 		var groupstate string
 		var groupcansee bool
@@ -192,6 +193,8 @@ func (grp *TriGroupS) ListGroupMembers(search string, username string, offset in
 			&username,
 			&fullname,
 			&affiliation,
+			&groupname,
+			&groupdesc,
 			&groupadmin,
 			&groupstate,
 			&groupcansee,
@@ -211,7 +214,7 @@ func (grp *TriGroupS) ListGroupMembers(search string, username string, offset in
 			return nil, err
 		}
 
-		member.Set(grpname, grpdesc, username, fullname, affiliation, groupadmin, groupstate, groupcansee, email, pgpkey_id, entered, activity, sms, tel, airport)
+		member.Set(groupname, groupdesc, username, fullname, affiliation, groupadmin, groupstate, groupcansee, email, pgpkey_id, entered, activity, sms, tel, airport)
 		members = append(members, member)
 	}
 
