@@ -75,7 +75,7 @@ func (grp *TriGroupS) GetVouch_adminonly() bool {
 	return grp.Vouch_adminonly
 }
 
-func (grp *TriGroupS) GetMembers(search string, username string, offset int, max int, nominated bool, inclhidden bool, exact bool) (members []pf.PfGroupMember, err error) {
+func (grp *TriGroupS) ListGroupMembers(search string, username string, offset int, max int, nominated bool, inclhidden bool, exact bool) (members []pf.PfGroupMember, err error) {
 	var rows *pf.Rows
 
 	grpname := grp.GetGroupName()
@@ -85,27 +85,14 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 
 	ord := "ORDER BY m.descr"
 
-	q := "SELECT m.ident, " +
-		"m.descr, " +
-		"m.affiliation, " +
-		"mt.admin, " +
-		"mt.state, " +
-		"mt.cansee, " +
-		"me.email, " +
-		"me.pgpkey_id, " +
-		"  EXTRACT(day FROM now() - m.activity) as activity, " +
-		"  tel_info, " +
-		"  sms_info, " +
-		"  m.airport, " +
-		"  COALESCE(for_vouches.num, 0) AS vouches_for, " +
-		"  COALESCE(for_me_vouches.num, 0) AS vouches_for_me, " +
-		"  COALESCE(by_vouches.num, 0) AS vouches_by, " +
-		"  COALESCE(by_me_vouches.num, 0) AS vouches_by_me " +
-		"FROM member_trustgroup mt " +
-		"INNER JOIN trustgroup grp ON (mt.trustgroup = grp.ident) " +
-		"INNER JOIN member m ON (mt.member = m.ident) " +
-		"INNER JOIN member_state ms ON (ms.ident = mt.state) " +
-		"INNER JOIN member_email me ON (me.member = m.ident) " +
+	m := pf.NewPfGroupMember()
+
+	q := m.SQL_Selects() + ", " +
+		"COALESCE(for_vouches.num, 0) AS vouches_for, " +
+		"COALESCE(for_me_vouches.num, 0) AS vouches_for_me, " +
+		"COALESCE(by_vouches.num, 0) AS vouches_by, " +
+		"COALESCE(by_me_vouches.num, 0) AS vouches_by_me " +
+		m.SQL_Froms() + " " +
 		"LEFT OUTER JOIN ( " +
 		"  SELECT 'for' AS dir, mv.vouchee AS member, COUNT(*) AS num " +
 		"  FROM member_vouch mv " +
@@ -201,7 +188,8 @@ func (grp *TriGroupS) GetMembers(search string, username string, offset int, max
 
 		member := NewTriGroupMember().(*TriGroupMemberS)
 
-		err = rows.Scan(&username,
+		err = rows.Scan(
+			&username,
 			&fullname,
 			&affiliation,
 			&groupadmin,
