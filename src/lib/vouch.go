@@ -133,7 +133,7 @@ func (vouch *TriVouch) ListFor(user TriUser, tg TriGroup, username string) (vouc
 }
 
 func vouches_member(ctx pf.PfCtx, args []string, is_by bool) (err error) {
-	tg_name := args[0]
+	group_name := args[0]
 	user_name := args[1]
 
 	var tv TriVouch
@@ -151,7 +151,7 @@ func vouches_member(ctx pf.PfCtx, args []string, is_by bool) (err error) {
 		return
 	}
 
-	err = ctx.SelectGroup(tg_name, pf.PERM_GROUP_MEMBER)
+	err = ctx.SelectGroup(group_name, pf.PERM_GROUP_MEMBER)
 	if err != nil {
 		return
 	}
@@ -182,8 +182,7 @@ func vouches_for_member(ctx pf.PfCtx, args []string) (err error) {
 }
 
 func vouch_add(ctx pf.PfCtx, args []string) (err error) {
-
-	tg_name := args[0]
+	group_name := args[0]
 	user_name := args[1]
 	vouchee_name := args[2]
 	comment := args[3]
@@ -194,7 +193,7 @@ func vouch_add(ctx pf.PfCtx, args []string) (err error) {
 		return
 	}
 
-	err = ctx.SelectGroup(tg_name, pf.PERM_GROUP_MEMBER)
+	err = ctx.SelectGroup(group_name, pf.PERM_GROUP_MEMBER)
 	if err != nil {
 		return
 	}
@@ -249,7 +248,7 @@ func vouch_add(ctx pf.PfCtx, args []string) (err error) {
  * Entered at will update automaticall
  */
 func vouch_update(ctx pf.PfCtx, args []string) (err error) {
-	tg_name := args[0]
+	group_name := args[0]
 	user_name := args[1]
 	vouchee_name := args[2]
 	comment := args[3]
@@ -259,7 +258,7 @@ func vouch_update(ctx pf.PfCtx, args []string) (err error) {
 		return
 	}
 
-	err = ctx.SelectGroup(tg_name, pf.PERM_USER_SELF)
+	err = ctx.SelectGroup(group_name, pf.PERM_GROUP_MEMBER)
 	if err != nil {
 		return
 	}
@@ -282,8 +281,7 @@ func vouch_update(ctx pf.PfCtx, args []string) (err error) {
 }
 
 func vouch_remove(ctx pf.PfCtx, args []string) (err error) {
-
-	tg_name := args[0]
+	group_name := args[0]
 	user_name := args[1]
 	vouchee_name := args[2]
 
@@ -292,7 +290,7 @@ func vouch_remove(ctx pf.PfCtx, args []string) (err error) {
 		return
 	}
 
-	err = ctx.SelectGroup(tg_name, pf.PERM_GROUP_MEMBER)
+	err = ctx.SelectGroup(group_name, pf.PERM_GROUP_MEMBER)
 	if err != nil {
 		return
 	}
@@ -314,14 +312,14 @@ func vouch_remove(ctx pf.PfCtx, args []string) (err error) {
 }
 
 func vouch_menu(ctx pf.PfCtx, args []string) (err error) {
-	perms := pf.PERM_USER_SELF
+	perms := pf.PERM_USER
 
 	var menu = pf.NewPfMenu([]pf.PfMEntry{
-		{"add", vouch_add, 5, 5, []string{"tg", "vouchor", "vouchee", "comment", "attestations"}, pf.PERM_USER, "Add a vouch"},
-		{"update", vouch_update, 4, 4, []string{"tg", "vouchor", "vouchee", "comment"}, perms, "Update vouch comment"},
-		{"remove", vouch_remove, 3, 3, []string{"tg", "vouchee", "vouchor"}, perms, "Remove a vouch"},
-		{"list_for", vouches_for_member, 2, 2, []string{"tg", "username"}, perms, "List vouches for a member"},
-		{"list_by", vouches_by_member, 2, 2, []string{"tg", "username"}, perms, "List vouches by a member"},
+		{"add", vouch_add, 5, 5, []string{"group", "vouchor", "vouchee", "comment", "attestations"}, pf.PERM_USER, "Add a vouch"},
+		{"update", vouch_update, 4, 4, []string{"group", "vouchor", "vouchee", "comment"}, perms, "Update vouch comment"},
+		{"remove", vouch_remove, 3, 3, []string{"group", "vouchor", "vouchee"}, perms, "Remove a vouch"},
+		{"list_for", vouches_for_member, 2, 2, []string{"group", "username"}, perms, "List vouches for a member"},
+		{"list_by", vouches_by_member, 2, 2, []string{"group", "username"}, perms, "List vouches by a member"},
 	})
 
 	return ctx.Menu(args, menu)
