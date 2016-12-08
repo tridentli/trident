@@ -28,12 +28,12 @@
 <tr><td><a href="issue_222">issue_222</a></td></tr>
 <tr><td><a href="case_details_languages">case_details_languages</a></td></tr>
 <tr><td><a href="case_attestations">case_attestations</a></td></tr>
-<tr><td><a href="case_failed_login">case_failed_login</a></td></tr>
 <tr><td><a href="case_ml_auto_add">case_ml_auto_add</a></td></tr>
 <tr><td><a href="case_search_regex">case_search_regex</a></td></tr>
 <tr><td><a href="case_admin_email_public">case_admin_email_public</a></td></tr>
 <tr><td><a href="case_pwd_recover">case_pwd_recover</a></td></tr>
 <tr><td><a href="case_add_pgp_key">case_add_pgp_key</a></td></tr>
+<tr><td><a href="case_failed_login">case_failed_login</a></td></tr>
 </tbody></table>
 </body>
 </html>

@@ -43,6 +43,11 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
 	<td>link=create - Test 3 vouch group</td>
 	<td></td>
 </tr>
@@ -63,18 +68,23 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//a[contains(text(),'sysadmin<br />		(')]</td>
-	<td>sysadmin (</td>
+	<td>link=sysadmin</td>
+	<td>sysadmin</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=search</td>
-	<td>b</td>
+	<td>bo</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAndWait</td>
 	<td>name=button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[3]</td>
+	<td>exact:Offset: 0, Total: 0</td>
 </tr>
 <tr>
 	<td>assertNotText</td>

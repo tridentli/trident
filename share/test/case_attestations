@@ -73,18 +73,48 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=vouch</td>
+	<td>id=NominateAdd-comment</td>
 	<td>test</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>name=button</td>
+	<td>id=NominateAdd-button</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
-	<td>Incomplete attestations</td>
+	<td>id=-error</td>
+	<td>Missing value</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateAdd-comment</td>
+	<td>test</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>id=NominateAdd-attestations</td>
+	<td>label=I have met them in person more than once</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>id=NominateAdd-attestations</td>
+	<td>label=I trust them to take action</td>
+</tr>
+<tr>
+	<td>addSelection</td>
+	<td>id=NominateAdd-attestations</td>
+	<td>label=I will share membership fate with them</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateAdd-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>id=-error</td>
+	<td>Not a group member</td>
 </tr>
 <tr>
 	<td>open</td>

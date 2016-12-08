@@ -187,11 +187,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>css=p</td>
-	<td>This directory does not have any files or sub-directories.</td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>link=Files</td>
 	<td></td>
@@ -226,7 +221,6 @@
 	<td>link=Add a new directory</td>
 	<td></td>
 </tr>
-<!--KB_55 second level folders don't appear but have function as if they exist. -->
 <tr>
 	<td>type</td>
 	<td>id=np-name</td>
@@ -309,7 +303,7 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/tg/test/file/test/deep/</td>
+	<td>https://trident.localhost/group/test/file/test/deep/</td>
 	<td></td>
 </tr>
 <tr>
@@ -340,26 +334,6 @@
 <tr>
 	<td>clickAndWait</td>
 	<td>id=del-button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Details')])[1]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>id=del-confirm</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>id=del-button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=img[alt=&quot;Profile Image&quot;]</td>
 	<td></td>
 </tr>
 <tr>

@@ -68,11 +68,6 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Mailing List</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
 	<td>link=vetting</td>
 	<td></td>
 </tr>
