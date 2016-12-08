@@ -142,9 +142,9 @@
 	<td>For group: test2</td>
 </tr>
 <tr>
-	<td>addSelection</td>
+	<td>click</td>
 	<td>id=NominateAdd-attestations</td>
-	<td>label=LONG DESCRIPTION</td>
+	<td></td>
 </tr>
 <tr>
 	<td>type</td>
