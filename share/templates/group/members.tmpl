@@ -24,7 +24,7 @@
 	<tbody>{{ range $i, $grmember := .GroupMembers }}
 	<tr>
 		<td>{{ user_image_link $.UI $grmember.GetUserName $grmember.GetFullName "" }}</td>
-		<td>{{ group_home_link $.UI $group.GetGroupName $grmember.GetUserName $grmember.GetFullName }}</td>
+		<td>{{ group_home_link $.UI $group.GetGroupName $grmember.GetUserName $grmember.GetUserName }}</td>
 		<td>{{ $grmember.GetFullName }}</td>
 		<td><a href="mailto:{{ $grmember.GetEmail }}">{{ $grmember.GetEmail }}</a>{{ if $grmember.HasPGP }}<span title="Member has a PGP key">&psi;</span>{{ end }}</td>
 		<td>{{ $grmember.GetAffiliation }}</td>
