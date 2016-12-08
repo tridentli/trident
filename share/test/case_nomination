@@ -247,24 +247,29 @@
 	<td>Vouch</td>
 </tr>
 <tr>
-	<td>addSelection</td>
+	<td>click</td>
 	<td>id=NominateAdd-attestations</td>
-	<td>label=I have met them in person more than once</td>
+	<td></td>
 </tr>
 <tr>
-	<td>addSelection</td>
-	<td>id=NominateAdd-attestations</td>
-	<td>label=I trust them to take action</td>
+	<td>click</td>
+	<td>xpath=(//input[@id='NominateAdd-attestations'])[2]</td>
+	<td></td>
 </tr>
 <tr>
-	<td>addSelection</td>
-	<td>id=NominateAdd-attestations</td>
-	<td>label=I will share membership fate with them</td>
+	<td>click</td>
+	<td>xpath=(//input[@id='NominateAdd-attestations'])[3]</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>id=NominateAdd-button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Nomination added</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -292,7 +297,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextNotPresent</td>
+	<td>assertTextPresent</td>
 	<td>test2 - Test 2 Admin Vouch</td>
 	<td></td>
 </tr>
