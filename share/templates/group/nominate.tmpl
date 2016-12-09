@@ -29,7 +29,7 @@
 {{ if $user.GetHideEmail }}
 [Email Hidden]
 {{ else }}
-{{ $user.GetPriEmailString .UI false }}
+{{ $user.GetPriEmailString $.UI false }}
 {{ end }}
 		</td>
 		<td>{{ $user.GetAffiliation }}</td>
@@ -37,10 +37,10 @@
 			{{ if eq $user.GetUserName $theuser.GetUserName }}
 			(You)
 			{{ else }}
-			{{ if $user.IsMember .UI $grp }}
+			{{ if $user.IsMember $.UI $grp }}
 			(Already a member)
 			{{ else }}
-			{{ csrf_form .UI (print "/group/" $grp "/nominate_existing/") }}
+			{{ csrf_form $.UI (print "/group/" $grp "/nominate_existing/") }}
 				<fieldset>
 					<input type="hidden" name="vouchee" value="{{ $user.GetUserName }}" />
 					<input type="submit" name="button" value="Select" />
