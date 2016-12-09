@@ -1,5 +1,11 @@
 {{template "inc/header.tmpl" .}}
 
+	{{ $len := len .Vouches}}
+	{{ if eq $len 0 }}
+	<p>
+		No vouches have been recorded.
+	</p>
+	{{ else }}
 	<p>
 		The following are the vouches for members of your group.
 	</p>
@@ -15,13 +21,14 @@
 		<th>Date</th>
 	</thead>
 	<tbody>
-	{{range $i, $v:= .Vouches}}
+	{{ range $i, $v:= .Vouches }}
 	<tr>
 		<td>{{ $v.Vouchor }}</td>
 		<td>{{ $v.Vouchee }}</td>
 		<td>{{ fmt_date $v.Entered }}</td>
-	</tr>{{end}}
+	</tr>{{ end }}
 	</tbody>
 	</table>
+	{{ end }}
 
 {{template "inc/footer.tmpl" .}}
