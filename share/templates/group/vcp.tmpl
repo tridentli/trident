@@ -1,0 +1,85 @@
+{{template "inc/header.tmpl" .}}
+	<p>
+	Every member of the community has their own set of people
+	for whom they've vouched, and also their own set of people
+	whom they just don't know well enough to vouch for.
+	</p>
+
+	<p>
+	This page gives you a way to see and manage this personalized information.
+	</p>
+
+	<p>
+	People you have not input any trust information about will show
+	here as "unmarked".
+
+	The people you've vouched for will show as
+	"vouched". The ones you just don't well enough to vouch for will
+	show as "dunno".
+
+	If you can move everybody to either the "vouched" set (if you can
+	vouch for them according to the trust community's criteria) or
+	to the "dunno" set, then you'll be left with a short list of
+	people you havn't yet thought about.
+	</p>
+
+	<p>
+	The goal of this tool is to increase the trust density
+	within our community.
+
+	Therefore, a great personal goal would be an empty list of
+	"unmarked" members. One common way to do this is to open
+	tabs on each member you intend to vouch for, then say
+	'Dunno' to the rest, lather, rinse, repeat.
+	</p>
+
+	{{ csrf_form $.UI "" }}
+	<table>
+	<tr>
+	<th>Criteria</th>
+	{{ range $c, $r := .Criterias }}
+		<td><input type="radio" name="criteria" value="{{ $r }}"{{ if eq $.Criteria $r }} checked="checked"{{ end }}>{{ $r }}</input></td>
+	{{ end }}
+	</tr>
+
+	<tr>
+	<th>Limits</th>
+	{{ range $l, $ll := .Limits }}
+		<td><input type="radio" name="limit" value="{{ $ll }}"{{ if eq $.Limit $ll }} checked="checked"{{ end }}>{{ $ll }}</input></td>
+	{{ end }}
+	</tr>
+	</table>
+	<input type="submit" name="Button" value="Change Criteria" />
+	</form>
+
+	{{ $len := len .Members }}
+	{{ if eq $len 0 }}
+	Currently no entries available.
+	{{ else }}
+	{{ csrf_form $.UI "" }}
+	<input type="hidden" name="criteria" value="{{ .Criteria }}" />
+	<input type="hidden" name="limit" value="{{ .Limit }}" />
+	<table>
+	<thead>
+		<th>Image</th>
+		<th>Username</th>
+		<th>Full Name</th>
+		<th>Affiliation</th>
+		<th>Action</th>
+	</thead>
+	<tbody>
+	{{ range $i, $member := .Members }}
+	<tr>
+		<td>{{ user_image_link $.UI $member.UserName $member.FullName "" }}</td>
+		<td>{{ group_home_link $.UI $.GroupName $member.UserName $member.UserName }}</td>
+		<td>{{ $member.FullName }}</td>
+		<td>{{ $member.Affiliation }}</td>
+		<td><input type="checkbox" name="marked[]" value="{{ $member.UserName }}" /> {{ $.Action }}</td>
+	</tr>{{end}}
+	</tbody>
+	</table>
+	<input type="submit" name="Button" value="{{ .Action }} Selected" />
+	</form>
+	{{ end }}
+
+{{template "inc/footer.tmpl" .}}

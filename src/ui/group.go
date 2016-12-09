@@ -262,6 +262,7 @@ func h_group(cui pu.PfUI, menu *pu.PfUIMenu) {
 		{"nominate", "Nominate", pf.PERM_GROUP_MEMBER, h_group_nominate, nil},
 		{"nominate_existing", "Nominate existing user", pf.PERM_GROUP_MEMBER | pf.PERM_HIDDEN, h_group_nominate_existing, nil},
 		{"vouches", "Vouches", pf.PERM_GROUP_MEMBER, h_vouches, nil},
+		{"vcp", "Vouching Control Panel", pf.PERM_GROUP_MEMBER, h_group_vcp, nil},
 	}
 
 	menu.Add(m...)
