@@ -13,12 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Sign In</td>
+	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -34,7 +34,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -52,11 +52,6 @@
 	<td>Login incorrect</td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
 	<td>type</td>
 	<td>id=login-username</td>
 	<td>seconduser</td>
@@ -79,7 +74,7 @@
 <tr>
 	<td>assertText</td>
 	<td>css=p</td>
-	<td>The following is a list of your Trust Groups.</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -90,11 +85,6 @@
 	<td>assertTextPresent</td>
 	<td></td>
 	<td>You have been logged out </td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Sign In')])[2]</td>
-	<td></td>
 </tr>
 <tr>
 	<td>type</td>
@@ -139,11 +129,11 @@
 <tr>
 	<td>assertText</td>
 	<td>css=p</td>
-	<td>The following is a list of your Trust Groups.</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 </tbody></table>

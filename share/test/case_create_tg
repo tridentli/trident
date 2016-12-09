@@ -13,7 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -24,16 +29,11 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${sysadminPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>id=login-button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
 	<td></td>
 </tr>
 <tr>
@@ -43,33 +43,48 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Add Trust Group</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add Group</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=tgnew-tg</td>
+	<td>id=grpnew-group</td>
 	<td>create</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=tgnew-button</td>
+	<td>id=grpnew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>id=grpnew-error</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=TriTG-pgp_required</td>
+	<td>id=TriGroupS-PfGroupS-pgp_required</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=TriTG-has_wiki</td>
+	<td>id=TriGroupS-PfGroupS-has_wiki</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=TriTG-button</td>
+	<td>id=TriGroupS-PfGroupS-button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Updated 2 fields, 13 fields where not modified</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -77,9 +92,19 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Nominate</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>link=Members</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p &gt; b</td>
+	<td>Bold</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -89,12 +114,12 @@
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[6]</td>
-	<td>yes</td>
+	<td>true</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[7]</td>
-	<td>active</td>
+	<td>approved</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -102,9 +127,19 @@
 	<td>0(by) -&gt; 0(for)</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>(Operations against own profile disabled; please ask other admin)</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>link=Mailing List</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Mailing List</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -112,23 +147,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=User</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=sysadmin</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Logout</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[3]</td>
+	<td>exact:Offset: 0, Total: 0</td>
 </tr>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 </tbody></table>

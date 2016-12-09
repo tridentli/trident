@@ -13,7 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -24,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${sysadminPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -32,8 +37,18 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>${loginString}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Regular</td>
 	<td></td>
 </tr>
 <tr>
@@ -58,18 +73,23 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//a[contains(text(),'sysadmin<br />		(')]</td>
-	<td>sysadmin (</td>
+	<td>link=sysadmin</td>
+	<td>sysadmin</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>name=search</td>
-	<td>b</td>
+	<td>bo</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAndWait</td>
 	<td>name=button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[3]</td>
+	<td>exact:Offset: 0, Total: 0</td>
 </tr>
 <tr>
 	<td>assertNotText</td>
@@ -81,7 +101,6 @@
 	<td>link=Logout</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

@@ -13,7 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -24,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${sysadminPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -33,7 +38,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
@@ -63,73 +68,63 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
+	<td>link=vetting</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[3]</td>
+	<td>exact:Offset: 0, Total: 0</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
 	<td>link=Mailing List</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=vetting</td>
+	<td>xpath=(//input[@id='button'])[3]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Subscribe</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=popt-username</td>
-	<td>testuser</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>id=popt-button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=vetting</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
-	<td></td>
-	<td>testuser</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=vetting</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Unsubscribe</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=popt-username</td>
-	<td>testuser</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>id=popt-button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=vetting</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
-	<td></td>
-	<td>Offset: 0, Total: 0</td>
+	<td>assertText</td>
+	<td>id=popt-message</td>
+	<td>Successfully subscribed user</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>link=Mailing List</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[4]/td[4]</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td[4]</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@id='button'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=popt-message</td>
+	<td>Successfully unsubscribed user</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Mailing List</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td[4]</td>
+	<td>3</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -152,18 +147,23 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>css=img[alt=&quot;Profile Image&quot;]</td>
+	<td>click</td>
+	<td>id=PfML-automatic</td>
 	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=PfML-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=PfML-message</td>
+	<td>5 fields where not modified</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>link=Logout</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Sign In</td>
 	<td></td>
 </tr>
 <tr>
@@ -174,7 +174,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar1234</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -183,7 +183,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
@@ -197,19 +197,24 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//input[@id='button'])[3]</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[4]/td[4]</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[4]/td[6]</td>
+	<td>Unsubscribed</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=vetting</td>
+	<td>xpath=(//input[@id='button'])[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xpath=(//a[contains(text(),'testuser')])[2]</td>
-	<td>testuser</td>
+	<td>css=fieldset</td>
+	<td>Group Name: The group name List Name: The Mailing List Name User Name: The User Name&nbsp;&nbsp;&nbsp;Subscribe to the list&nbsp;&nbsp;&nbsp;Successfully subscribed user</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -217,23 +222,18 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//input[@id='button'])[3]</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[4]/td[4]</td>
+	<td>1</td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=vetting</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
-	<td></td>
-	<td>Offset: 0, Total: 0</td>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[4]/td[6]</td>
+	<td>Subscribed</td>
 </tr>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 </tbody></table>

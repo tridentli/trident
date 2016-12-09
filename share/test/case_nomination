@@ -13,7 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -24,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${sysadminPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -38,7 +43,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
@@ -53,38 +58,48 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriTG-descr</td>
+	<td>id=TriGroupS-PfGroupS-descr</td>
 	<td>Test 2 Admin Vouch</td>
 </tr>
 <tr>
+	<td>verifyValue</td>
+	<td>id=TriGroupS-please_vouch</td>
+	<td>on</td>
+</tr>
+<tr>
 	<td>click</td>
-	<td>id=TriTG-please_vouch</td>
+	<td>id=TriGroupS-please_vouch</td>
 	<td></td>
 </tr>
 <tr>
 	<td>verifyValue</td>
-	<td>id=TriTG-please_vouch</td>
+	<td>id=TriGroupS-vouch_adminonly</td>
 	<td>off</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=TriTG-vouch_adminonly</td>
+	<td>id=TriGroupS-vouch_adminonly</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyValue</td>
-	<td>id=TriTG-vouch_adminonly</td>
-	<td>on</td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
-	<td>id=TriTG-button</td>
+	<td>id=TriGroupS-PfGroupS-button</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertTextPresent</td>
 	<td>Updated 3 fields</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=TriGroupS-please_vouch</td>
+	<td>off</td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=TriGroupS-vouch_adminonly</td>
+	<td>on</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -124,32 +139,52 @@
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/ul/li[2]</td>
-	<td>For Trustgroup: test2</td>
+	<td>For group: test2</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateAdd-attestations</td>
+	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=vouch</td>
+	<td>id=NominateAdd-comment</td>
 	<td>Add Test Vouch</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>name=button</td>
+	<td>id=NominateAdd-button</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
-	<td>Test D. User</td>
-	<td></td>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Nomination added</td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
-	<td>nominated</td>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>css=b</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>link=create - create</td>
+	<td>create - create</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Regular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=create - create</td>
+	<td>create - create</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -163,38 +198,43 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriTG-min_invouch</td>
+	<td>id=TriGroupS-min_invouch</td>
 	<td>1</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriTG-min_invouch</td>
-	<td>2</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=TriTG-target_invouch</td>
+	<td>id=TriGroupS-min_outvouch</td>
 	<td>1</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriTG-target_invouch</td>
+	<td>id=TriGroupS-target_invouch</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriGroupS-target_invouch</td>
 	<td>2</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=TriTG-descr</td>
+	<td>id=TriGroupS-PfGroupS-descr</td>
 	<td>Test 3 vouch group</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=TriTG-has_wiki</td>
+	<td>id=TriGroupS-PfGroupS-has_wiki</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=TriTG-button</td>
+	<td>id=TriGroupS-PfGroupS-button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Updated 5 fields, 10 fields where not modified</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -223,42 +263,37 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=vouch</td>
+	<td>id=NominateAdd-comment</td>
 	<td>Vouch</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=attestation-met</td>
+	<td>id=NominateAdd-attestations</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=attestation-trust</td>
+	<td>xpath=(//input[@id='NominateAdd-attestations'])[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=attestation-fate</td>
+	<td>xpath=(//input[@id='NominateAdd-attestations'])[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>name=button</td>
+	<td>id=NominateAdd-button</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[7]</td>
-	<td>nominated</td>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Nomination added</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>link=Logout</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Sign In')])[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -269,7 +304,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar1234</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -278,7 +313,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
@@ -287,8 +322,53 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>sysadmin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>${sysadminPassword}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test2 - Test 2 Admin Vouch</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=testuser</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[7]</td>
+	<td>nominated</td>
+</tr>
+<tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 </tbody></table>

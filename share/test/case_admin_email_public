@@ -13,13 +13,13 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>css=#footer &gt; ul &gt; li &gt; a</td>
-	<td>sysadmin</td>
+	<td>open</td>
+	<td>${loginURI}</td>
+	<td></td>
 </tr>
 <tr>
 	<td>type</td>
@@ -29,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${sysadminPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -38,13 +38,13 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>css=#footer &gt; ul &gt; li &gt; a</td>
-	<td>sysadmin</td>
+	<td>css=p</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
+	<td>assertText</td>
+	<td>css=#footer &gt; ul &gt; li &gt; a</td>
+	<td>sysadmin</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -52,18 +52,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>link=System</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>link=System</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//a[contains(text(),'Settings')])[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -72,13 +62,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=TriSys-adminemailpublic</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
-	<td>id=TriSys-button</td>
+	<td>id=PfSys-button</td>
 	<td></td>
 </tr>
 <tr>
@@ -87,18 +72,8 @@
 	<td>Updated 1 fields,</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>link=Logout</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>link=Logout</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>css=#footer &gt; ul &gt; li &gt; a</td>
 	<td></td>
 </tr>
 </tbody></table>

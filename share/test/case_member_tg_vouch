@@ -13,12 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Sign In</td>
+	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -29,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar1234</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -38,7 +38,7 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
@@ -56,6 +56,7 @@
 	<td>link=testuser</td>
 	<td>testuser</td>
 </tr>
+<!--If next test fails, check user_home links-->
 <tr>
 	<td>assertText</td>
 	<td>link=seconduser</td>
@@ -89,7 +90,7 @@
 <tr>
 	<td>assertText</td>
 	<td>css=h1</td>
-	<td>Test User with 2FA-SOTP (seconduser)'s Profile</td>
+	<td>Test User with 2FA-SOTP (seconduser)</td>
 </tr>
 <tr>
 	<td>verifyValue</td>
@@ -127,13 +128,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>click</td>
+	<td>id=VouchAdd-attestations</td>
+	<td></td>
+</tr>
+<tr>
 	<td>type</td>
-	<td>id=TriVouch-comment</td>
+	<td>id=VouchAdd-comment</td>
 	<td>Test Vouch</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>id=button</td>
+	<td>id=VouchAdd-button</td>
 	<td></td>
 </tr>
 <tr>
@@ -147,8 +153,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Logout')])[2]</td>
+	<td>open</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 </tbody></table>

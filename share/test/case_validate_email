@@ -13,7 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -24,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar1234</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -54,7 +59,7 @@
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/table/thead/tr/th[4]</td>
-	<td>Recover</td>
+	<td>Recovery</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -68,12 +73,12 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=verifycode</td>
+	<td>id=opt_confirm-verifycode</td>
 	<td>wrong_code</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//input[@id='button'])[2]</td>
+	<td>id=opt_confirm-button</td>
 	<td></td>
 </tr>
 <tr>
@@ -83,38 +88,18 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=verifycode</td>
+	<td>id=opt_confirm-verifycode</td>
 	<td>5551212</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//input[@id='button'])[2]</td>
+	<td>id=opt_confirm-button</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertTextNotPresent</td>
 	<td>Verification in Process</td>
 	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//input[@id='button'])[2]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[4]</td>
-	<td>Selected</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//input[@name='button'])[2]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td</td>
-	<td>Selected</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -127,23 +112,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//input[@id='button'])[2]</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td</td>
+	<td>Verified</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//input[@name='button'])[2]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>id=button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>css=img[alt=&quot;Profile Image&quot;]</td>
+	<td>link=Email</td>
 	<td></td>
 </tr>
 <tr>

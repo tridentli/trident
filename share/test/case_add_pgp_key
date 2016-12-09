@@ -13,7 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -24,12 +29,17 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar</td>
+	<td>${sysadminPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>id=login-button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -48,22 +58,22 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=keyring</td>
+	<td>id=opt_uploadkey-keyring</td>
 	<td>${testSuiteFolder}/files/457CB738.asc</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//input[@id='button'])[3]</td>
+	<td>xpath=(//input[@id='opt_uploadkey-button'])</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>css=td &gt; table &gt; tbody &gt; tr &gt; td</td>
-	<td>457CB738</td>
+	<td>A89CAB0E457CB738</td>
 </tr>
 <tr>
 	<td>assertElementPresent</td>
-	<td>link=457CB738.asc</td>
+	<td>link=A89CAB0E457CB738.asc</td>
 	<td></td>
 </tr>
 <tr>
@@ -72,13 +82,18 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>link=457CB738.asc</td>
-	<td>457CB738.asc</td>
+	<td>assertElementPresent</td>
+	<td>link=A89CAB0E457CB738.asc</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Trust Groups</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Regular</td>
 	<td></td>
 </tr>
 <tr>
@@ -93,10 +108,9 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>link=ψ</td>
+	<td>css=span[title=&quot;Member has a PGP key&quot;]</td>
 	<td>ψ</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

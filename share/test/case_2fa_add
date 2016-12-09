@@ -13,12 +13,12 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>https://trident.localhost/logout/</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Sign In</td>
+	<td>open</td>
+	<td>${loginURI}</td>
 	<td></td>
 </tr>
 <tr>
@@ -29,7 +29,7 @@
 <tr>
 	<td>type</td>
 	<td>id=login-password</td>
-	<td>foobar1234</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -37,23 +37,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=User</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>link=User</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>xpath=(//a[contains(text(),'2FA Tokens')])[2]</td>
 	<td></td>
 </tr>
 <tr>
@@ -63,22 +48,17 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=Tok-name</td>
-	<td>Test #123?</td>
+	<td>id=TFATok-curpassword</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=Tok-name</td>
+	<td>id=TFATok-descr</td>
 	<td>Test #123?</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>id=Tok-button</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
-	<td>id=Tok-button</td>
+	<td>id=TFATok-button</td>
 	<td></td>
 </tr>
 <tr>
@@ -87,11 +67,6 @@
 	<td>URL: otpauth://totp/Test__123_?secret=</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>link=Return to 2FA list</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>link=Return to 2FA list</td>
 	<td></td>
@@ -102,36 +77,30 @@
 	<td>Test #123?</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>name=button</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>name=button</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>xpath=(//input[@id='button'])[2]</td>
+	<td>selectWindow</td>
+	<td>null</td>
 	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt_remove-curpassword</td>
+	<td>${testuserPassword}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//input[@id='button'])[2]</td>
+	<td>id=popt_remove-button</td>
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>xpath=(//a[contains(text(),'Logout')])[2]</td>
+	<td>open</td>
+	<td>${logoutURI}</td>
 	<td></td>
 </tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Logout')])[2]</td>
-	<td></td>
-</tr>
-
 </tbody></table>
 </body>
 </html>
