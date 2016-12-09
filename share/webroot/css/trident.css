@@ -521,7 +521,21 @@ img.userimage
 	text-shadow		: none;
 	text-decoration		: none;
 	border-bottom		: none;
+}
+
+.menu ul li a
+{
 	padding			: 5px 5px 2px 5px;
+}
+
+#footer ul li:after
+{
+	content			: "  |  ";
+}
+
+#footer ul li:last-child:after
+{
+	content			: "";
 }
 
 .menu li
@@ -717,13 +731,6 @@ nav.menu div.navbar-header
 	top			: 0.0em;
 	left			: 12px;
 	margin-top		: 10px;
-}
-
-.footnotes
-{
-	font-size		: xx-small;
-	float			: right;
-	clear			: both;
 }
 
 .login div#content
