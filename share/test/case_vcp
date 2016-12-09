@@ -4,12 +4,12 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="https://trident.localhost/" />
-<title>case_password_change</title>
+<title>case_vcp</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">case_password_change</td></tr>
+<tr><td rowspan="1" colspan="3">case_vcp</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -37,90 +37,71 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=testuser</td>
-	<td></td>
-</tr>
-<tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>${loginString}</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Password')])[2]</td>
+	<td>link=Group</td>
 	<td></td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>name=passwordC</td>
-	<td>${testuserPassword}</td>
-</tr>
-<tr>
-	<td>store</td>
-	<td>foobar1234</td>
-	<td>testuserPassword</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=password1</td>
-	<td>${testuserPassword}</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=password2</td>
-	<td>${testuserPassword}</td>
+	<td>clickAndWait</td>
+	<td>link=test - test TG</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>name=button</td>
+	<td>xpath=(//a[contains(text(),'Vouching Control Panel')])[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>css=div.logo</td>
-	<td>Not Configured</td>
+	<td>css=h1</td>
+	<td>Vouching Control Panel</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>id=login-username</td>
-	<td>testuser</td>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/form[2]/table/tbody/tr/td[3]</td>
+	<td>TG Admin User</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>id=login-password</td>
-	<td>foobar</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>id=login-button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
-	<td>Login incorrect</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=login-username</td>
-	<td>testuser</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=login-password</td>
-	<td>${testuserPassword}</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>id=login-button</td>
+	<td>click</td>
+	<td>name=marked[]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Logout</td>
+	<td>xpath=(//input[@name='Button'])[2]</td>
 	<td></td>
 </tr>
+<tr>
+	<td>assertNotText</td>
+	<td></td>
+	<td>TG Admin User</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='criteria'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=Button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/form[2]/table/tbody/tr/td[3]</td>
+	<td>TG Admin User</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+
 </tbody></table>
 </body>
 </html>
