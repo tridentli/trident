@@ -197,7 +197,7 @@ func vouch_nominate_new(cui pu.PfUI) (msg string, err error) {
 		return
 	}
 
-	cmd = "group member nominate"
+	cmd = "group nominate"
 	args = []string{grp.GetGroupName(), vouchee_ident}
 
 	msg, err = cui.HandleCmd(cmd, args)
@@ -212,7 +212,7 @@ func vouch_nominate_new(cui pu.PfUI) (msg string, err error) {
 	if err != nil {
 		return
 	}
-
+	msg = "Member successfully nominated."
 	return
 }
 
