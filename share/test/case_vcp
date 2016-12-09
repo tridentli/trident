@@ -97,11 +97,25 @@
 	<td>TG Admin User</td>
 </tr>
 <tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='criteria'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=Button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/form[2]/table/tbody/tr/td[3]</td>
+	<td>Test User with 2FA-SOTP</td>
+</tr>
+<tr>
 	<td>open</td>
 	<td>${logoutURI}</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
