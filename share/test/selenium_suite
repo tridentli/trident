@@ -12,6 +12,7 @@
 <tr><td><a href="case_login">case_login</a></td></tr>
 <tr><td><a href="case_password_change">case_password_change</a></td></tr>
 <tr><td><a href="case_profile">case_profile</a></td></tr>
+<tr><td><a href="case_nominated_member_visible">case_nominated_member_visible</a></td></tr>
 <tr><td><a href="case_member_tg_vouch">case_member_tg_vouch</a></td></tr>
 <tr><td><a href="case_login_2fa_SOTP">case_login_2fa_sotp</a></td></tr>
 <tr><td><a href="case_2fa_add">case_2fa_add</a></td></tr>
