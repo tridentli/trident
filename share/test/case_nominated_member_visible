@@ -178,7 +178,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextNotPresent</td>
+	<td>assertNotText</td>
 	<td></td>
 	<td>testtg1 - testtg1</td>
 </tr>
@@ -187,7 +187,6 @@
 	<td>link=Logout</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
