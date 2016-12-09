@@ -83,7 +83,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=NominateNew-vouch</td>
+	<td>id=NominateNew-comment</td>
 	<td>test</td>
 </tr>
 <tr>
@@ -138,7 +138,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=NominateNew-vouch</td>
+	<td>id=NominateNew-comment</td>
 	<td>testing vouch</td>
 </tr>
 <tr>
