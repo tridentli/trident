@@ -150,7 +150,7 @@ func h_group_nominate(cui pu.PfUI) {
 	tctx := tr.TriGetCtx(cui)
 	user := tctx.TriSelectedUser()
 	grp := tctx.TriSelectedGroup()
-	added = false
+	added := false
 
 	/* Something posted? */
 	if cui.IsPOST() {
