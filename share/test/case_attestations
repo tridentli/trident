@@ -82,11 +82,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
 	<td>assertText</td>
 	<td>id=-error</td>
 	<td>Invalid attestation parameters</td>
@@ -183,69 +178,29 @@
 	<td>Incomplete attestations</td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=create</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>xpath=(//a[contains(text(),'Nominate')])[2]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>name=search</td>
-	<td>bob@trident.li</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>name=button</td>
-	<td></td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=TriUser-descr</td>
-	<td>bob smith</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=TriUser-affiliation</td>
-	<td>trident</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=TriUser-bio_info</td>
-	<td>bio</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>id=vouch</td>
-	<td>vouch<br /></td>
-</tr>
-<tr>
 	<td>click</td>
-	<td>id=attestation-met</td>
+	<td>id=NominateNew-attestations</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=attestation-trust</td>
+	<td>xpath=(//input[@id='NominateNew-attestations'])[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>id=attestation-fate</td>
+	<td>xpath=(//input[@id='NominateNew-attestations'])[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>xpath=(//input[@name='button'])[2]</td>
+	<td>id=NominateNew-button</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[7]</td>
-	<td>nominated</td>
+	<td>id=-message</td>
+	<td>Nomination added</td>
 </tr>
 <tr>
 	<td>open</td>
