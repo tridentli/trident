@@ -25,6 +25,7 @@
 <tr><td><a href="case_double_users">case_double_users</a></td></tr>
 <tr><td><a href="case_login_2fa_HOTP">case_login_2fa_hotp</a></td></tr>
 <tr><td><a href="case_nomination">case_nomination</a></td></tr>
+<tr><td><a href="case_email_manager">case_email_manager</a></td></tr>
 <tr><td><a href="case_vcp">case_vcp</a></td></tr>
 <tr><td><a href="issue_221">issue_221</a></td></tr>
 <tr><td><a href="issue_222">issue_222</a></td></tr>
