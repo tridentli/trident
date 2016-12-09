@@ -124,11 +124,12 @@ func h_group_nominate_existing(cui pu.PfUI) {
 type NominateNew struct {
 	group        tr.TriGroup
 	Action       string          `label:"Action" pftype:"hidden"`
+	Search       string          `label:"Search" pftype:"hidden"`
 	Email        string          `label:"Email address of nominee" pfset:"none"`
 	FullName     string          `label:"Full Name" hint:"Full Name of this user" pfreq:"yes"`
 	Affiliation  string          `label:"Affiliation" hint:"Who the user is affiliated to" pfreq:"yes"`
 	Biography    string          `label:"Biography" pftype:"text" hint:"Biography for this user" pfreq:"yes"`
-	Vouch        string          `label:"Vouch" pftype:"text" hint:"Vouch for this user" pfreq:"yes"`
+	Comment      string          `label:"Vouch Comment" pftype:"text" hint:"Vouch for this user" pfreq:"yes"`
 	Attestations map[string]bool `label:"Attestations (all required)" hint:"Attestations for this user" options:"GetAttestationOpts" pfcheckboxmode:"yes"`
 	Button       string          `label:"Nominate" pftype:"submit"`
 	Message      string          /* Used by pfform() */
@@ -156,7 +157,6 @@ func h_group_nominate(cui pu.PfUI) {
 		action, err := cui.FormValue("action")
 		if err == nil && action == "nominate" {
 			msg, err = vouch_nominate_new(cui)
-
 			if err != nil {
 				errmsg += err.Error()
 			}
@@ -176,7 +176,7 @@ func h_group_nominate(cui pu.PfUI) {
 	}
 
 	/* Need to search the list? */
-	notfound := false
+	notfound := true
 	if search != "" {
 		/* Get list of users matching the given search query */
 		list, err = user.GetList(cui, search, 0, 0, true)
@@ -186,8 +186,8 @@ func h_group_nominate(cui pu.PfUI) {
 			return
 		}
 
-		if len(list) == 0 {
-			notfound = true
+		if len(list) != 0 {
+			notfound = false
 		}
 	}
 
@@ -200,7 +200,13 @@ func h_group_nominate(cui pu.PfUI) {
 		NewForm   *NominateNew
 	}
 
-	newform := &NominateNew{group: grp, Action: "nominate", Email: search, Message: msg, Error: errmsg}
+	/* Re-fill in the form (for people who do not enable the attestations) */
+	descr, _ := cui.FormValue("fullname")
+	affil, _ := cui.FormValue("affiliation")
+	bio, _ := cui.FormValue("biography")
+	comment, _ := cui.FormValue("comment")
+
+	newform := &NominateNew{group: grp, Action: "nominate", Email: search, Message: msg, Error: errmsg, Search: search, FullName: descr, Affiliation: affil, Biography: bio, Comment: comment}
 
 	p := Page{cui.Page_def(), search, grp.GetGroupName(), list, notfound, newform}
 	cui.Page_show("group/nominate.tmpl", p)
