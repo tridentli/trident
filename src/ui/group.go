@@ -9,7 +9,7 @@ import (
 	tr "trident.li/trident/src/lib"
 )
 
-func h_group_members(cui pu.PfUI) {
+func h_group_member(cui pu.PfUI) {
 	path := cui.GetPath()
 
 	if len(path) != 0 && path[0] != "" {
@@ -256,7 +256,7 @@ func h_vouches(cui pu.PfUI) {
 }
 
 func h_group(cui pu.PfUI, menu *pu.PfUIMenu) {
-	menu.Replace("members", h_group_members)
+	menu.Replace("member", h_group_member)
 
 	m := []pu.PfUIMentry{
 		{"nominate", "Nominate", pf.PERM_GROUP_MEMBER, h_group_nominate, nil},

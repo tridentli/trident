@@ -35,8 +35,6 @@ func NewTriGroup() pf.PfGroup {
 }
 
 func (grp *TriGroupS) fetch(group_name string, nook bool) (err error) {
-
-	pf.Logf("TriGroup:fetch(%s)", group_name)
 	/* Make sure the name is mostly sane */
 	group_name, err = pf.Chk_ident("Group Name", group_name)
 	if err != nil {

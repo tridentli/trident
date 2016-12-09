@@ -3,7 +3,6 @@
 
 	{{ $this := . }}
 	{{ $isadmin := .IsAdmin }}
-	{{ $ui := .UI }}
 	{{ $group := .Group }}
 	<table>
 	<thead>
@@ -24,8 +23,8 @@
 	</thead>
 	<tbody>{{ range $i, $grmember := .GroupMembers }}
 	<tr>
-		<td>{{ user_image_link $ui $grmember.GetUserName $grmember.GetUserName "" }}</td>
-		<td><a href="/group/{{ $group.GetGroupName }}/members/{{ $grmember.GetUserName }}">{{ $grmember.GetUserName }}</a>{{ if $isadmin }} (<a href="/grmember/{{ $grmember.GetUserName }}">user</a>){{ end }}</td>
+		<td>{{ user_image_link $.UI $grmember.GetUserName $grmember.GetFullName "" }}</td>
+		<td>{{ group_home_link $.UI $group.GetGroupName $grmember.GetUserName $grmember.GetUserName }}</td>
 		<td>{{ $grmember.GetFullName }}</td>
 		<td><a href="mailto:{{ $grmember.GetEmail }}">{{ $grmember.GetEmail }}</a>{{ if $grmember.HasPGP }}<span title="Member has a PGP key">&psi;</span>{{ end }}</td>
 		<td>{{ $grmember.GetAffiliation }}</td>
@@ -38,7 +37,7 @@
 		</td>
 		{{ if $isadmin }}
 		<td>
-			{{ template "group/member_cmd.tmpl" dict "This" $this "UI" $ui "GroupMember" $grmember "Group" $group }}
+			{{ template "group/member_cmd.tmpl" dict "This" $this "UI" $.UI "GroupMember" $grmember "Group" $group }}
 		</td>
 		{{ end }}
 	</tr>
