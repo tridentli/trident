@@ -107,7 +107,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
+	<td>click</td>
 	<td>id=NominateAdd-button</td>
 	<td></td>
 </tr>
@@ -115,11 +115,6 @@
 	<td>assertText</td>
 	<td>id=-message</td>
 	<td>Nomination added</td>
-</tr>
-<tr>
-	<td>assertNotText</td>
-	<td>id=-error</td>
-	<td>Not a group member</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -163,7 +158,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>id=NominateNew-vouch</td>
+	<td>id=NominateNew-comment</td>
 	<td>Vouch</td>
 </tr>
 <tr>
@@ -174,8 +169,8 @@
 <!--kb_79-->
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
-	<td>Incomplete attestations</td>
+	<td>id=-error</td>
+	<td>Missing attestations</td>
 </tr>
 <tr>
 	<td>click</td>
@@ -201,6 +196,26 @@
 	<td>assertText</td>
 	<td>id=-message</td>
 	<td>Nomination added</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=a[title=&quot;Nominate&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>Test@User.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[5]</td>
+	<td>(Already a member)</td>
 </tr>
 <tr>
 	<td>open</td>

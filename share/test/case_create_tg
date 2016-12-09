@@ -93,8 +93,8 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>css=p</td>
-	<td>Nominate and Vouch:</td>
+	<td>css=h1</td>
+	<td>Nominate</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -127,6 +127,11 @@
 	<td>0(by) -&gt; 0(for)</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>(Operations against own profile disabled; please ask other admin)</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>link=Mailing List</td>
 	<td></td>
@@ -140,6 +145,11 @@
 	<td>clickAndWait</td>
 	<td>link=admin</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[3]</td>
+	<td>exact:Offset: 0, Total: 0</td>
 </tr>
 <tr>
 	<td>open</td>
