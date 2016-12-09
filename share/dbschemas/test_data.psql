@@ -153,6 +153,8 @@ INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
 INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
     VALUES ('seconduser', 'test', false, NOW(), 'active', 'second@user.com');
 INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
+    VALUES ('seconduser', 'test2', false, NOW(), 'active', 'second@user.com');
+INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
     VALUES ('adminuser', 'test', true, NOW(), 'active', 'admin@user.com');
 INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
     VALUES ('sysadmin', 'test', true, NOW(), 'active', 'sysadmin@user.com');
