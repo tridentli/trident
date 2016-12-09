@@ -311,6 +311,72 @@ func vouch_remove(ctx pf.PfCtx, args []string) (err error) {
 	return
 }
 
+type Vouch struct {
+	Vouchor string
+	Vouchee string
+	Entered time.Time
+}
+
+func Vouches_Get(ctx pf.PfCtx, group_name string) (v []Vouch, err error) {
+	err = ctx.SelectGroup(group_name, pf.PERM_GROUP_MEMBER)
+	if err != nil {
+		return
+	}
+
+	q := "SELECT " +
+		"mv.vouchor, mv.vouchee, mv.entered " +
+		"FROM member_vouch mv " +
+		"JOIN member m1 ON (mv.vouchor = m1.ident) " +
+		"JOIN member m2 ON (mv.vouchee = m2.ident) " +
+		"JOIN member_trustgroup mt1 ON " +
+		"ROW(mv.vouchor, mv.trustgroup) = " +
+		"ROW(mt1.member, mt1.trustgroup) " +
+		"JOIN member_trustgroup mt2 ON " +
+		"ROW(mv.vouchee, mv.trustgroup) = " +
+		"ROW(mt2.member, mt2.trustgroup) " +
+		"JOIN member_state ms1 ON (mt1.state = ms1.ident) " +
+		"JOIN member_state ms2 ON (mt2.state = ms2.ident) " +
+		"WHERE mv.trustgroup = $1 " +
+		"AND ms1.can_login " +
+		"AND ms2.can_login " +
+		"AND mv.positive"
+
+	rows, err := pf.DB.Query(q, group_name)
+	if err != nil {
+		return
+	}
+
+	defer rows.Close()
+
+	for rows.Next() {
+		var vouch Vouch
+
+		err = rows.Scan(&vouch.Vouchor, &vouch.Vouchee, &vouch.Entered)
+		if err != nil {
+			return
+		}
+
+		v = append(v, vouch)
+	}
+
+	return
+}
+
+func vouches_emit(ctx pf.PfCtx, args []string) (err error) {
+	group_name := args[0]
+
+	vouches, err := Vouches_Get(ctx, group_name)
+	if err != nil {
+		return
+	}
+
+	for _, v := range vouches {
+		ctx.Outf("%s,%s,%s\n", v.Vouchor, v.Vouchee, v.Entered)
+	}
+
+	return
+}
+
 func vouch_menu(ctx pf.PfCtx, args []string) (err error) {
 	perms := pf.PERM_USER
 
@@ -320,6 +386,7 @@ func vouch_menu(ctx pf.PfCtx, args []string) (err error) {
 		{"remove", vouch_remove, 3, 3, []string{"group", "vouchor", "vouchee"}, perms, "Remove a vouch"},
 		{"list_for", vouches_for_member, 2, 2, []string{"group", "username"}, perms, "List vouches for a member"},
 		{"list_by", vouches_by_member, 2, 2, []string{"group", "username"}, perms, "List vouches by a member"},
+		{"emit", vouches_emit, 1, 1, []string{"group"}, perms, "Emit Vouches"},
 	})
 
 	return ctx.Menu(args, menu)
