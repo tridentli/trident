@@ -1,0 +1,27 @@
+{{template "inc/header.tmpl" .}}
+
+	<p>
+		The following are the vouches for members of your group.
+	</p>
+
+	<p>
+		This list can also be downloaded as a <a href="?format=csv">CSV</a>.
+	</p>
+
+	<table>
+	<thead>
+		<th>Vouchor</th>
+		<th>Vouchee</th>
+		<th>Date</th>
+	</thead>
+	<tbody>
+	{{range $i, $v:= .Vouches}}
+	<tr>
+		<td>{{ $v.Vouchor }}</td>
+		<td>{{ $v.Vouchee }}</td>
+		<td>{{ fmt_date $v.Entered }}</td>
+	</tr>{{end}}
+	</tbody>
+	</table>
+
+{{template "inc/footer.tmpl" .}}

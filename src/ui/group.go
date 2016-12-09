@@ -206,12 +206,62 @@ func h_group_nominate(cui pu.PfUI) {
 	cui.Page_show("group/nominate.tmpl", p)
 }
 
+func h_vouches_csv(cui pu.PfUI) {
+	grp := cui.SelectedGroup()
+
+	vouches, err := tr.Vouches_Get(cui, grp.GetGroupName())
+	if err != nil {
+		pu.H_errmsg(cui, err)
+		return
+	}
+
+	csv := ""
+
+	for _, v := range vouches {
+		csv += v.Vouchor + "," + v.Vouchee + "," + v.Entered.Format(pf.Config.DateFormat) + "\n"
+	}
+
+	fname := grp.GetGroupName() + ".csv"
+
+	cui.SetContentType("text/vcard")
+	cui.SetFileName(fname)
+	cui.SetExpires(60)
+	cui.SetRaw([]byte(csv))
+	return
+}
+
+func h_vouches(cui pu.PfUI) {
+	fmt := cui.GetArg("format")
+
+	if fmt == "csv" {
+		h_vouches_csv(cui)
+		return
+	}
+
+	grp := cui.SelectedGroup()
+	vouches, err := tr.Vouches_Get(cui, grp.GetGroupName())
+	if err != nil {
+		pu.H_errmsg(cui, err)
+		return
+	}
+
+	/* Output the page */
+	type Page struct {
+		*pu.PfPage
+		Vouches []tr.Vouch
+	}
+
+	p := Page{cui.Page_def(), vouches}
+	cui.Page_show("group/vouches.tmpl", p)
+}
+
 func h_group(cui pu.PfUI, menu *pu.PfUIMenu) {
 	menu.Replace("member", h_group_member)
 
 	m := []pu.PfUIMentry{
 		{"nominate", "Nominate", pf.PERM_GROUP_MEMBER, h_group_nominate, nil},
 		{"nominate_existing", "Nominate existing user", pf.PERM_GROUP_MEMBER | pf.PERM_HIDDEN, h_group_nominate_existing, nil},
+		{"vouches", "Vouches", pf.PERM_GROUP_MEMBER, h_vouches, nil},
 	}
 
 	menu.Add(m...)
