@@ -193,19 +193,39 @@
 	<td></td>
 </tr>
 <tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>id=NominateNew-button</td>
 	<td></td>
 </tr>
-<!--KB_82-->
 <tr>
 	<td>assertText</td>
 	<td>id=-message</td>
-	<td>Nomination added</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<!--KB_82-->
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[3]</td>
+	<td>bob smith</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[7]</td>
+	<td>nominated</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>css=a[title=&quot;Nominate&quot;]</td>
+	<td>link=Nominate</td>
 	<td></td>
 </tr>
 <tr>

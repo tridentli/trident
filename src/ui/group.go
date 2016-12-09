@@ -150,6 +150,7 @@ func h_group_nominate(cui pu.PfUI) {
 	tctx := tr.TriGetCtx(cui)
 	user := tctx.TriSelectedUser()
 	grp := tctx.TriSelectedGroup()
+	added := false
 
 	/* Something posted? */
 	if cui.IsPOST() {
@@ -160,6 +161,7 @@ func h_group_nominate(cui pu.PfUI) {
 			if err != nil {
 				errmsg += err.Error()
 			}
+			added = true
 		}
 
 		/* Search field? */
@@ -198,6 +200,10 @@ func h_group_nominate(cui pu.PfUI) {
 		Users     []pf.PfUser
 		NotFound  bool
 		NewForm   *NominateNew
+	}
+
+	if added {
+		notfound = true
 	}
 
 	/* Re-fill in the form (for people who do not enable the attestations) */
