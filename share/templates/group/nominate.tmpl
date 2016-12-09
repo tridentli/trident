@@ -1,9 +1,12 @@
 {{template "inc/header.tmpl" .}}
 {{template "inc/search_email.tmpl" .}}
 
-	<p>
-		Nominate and Vouch:
-	</p>
+{{ if ne .Search "" }}
+{{ if .NotFound }}
+	<h2>Add a new Nomination:</h2>
+	{{ pfform .UI .NewForm .NewForm true }}
+{{ else }}
+	<h2>Nominate and vouch:</h2>
 
 	<table>
 	<thead>
@@ -17,7 +20,6 @@
 	<thead>
 	<tbody>
 {{ $theuser := .TheUser }}
-{{ $ui := .UI }}
 {{ $grp := .GroupName }}
 {{ range $id, $user := .Users }}
 	<tr>
@@ -27,7 +29,7 @@
 {{ if $user.GetHideEmail }}
 [Email Hidden]
 {{ else }}
-{{ $user.GetPriEmailString $ui false }}
+{{ $user.GetPriEmailString .UI false }}
 {{ end }}
 		</td>
 		<td>{{ $user.GetAffiliation }}</td>
@@ -35,10 +37,10 @@
 			{{ if eq $user.GetUserName $theuser.GetUserName }}
 			(You)
 			{{ else }}
-			{{ if $user.IsMember $ui $grp }}
+			{{ if $user.IsMember .UI $grp }}
 			(Already a member)
 			{{ else }}
-			{{ csrf_form $ui (print "/group/" $grp "/nominate_existing/") }}
+			{{ csrf_form .UI (print "/group/" $grp "/nominate_existing/") }}
 				<fieldset>
 					<input type="hidden" name="vouchee" value="{{ $user.GetUserName }}" />
 					<input type="submit" name="button" value="Select" />
@@ -50,10 +52,7 @@
 	</tr>{{ end }}
 	</tbody>
 	</table>
-
-{{ if .NotFound }}
-	<h2>Add a new Nomination:</h2>
-	{{ pfform $ui .NewForm . true }}
+{{ end }}
 {{ end }}
 
 {{template "inc/footer.tmpl" .}}

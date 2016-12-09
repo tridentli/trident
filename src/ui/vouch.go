@@ -21,6 +21,7 @@ func vouch_attestations_get(cui pu.PfUI, grp tr.TriGroup) (attestations string, 
 	if err != nil {
 		fatts, err = cui.FormValueM("attestations[]")
 		if err != nil {
+			err = errors.New("Missing attestations")
 			return
 		}
 	}
@@ -159,11 +160,16 @@ func vouch_nominate_new(cui pu.PfUI) (msg string, err error) {
 	descr, err2 := cui.FormValue("fullname")
 	affil, err3 := cui.FormValue("affiliation")
 	bio, err4 := cui.FormValue("biography")
-	comment, err5 := cui.FormValue("vouch")
-	attestations, err6 := vouch_attestations_get(cui, grp)
+	comment, err5 := cui.FormValue("comment")
 
-	if err != nil || err2 != nil || err3 != nil || err4 != nil || err5 != nil || err6 != nil {
+	if err != nil || err2 != nil || err3 != nil || err4 != nil || err5 != nil {
 		err = errors.New("Invalid parameters provided")
+		return
+	}
+
+	attestations, err6 := vouch_attestations_get(cui, grp)
+	if err6 != nil {
+		err = err6
 		return
 	}
 
