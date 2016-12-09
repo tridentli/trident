@@ -78,3 +78,12 @@ Description: Trident - Wiki Exporter
  The Trident Wiki Archive can then be imported into Trident.
  .
  For more information about Trident please see https://trident.li
+
+Package: trident-test
+Architecture: all
+Description: Trident Testing data
+ This is Trident, a Trusted Information Exchange Toolkit.
+ .
+ This package only contains the Silenium Testing scripts.
+ .
+ For more information about Trident please see https://trident.li

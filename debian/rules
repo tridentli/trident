@@ -51,6 +51,11 @@ override_dh_auto_install:
 	cp --preserve=timestamps doc/conf/trident.conf debian/trident-server/etc/trident/
 	cp --preserve=timestamps -R doc/conf/nginx/ debian/trident-server/etc/trident/
 
+	########################################
+	# trident-test package
+	mkdir -p debian/trident-test/usr/share/trident/
+	mv debian/trident-server/usr/share/trident/test debian/trident-test/usr/share/trident/
+
 override_dh_installinit:
 	dh_installinit --name "trident"
 
