@@ -168,6 +168,26 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
+	<td>css=b</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>link=create - create</td>
+	<td>create - create</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Regular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=create - create</td>
+	<td>create - create</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
 	<td>link=create - create</td>
 	<td></td>
 </tr>
@@ -297,9 +317,54 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
+	<td>assertTextNotPresent</td>
 	<td>test2 - Test 2 Admin Vouch</td>
 	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>sysadmin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>${sysadminPassword}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test2 - Test 2 Admin Vouch</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=testuser</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[7]</td>
+	<td>nominated</td>
 </tr>
 <tr>
 	<td>open</td>

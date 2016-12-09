@@ -93,6 +93,11 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
+	<td>link=Regular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
 	<td>link=create - Test 3 vouch group</td>
 	<td></td>
 </tr>

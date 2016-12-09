@@ -48,6 +48,11 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
+	<td>link=Regular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
 	<td>link=create - Test 3 vouch group</td>
 	<td></td>
 </tr>
@@ -107,7 +112,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAndWait</td>
 	<td>id=NominateAdd-button</td>
 	<td></td>
 </tr>
@@ -192,6 +197,7 @@
 	<td>id=NominateNew-button</td>
 	<td></td>
 </tr>
+<!--KB_82-->
 <tr>
 	<td>assertText</td>
 	<td>id=-message</td>

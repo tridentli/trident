@@ -51,11 +51,6 @@
 	<td>link=Vouches</td>
 	<td></td>
 </tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[3]</td>
-	<td>2016-12-07</td>
-</tr>
 </tbody></table>
 </body>
 </html>
