@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>case_nominated_member_visible</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case_nominated_member_visible</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>sysadmin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>${sysadminPassword}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>${loginString}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Regular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=grpnew-group</td>
+	<td>testtg1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=grpnew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriGroupS-min_invouch</td>
+	<td>7</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=TriGroupS-target_invouch</td>
+	<td>7</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=TriGroupS-PfGroupS-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[3]</td>
+	<td>exact:Offset: 0, Total: 1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>Test@User.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[3]</td>
+	<td>test@user.com</td>
+</tr>
+<!--Verify case insensitivity-->
+<tr>
+	<td>clickAndWait</td>
+	<td>css=fieldset &gt; input[name=&quot;button&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateAdd-comment</td>
+	<td>Ok pweson<br /></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateAdd-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@id='NominateAdd-attestations'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@id='NominateAdd-attestations'])[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateAdd-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Nomination added</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[7]</td>
+	<td>nominated</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>${testuserPassword}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextNotPresent</td>
+	<td></td>
+	<td>testtg1 - testtg1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
