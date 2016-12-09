@@ -2,6 +2,7 @@ debian/trident/
 debian/trident-cli/
 debian/trident-server/
 debian/trident-wikiexport/
+debian/trident-test/
 debian/*.debhelper.log
 debian/*.debhelper
 debian/*.substvars
