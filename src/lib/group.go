@@ -345,7 +345,7 @@ func group_add(ctx pf.PfCtx, args []string) (err error) {
 func group_member_nominate(ctx pf.PfCtx, args []string) (err error) {
 	grp := ctx.SelectedGroup()
 	user := args[1]
-	err = ctx.SelectUser(user,pf.PERM_USER_NOMINATE)
+	err = ctx.SelectUser(user, pf.PERM_USER_NOMINATE)
 	if err != nil {
 		err = errors.New("User selection failed")
 		return
