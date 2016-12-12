@@ -43,8 +43,13 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[5]</td>
-	<td>test2<br /> test</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[5]/table/tbody/tr/td[2]</td>
+	<td>Test 2 Admin Vouch</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[5]/table/tbody/tr[2]/td[2]</td>
+	<td>test TG</td>
 </tr>
 <tr>
 	<td>select</td>
@@ -58,13 +63,13 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[5]</td>
-	<td>test</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[5]/table/tbody/tr/td[2]</td>
+	<td>test TG</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[5]</td>
-	<td>test2</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[5]/table/tbody/tr/td[2]</td>
+	<td>Test 2 Admin Vouch</td>
 </tr>
 <tr>
 	<td>open</td>

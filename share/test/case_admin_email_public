@@ -43,7 +43,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>css=#footer &gt; ul &gt; li &gt; a</td>
+	<td>xpath=(//a[contains(text(),'sysadmin')])[2]</td>
 	<td>sysadmin</td>
 </tr>
 <tr>

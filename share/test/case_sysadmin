@@ -42,6 +42,41 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAndWait</td>
+	<td>link=User</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[3]</td>
+	<td>TG Admin User</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[3]</td>
+	<td>recover_test user</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>TG</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[3]</td>
+	<td>TG Admin User</td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[3]</td>
+	<td>recover_test user</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>link=System</td>
 	<td>System</td>
@@ -191,6 +226,36 @@
 	<td>verifyValue</td>
 	<td>id=PfSys-adminname</td>
 	<td>sysadmin</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test2 - test2 TG</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Members')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[7]</td>
+	<td>vetted</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[7]</td>
+	<td>approved</td>
 </tr>
 <tr>
 	<td>open</td>
