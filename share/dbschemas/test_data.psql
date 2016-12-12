@@ -160,7 +160,9 @@ INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
 INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
     VALUES ('sysadmin', 'test2', true, NOW(), 'active', 'sysadmin@user.com');
 INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
-    VALUES ('seconduser', 'test2', false, NOW(), 'vetted', 'second@user.com');
+    VALUES ('seconduser', 'test2', false, NOW(), 'active', 'second@user.com');
+INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
+    VALUES ('recoveruser', 'test2', false, NOW(), 'vetted', 'recover_user@user.com');
 -- Add Recover user to test
 INSERT INTO member_trustgroup (member,trustgroup,admin,entered,state,email)
     VALUES ('recoveruser', 'test', true, NOW(), 'active', 'recover_user@user.com');
