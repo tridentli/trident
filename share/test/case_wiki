@@ -377,14 +377,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr/td[3]</td>
-	<td>exact:(This page is still empty, please [edit me](?s=edit))</td>
-</tr>
-<tr>
 	<td>assertTextPresent</td>
 	<td></td>
-	<td>foo/bar/</td>
+	<td>foo/bar/ack</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>

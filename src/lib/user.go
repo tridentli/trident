@@ -47,48 +47,6 @@ func (user *TriUserS) BestNominator(ctx pf.PfCtx) (nom_name string, err error) {
 	return
 }
 
-/* TODO: Verify: Only show member of groups my user is associated with and are non-anonymous */
-func (user *TriUserS) GetList(ctx pf.PfCtx, search string, offset int, max int, exact bool) (users []pf.PfUser, err error) {
-	users = nil
-
-	/* The fields we match on */
-	matches := []string{"ident", "me.email", "descr", "affiliation", "bio_info", "comment", "d.value"}
-
-	var p []string
-	var t []pf.DB_Op
-	var v []interface{}
-
-	for _, m := range matches {
-		p = append(p, m)
-		t = append(t, pf.DB_OP_ILIKE)
-		if exact {
-			v = append(v, search)
-		} else {
-			v = append(v, "%"+search+"%")
-		}
-	}
-
-	j := "INNER JOIN member_email me ON member.ident = me.member " +
-		"LEFT OUTER JOIN member_details d ON d.member = member.ident " +
-		"LEFT OUTER JOIN member_vouch v ON v.vouchee = member.ident"
-
-	o := "GROUP BY member.ident " +
-		"ORDER BY member.ident"
-
-	objs, err := pf.StructFetchMulti(ctx.NewUserI, "member", j, pf.DB_OP_OR, p, t, v, o, offset, max)
-	if err != nil {
-		return
-	}
-
-	/* Get the groups these folks are in */
-	for _, o := range objs {
-		u := o.(pf.PfUser)
-		users = append(users, u)
-	}
-
-	return users, err
-}
-
 func user_pw_send(ctx pf.PfCtx, is_reset bool, nom_name string) (err error) {
 	var user_email pf.PfUserEmail
 	var nom_email pf.PfUserEmail
