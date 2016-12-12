@@ -1,3 +1,15 @@
+trident (1.4.1) stable; urgency=medium
+
+  * testing/bugfix enhancements.
+  * CSRF protections for all forms
+  * IP tracking/blocking based on attempts.
+  * Pitchfork split into dedicated code-base
+  * XFF handling
+  * non-gpg password reset.
+  * Access Logging (Apache access.log style, but with Trident credentials)
+
+ -- Ben April <bapril@people.ops-trust.net>  Mon, 12 Dec 2016 12:50:15 -0500
+
 trident (1.4.0) stable; urgency=medium
 
   * Public Release
