@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>case_summary</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case_summary</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>sysadmin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>${sysadminPassword}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>${loginString}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Regular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=System</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Report')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeText</td>
+	<td>css=pre</td>
+	<td>systemReport</td>
+</tr>
+<tr>
+	<td>echo</td>
+	<td>javascript{storedVars.systemReport_packed = storedVars.systemReport.replace(/(\r\n|\n|\r)/gm,&quot;&quot;)}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>Pitchfork Database schema versions: running: 21, required: 21</td>
+	<td>txtValue</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>javascript{storedVars['systemReport_packed'].search(storedVars['txtValue']);}</td>
+	<td>result</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td> ${result} &gt;&nbsp;&nbsp;1 ? true : false </td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>App Database schema versions: running: 0, required: 0</td>
+	<td>txtValue</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>javascript{storedVars['systemReport_packed'].search(storedVars['txtValue']);}</td>
+	<td>result</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td> ${result} &gt;&nbsp;&nbsp;1 ? true : false </td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>Mailing Lists: 10</td>
+	<td>txtValue</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>javascript{storedVars['systemReport_packed'].search(storedVars['txtValue']);}</td>
+	<td>result</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td> ${result} &gt;&nbsp;&nbsp;1 ? true : false </td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>Members: 7</td>
+	<td>txtValue</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>javascript{storedVars['systemReport_packed'].search(storedVars['txtValue']);}</td>
+	<td>result</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td> ${result} &gt;&nbsp;&nbsp;1 ? true : false </td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>Member Emails: 8</td>
+	<td>txtValue</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>javascript{storedVars['systemReport_packed'].search(storedVars['txtValue']);}</td>
+	<td>result</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td> ${result} &gt;&nbsp;&nbsp;1 ? true : false </td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>Second Factors: 1</td>
+	<td>txtValue</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>javascript{storedVars['systemReport_packed'].search(storedVars['txtValue']);}</td>
+	<td>result</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td> ${result} &gt;&nbsp;&nbsp;1 ? true : false </td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>Groups: 4</td>
+	<td>txtValue</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>javascript{storedVars['systemReport_packed'].search(storedVars['txtValue']);}</td>
+	<td>result</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td> ${result} &gt;&nbsp;&nbsp;1 ? true : false </td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>Wiki Pages: 6</td>
+	<td>txtValue</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>javascript{storedVars['systemReport_packed'].search(storedVars['txtValue']);}</td>
+	<td>result</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td> ${result} &gt;&nbsp;&nbsp;1 ? true : false </td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>Wiki Page Revisions: 6</td>
+	<td>txtValue</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>javascript{storedVars['systemReport_packed'].search(storedVars['txtValue']);}</td>
+	<td>result</td>
+</tr>
+<tr>
+	<td>verifyEval</td>
+	<td> ${result} &gt;&nbsp;&nbsp;1 ? true : false </td>
+	<td>true</td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
