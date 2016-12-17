@@ -7,12 +7,13 @@ Build-Depends: debhelper (>> 9),
                dh-golang,
                dh-systemd,
                golang-go (>> 1.6),
+               trident-ext-src (>> 0.1),
                git,
                ca-certificates
 Standards-Version: 3.9.6
 Homepage: https://trident.li
-Vcs-Browser: https://github.com/trident/trident
-Vcs-Git: git://github.com/trident/trident.git
+Vcs-Browser: https://github.com/tridentli/trident
+Vcs-Git: git://github.com/tridentli/trident.git
 
 Package: trident
 Architecture: all

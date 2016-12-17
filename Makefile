@@ -20,8 +20,9 @@ help:
 	@echo "pkg              - ext+deps+pkg_only"
 	@echo "pkg_only         - Only builds Debian package (no dependency updates)"
 	@echo "versions         - Show pre-selected versions"
-	@echo "ext              - Fetches initial external dependencies"
-	@echo "deps             - Updates external dependencies"
+	@echo "ext              - Fetches initial external dependencies (for use by local devs or trident-ext-pkg)"
+	@echo "deps             - Updates external dependencies (for use by local devs or trident-ext-pkg)"
+	@echo "build_ext        - Create a GOPATH version of the local trident dir"
 	@echo "check            - runs: go vet/fmt, also on Pitchfork"
 	@echo "tests		- Runs all Golang based tests"
 	@echo "vtests		- Runs all Golang based tests (verbose)"
@@ -32,7 +33,7 @@ clean_ext:
 
 pkg: ext deps pkg_only
 
-pkg_only:
+pkg_only: build_ext
 	@echo "Starting package build..."
 	dpkg-buildpackage -uc -us -F
 	@echo "Starting package build - done"
@@ -48,15 +49,18 @@ versions:
 	@if [ -f /etc/debian_version ]; then printf "Debian "; cat /etc/debian_version; else echo "Not Debian"; fi
 	@echo
 
-ext:
-	@$(MAKE) versions
-	@echo "Retrieving 'ext' dependencies..."
+build_ext:
+	@echo "Creating temporary 'ext' for build..."
 
 	@echo
 	@echo "Creating 'ext' directory for external dependencies and gopath"
 	@mkdir -p ext/_gopath/src/trident.li
 	@echo "Symlink Trident into GOPATH"
 	@ln -s ../../../../ ext/_gopath/src/trident.li/trident
+
+ext:
+	@$(MAKE) versions
+	@echo "Retrieving 'ext' dependencies..."
 
 	@echo "Git Clone Pitchfork into GOPATH [ $(PF_GIT_BRANCH) ]"
 	@mkdir -p ext/_gopath/src/trident.li
@@ -95,7 +99,7 @@ deps: ext
 	@echo "Updating Dependencies - done"
 	@echo
 
-check: ext deps
+check:
 	@echo "Running 'go vet'"
 	@go vet ./...
 	@echo "Running 'go fmt'"
