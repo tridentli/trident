@@ -62,14 +62,19 @@
 	<td>Error - HTTP 404 Not Found</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td[6]</td>
+	<td>Subscribed</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>id=button</td>
 	<td></td>
 </tr>
 <tr>
-	<td>verifyNotValue</td>
-	<td>id=button</td>
-	<td>Subscribe</td>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td[6]</td>
+	<td>Unsubscribed</td>
 </tr>
 <tr>
 	<td>open</td>

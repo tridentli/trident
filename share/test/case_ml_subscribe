@@ -82,19 +82,24 @@
 	<td></td>
 </tr>
 <tr>
+	<td>selectWindow</td>
+	<td>null</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[4]/td[6]</td>
+	<td>Unsubscribed</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>xpath=(//input[@id='button'])[3]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>id=popt-message</td>
-	<td>Successfully subscribed user</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Mailing List</td>
-	<td></td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[4]/td[6]</td>
+	<td>Subscribed</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -107,19 +112,19 @@
 	<td>4</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td[6]</td>
+	<td>Subscribed</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
 	<td>xpath=(//input[@id='button'])[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>id=popt-message</td>
-	<td>Successfully unsubscribed user</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Mailing List</td>
-	<td></td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td[6]</td>
+	<td>Unsubscribed</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -213,13 +218,8 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>css=fieldset</td>
-	<td>Group Name: The group name List Name: The Mailing List Name User Name: The User Name&nbsp;&nbsp;&nbsp;Subscribe to the list&nbsp;&nbsp;&nbsp;Successfully subscribed user</td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Mailing List</td>
-	<td></td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[4]/td[6]</td>
+	<td>Subscribed</td>
 </tr>
 <tr>
 	<td>assertText</td>
