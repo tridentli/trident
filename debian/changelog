@@ -1,3 +1,11 @@
+trident (1.4.2) stable; urgency=medium
+
+  * Fix bug with member list. 
+  * Re-work build so that the trident-ext-src package enables pubilder.
+  * Fixed Mailing list subscription buttons.
+
+ -- Ben April <bapril@people.opst-trust.net>  Sun, 11 Dec 2016 04:05:28 -0500
+
 trident (1.4.1) stable; urgency=medium
 
   * testing/bugfix enhancements.
