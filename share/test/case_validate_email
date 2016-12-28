@@ -42,11 +42,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAndWait</td>
 	<td>xpath=(//a[contains(text(),'Email')])[2]</td>
 	<td></td>
@@ -72,6 +67,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td</td>
+	<td>Verification in Process</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Verification in Process</td>
+	<td></td>
+</tr>
+<tr>
 	<td>type</td>
 	<td>id=opt_confirm-verifycode</td>
 	<td>wrong_code</td>
@@ -80,6 +85,11 @@
 	<td>clickAndWait</td>
 	<td>id=opt_confirm-button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=opt_confirm-error</td>
+	<td>exact:Could not update verifycode; Verification Code invalid/already confirmed?</td>
 </tr>
 <tr>
 	<td>assertTextPresent</td>
@@ -103,22 +113,47 @@
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Email</td>
+	<td>id=button</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>name=button</td>
+	<td>link=Email</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[3]/td</td>
+	<td>//div[@id='receptacle']/div[2]/article/table/tbody/tr[2]/td[3]</td>
 	<td>Verified</td>
 </tr>
 <tr>
+	<td>type</td>
+	<td>id=opt_add-email</td>
+	<td>test@test.com</td>
+</tr>
+<tr>
 	<td>clickAndWait</td>
-	<td>link=Email</td>
+	<td>id=opt_add-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>test@test.com</td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>css=td &gt; ul &gt; li</td>
+	<td>testtg1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@id='button'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextNotPresent</td>
+	<td>test@test.com</td>
 	<td></td>
 </tr>
 <tr>
