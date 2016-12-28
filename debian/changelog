@@ -1,3 +1,10 @@
+trident (1.4.3+rc1) stable; urgency=medium
+
+  * Fix e-mail management buttons (verify,remove,make recover)
+  * Correct pager
+
+ -- Ben April <bapril@people.opst-trust.net>  Wed, 28 Dec 2016 09:24:35 -0500
+
 trident (1.4.2) stable; urgency=medium
 
   * Fix bug with member list. 
