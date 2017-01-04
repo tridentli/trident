@@ -153,9 +153,8 @@ func h_group_vcp(cui pu.PfUI) {
 		Criterias   []string
 		Limit       int
 		Limits      []int
-		Search      string
 	}
 
-	p := Page{cui.Page_def(), offset, total, cui.SelectedGroup().GetGroupName(), vcps, action, criteria, criterias, limit, limits, criteria}
+	p := Page{cui.Page_def(), offset, total, cui.SelectedGroup().GetGroupName(), vcps, action, criteria, criterias, limit, limits}
 	cui.Page_show("group/vcp.tmpl", p)
 }
