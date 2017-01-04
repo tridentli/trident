@@ -189,14 +189,6 @@ func vouch_nominate_new(cui pu.PfUI) (msg string, err error) {
 		return
 	}
 
-	cmd = "user email confirm_force"
-	args = []string{vouchee_ident, email}
-
-	msg, err = cui.HandleCmd(cmd, args)
-	if err != nil {
-		return
-	}
-
 	cmd = "group nominate"
 	args = []string{grp.GetGroupName(), vouchee_ident}
 
