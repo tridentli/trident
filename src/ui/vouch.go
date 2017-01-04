@@ -189,9 +189,6 @@ func vouch_nominate_new(cui pu.PfUI) (msg string, err error) {
 		return
 	}
 
-        /* Verify Email address */
-        pf.User_Email_Verify(ctx, username, email)
-
 	cmd = "group nominate"
 	args = []string{grp.GetGroupName(), vouchee_ident}
 
