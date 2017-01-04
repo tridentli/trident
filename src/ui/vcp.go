@@ -19,7 +19,7 @@ func h_group_vcp(cui pu.PfUI) {
 	limit_v, err := cui.FormValue("limit")
 	if err == nil {
 		limit_t, err2 := strconv.Atoi(limit_v)
-		if err2 == nil && limit_t < 50 {
+		if err2 == nil && limit_t < 51 {
 			limit = limit_t
 		}
 	}
