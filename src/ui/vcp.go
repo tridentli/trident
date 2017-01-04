@@ -145,7 +145,7 @@ func h_group_vcp(cui pu.PfUI) {
 	type Page struct {
 		*pu.PfPage
 		PagerOffset int
-		PagetTotal  int
+		PagerTotal  int
 		GroupName   string
 		Members     []VCP
 		Action      string
