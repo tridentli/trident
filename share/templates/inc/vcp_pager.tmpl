@@ -1,5 +1,5 @@
 <p>
-        {{ if pager_less_ok .PagerOffset }}
+        {{ if var_pager_less_ok .Limit .PagerOffset }}
         {{ csrf_form $.UI "" }}
                 <fieldset>
                         <ul>
@@ -7,7 +7,7 @@
                                         {{ if .Criteria }}
                                                 <input type="hidden" name="criteria" value="{{ .Criteria }}" />
                                         {{ end }}
-                                        <input type="hidden" name="offset" value="{{ pager_less .PagerOffset }}" />
+                                        <input type="hidden" name="offset" value="{{ var_pager_less .Limit .PagerOffset }}" />
                                         <input type="hidden" name="limit" value="{{ .Limit }}" />
                                         <input id="button" type="submit" name="button" value="Back" />
                                 </li>
@@ -16,7 +16,7 @@
         </form>
 
         {{ end }}
-        {{ if pager_more_ok .PagerOffset .PagerTotal }}
+        {{ if var_pager_more_ok .Limit .PagerOffset .PagerTotal }}
         {{ csrf_form $.UI "" }}
                 <fieldset>
                         <ul>
@@ -25,7 +25,7 @@
                                                 <input type="hidden" name="search" value="{{ .Criteria }}" />
                                         {{ end }}
                                         <input type="hidden" name="limit" value="{{ .Limit }}" />
-                                        <input type="hidden" name="offset" value="{{ pager_more .PagerOffset .PagerTotal }}" />
+                                        <input type="hidden" name="offset" value="{{ var_pager_more .Limit .PagerOffset .PagerTotal }}" />
                                         <input id="button" type="submit" name="button" value="Forward" />
                                 </li>
                         </ul>
