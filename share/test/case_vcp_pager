@@ -1,0 +1,731 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="https://trident.localhost/" />
+<title>case_vcp_pager</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">case_vcp_pager</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>${logoutURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>sysadmin</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>${sysadminPassword}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=p</td>
+	<td>${loginString}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Regular</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test - test TG</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>hsimpson@springfieldpower.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>Homer Simpson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>Springfield Power</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>mburns@springfieldpower.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>Montgumery Burns</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>Springfield Power</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>lsimpson@springfield.edu</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>Lisa Simpson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>PHD</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>large_hair_marge@aol.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>Marge Simpson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>Mom</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>bart_simpson@gmail.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>Bart J Simpson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>Eat My Shorts!</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>wsmithers@springfieldpower.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>W Smithers</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>Assistant to the CEO</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>bar_ney@gmail.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>Barney</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>Holding down Barstools</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>maggie_bink@gmail.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>Maggie Simpson</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>Eat My Shorts!</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>police@springfield.gov</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>SpringfieldPD</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>Eat My Shorts!</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Nominate</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=search</td>
+	<td>ned@flanders.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-fullname</td>
+	<td>Ned Flanders</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-affiliation</td>
+	<td>Eat My Shorts!</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-biography</td>
+	<td>Blah Blah</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=NominateNew-comment</td>
+	<td>Good guy, Homer. </td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=NominateNew-attestations</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=NominateNew-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>id=-message</td>
+	<td>Member successfully nominated.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Logout</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>${loginURI}</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-username</td>
+	<td>testuser</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=login-password</td>
+	<td>${testuserPassword}</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=login-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test - test TG</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//a[contains(text(),'Vouching Control Panel')])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[6]</td>
+	<td>exact:Offset: 0, Total: 11</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/form[2]/table/tbody/tr[11]/td[3]</td>
+	<td>Ned Flanders</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=limit</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=Button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>//div[@id='receptacle']/div[2]/article/form[2]/table/tbody/tr[11]/td[3]</td>
+	<td>Ned Flanders</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='marked[]'])[9]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@name='Button'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/form[2]/table/tbody/tr[10]/td[3]</td>
+	<td>Ned Flanders</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/form[2]/table/tbody/tr[9]/td[3]</td>
+	<td>SpringfieldPD</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='criteria'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=Button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>xpath=(//input[@name='marked[]'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=marked[]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//input[@name='Button'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>name=criteria</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=Button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>//div[@id='receptacle']/div[2]/article/form[2]/table/tbody/tr[10]/td[3]</td>
+	<td>SpringfieldPD</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>//div[@id='receptacle']/div[2]/article/form[2]/table/tbody/tr[10]/td[3]</td>
+	<td>SpringfieldPD</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Group</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=test - test TG</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Members</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[4]</td>
+	<td>exact:Offset: 0, Total: 15</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[4]</td>
+	<td>exact:Offset: 10, Total: 15</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=button</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
