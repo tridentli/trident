@@ -2,6 +2,7 @@ package trident
 
 import (
 	"errors"
+
 	pf "trident.li/pitchfork/lib"
 )
 
@@ -213,6 +214,7 @@ func user_pw_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
 func user_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
 	m := []pf.PfMEntry{
 		{"nominate", user_nominate, 5, 5, []string{"username", "email", "bio_info", "affiliation", "descr"}, pf.PERM_USER, "Nominate New User"},
+		{"merge", user_merge, 2, 2, []string{"username_new", "username_old"}, pf.PERM_SYS_ADMIN, "Merge two user accounts"},
 	}
 
 	menu.Add(m...)
