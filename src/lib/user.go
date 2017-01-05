@@ -2,6 +2,7 @@ package trident
 
 import (
 	"errors"
+
 	pf "trident.li/pitchfork/lib"
 )
 

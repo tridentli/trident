@@ -709,7 +709,7 @@
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/p[4]</td>
-	<td>exact:Offset: 0, Total: 15</td>
+	<td>exact:Offset: 0, Total: 16</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
@@ -719,7 +719,7 @@
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='receptacle']/div[2]/article/p[4]</td>
-	<td>exact:Offset: 10, Total: 15</td>
+	<td>exact:Offset: 10, Total: 16</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
