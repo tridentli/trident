@@ -1,3 +1,14 @@
+trident (1.4.4+rc1) stable; urgency=medium
+
+  * Add variable page-size pager. 
+  * Allow more than one “hidden” input to cli.  (password AND 2fa)
+  * Typo “Remove Email”
+  * Fix table width, prevent form fields from running off the right side. 
+  * Fix VCP pagination
+  * Fix nomination of new member for non sysadmin. 
+
+ -- Ben April <bapril@people.opst-trust.net>  Wed, 11 Jan 2017 09:24:35 -0500
+
 trident (1.4.3+rc1) stable; urgency=medium
 
   * Fix e-mail management buttons (verify,remove,make recover)
