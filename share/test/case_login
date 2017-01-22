@@ -22,6 +22,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyAttribute</td>
+	<td>id=login-username@placeholder</td>
+	<td>firstlastnum</td>
+</tr>
+<tr>
+	<td>verifyAttribute</td>
+	<td>id=login-username@pattern</td>
+	<td>.{2,}</td>
+</tr>
+<tr>
 	<td>type</td>
 	<td>id=login-username</td>
 	<td>testuser</td>
