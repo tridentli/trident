@@ -3,6 +3,7 @@ package TriUI
 import (
 	"strconv"
 	"strings"
+
 	"trident.li/keyval"
 	pf "trident.li/pitchfork/lib"
 	pu "trident.li/pitchfork/ui"
@@ -169,6 +170,9 @@ func h_group_nominate(cui pu.PfUI) {
 		if err != nil {
 			search = ""
 		}
+
+		/* case-fold to lowercase */
+		search = strings.ToLower(search)
 
 		/* Simple 'is there an @ sign, it must be an email address' check */
 		if strings.Index(search, "@") == -1 {

@@ -127,6 +127,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>verifyValue</td>
+	<td>name=search</td>
+	<td>test@user.com</td>
+</tr>
+<tr>
 	<td>assertTextPresent</td>
 	<td>Test D. User</td>
 	<td></td>
@@ -409,12 +414,17 @@
 <tr>
 	<td>type</td>
 	<td>name=search</td>
-	<td>bob@sideshow.com</td>
+	<td>bob@sideshow.COM</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
 	<td>name=button</td>
 	<td></td>
+</tr>
+<tr>
+	<td>verifyValue</td>
+	<td>id=NominateNew-email</td>
+	<td>bob@sideshow.com</td>
 </tr>
 <tr>
 	<td>type</td>
