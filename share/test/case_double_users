@@ -64,7 +64,7 @@
 <tr>
 	<td>verifyValue</td>
 	<td>id=NominateNew-email</td>
-	<td>Bart.Simpson@foo.com</td>
+	<td>bart.simpson@foo.com</td>
 </tr>
 <tr>
 	<td>type</td>
