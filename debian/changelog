@@ -1,11 +1,25 @@
+trident (1.4.5) stable; urgency=medium
+
+- (PF65) Update login min length to be a config value along with example username.
+- (PF68) Refactor how PGP key lists are generated for user-global and user-tg sets.
+- (T59) Down-case nomination search e-mail before searching.
+- (T63) Resolve nuisance translation errors by enabling translation code.
+- (T65) fix "user password set $type $username $password", works for sysadmin
+- (T65) add cli "user view $username" for sysadmin
+- (T61) Fix headshot sizes.
+- (PF67) "email address used for recovering passwords"
+- (PF67) Roll-back form CSS widening
+
+ -- Ben April <bapril@ops-trust.net>  Wed, 25 Jan 2017 22:01:47 -0500
+
 trident (1.4.4+rc1) stable; urgency=medium
 
-  * Add variable page-size pager. 
+  * Add variable page-size pager.
   * Allow more than one “hidden” input to cli.  (password AND 2fa)
   * Typo “Remove Email”
-  * Fix table width, prevent form fields from running off the right side. 
+  * Fix table width, prevent form fields from running off the right side.
   * Fix VCP pagination
-  * Fix nomination of new member for non sysadmin. 
+  * Fix nomination of new member for non sysadmin.
 
  -- Ben April <bapril@people.opst-trust.net>  Wed, 11 Jan 2017 09:24:35 -0500
 
@@ -18,7 +32,7 @@ trident (1.4.3+rc1) stable; urgency=medium
 
 trident (1.4.2) stable; urgency=medium
 
-  * Fix bug with member list. 
+  * Fix bug with member list.
   * Re-work build so that the trident-ext-src package enables pubilder.
   * Fixed Mailing list subscription buttons.
 
@@ -49,7 +63,7 @@ trident (1.3.9) unstable; urgency=medium
   * #336 TG member list includes e-mail
   * #346 Generate QR code when creating new 2FA
   * #348 Provide error when attempting to create a TG without a sysadmin e-mail set.
-  * #353 Prevent file upload without an extension for mime-type selection. 
+  * #353 Prevent file upload without an extension for mime-type selection.
   * #354 Adding a trailing slash to a directory name no longer causes an error.
   * #371 Correct for change in code.google.com deployment.
   * #317 PGP key links.

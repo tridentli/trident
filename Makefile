@@ -6,8 +6,8 @@ ifndef $GIT_BRANCH
 	GIT_BRANCH := `git rev-parse --abbrev-ref HEAD 2>/dev/null || printf "nogit"`
 endif
 
-# Pull correct branches for PF from local files. 
-PF_GIT_BRANCH = DEV_1.4.4
+# Pull correct branches for PF from local files.
+PF_GIT_BRANCH = DEV_1.4.5
 PF_GIT_REPO = https://github.com/tridentli/pitchfork.git
 
 # dpkg-buildpackage calls make, so <all> should be empty.
