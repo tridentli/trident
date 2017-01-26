@@ -1,14 +1,14 @@
 trident (1.4.5) stable; urgency=medium
 
-- (PF65) Update login min length to be a config value along with example username.
-- (PF68) Refactor how PGP key lists are generated for user-global and user-tg sets.
-- (T59) Down-case nomination search e-mail before searching.
-- (T63) Resolve nuisance translation errors by enabling translation code.
-- (T65) fix "user password set $type $username $password", works for sysadmin
-- (T65) add cli "user view $username" for sysadmin
-- (T61) Fix headshot sizes.
-- (PF67) "email address used for recovering passwords"
-- (PF67) Roll-back form CSS widening
+  * (PF65) Update login min length to be a config value along with example username.
+  * (PF68) Refactor how PGP key lists are generated for user-global and user-tg sets.
+  * (T59) Down-case nomination search e-mail before searching.
+  * (T63) Resolve nuisance translation errors by enabling translation code.
+  * (T65) fix "user password set $type $username $password", works for sysadmin
+  * (T65) add cli "user view $username" for sysadmin
+  * (T61) Fix headshot sizes.
+  * (PF67) "email address used for recovering passwords"
+  * (PF67) Roll-back form CSS widening
 
  -- Ben April <bapril@ops-trust.net>  Wed, 25 Jan 2017 22:01:47 -0500
 
