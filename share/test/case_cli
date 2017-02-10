@@ -49,6 +49,21 @@
 <tr>
 	<td>type</td>
 	<td>id=popt-cmd</td>
+	<td>user view testuser</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=popt-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>An error occured: Could not select user<br /><br />	</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt-cmd</td>
 	<td>system</td>
 </tr>
 <tr>
@@ -80,6 +95,21 @@
 	<td>assertTextPresent</td>
 	<td></td>
 	<td>Now a SysAdmin user</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=popt-cmd</td>
+	<td>user view testuser</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=popt-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td></td>
+	<td>UUID: f3d8120e-6df5-4677-b128-935f8ee60347</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -126,7 +156,6 @@
 	<td>id=login-cookies</td>
 	<td>exact:Note: Web cookies are required beyond this point</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

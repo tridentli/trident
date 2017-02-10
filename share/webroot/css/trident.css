@@ -453,9 +453,9 @@ header.usertop a img
 
 img.userimage
 {
-	max-height			: 40px;
-	max-width			: 40px;
-	border-radius			: 20px;
+	max-height			: 128px;
+	max-width			: 128px;
+	border-radius			: 10px;
 }
 
 #footer
@@ -465,7 +465,7 @@ img.userimage
 	z-index				: 10;
 	height				: 4em;
 	font-size			: xx-small;
-	text-align			: right; 
+	text-align			: right;
 	width				: 100%;
 	background-color		: #eeeeee;
 	border-top			: 1px solid #aaaaaa;
