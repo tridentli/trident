@@ -1,0 +1,38 @@
+<p>
+        {{ if var_pager_less_ok .Limit .PagerOffset }}
+        {{ csrf_form $.UI "" }}
+                <fieldset>
+                        <ul>
+                                <li>
+                                        {{ if .Criteria }}
+                                                <input type="hidden" name="criteria" value="{{ .Criteria }}" />
+                                        {{ end }}
+                                        <input type="hidden" name="offset" value="{{ var_pager_less .Limit .PagerOffset }}" />
+                                        <input type="hidden" name="limit" value="{{ .Limit }}" />
+                                        <input id="button" type="submit" name="button" value="Back" />
+                                </li>
+                        </ul>
+                </fieldset>
+        </form>
+
+        {{ end }}
+        {{ if var_pager_more_ok .Limit .PagerOffset .PagerTotal }}
+        {{ csrf_form $.UI "" }}
+                <fieldset>
+                        <ul>
+                                <li>
+                                        {{ if .Criteria }}
+                                                <input type="hidden" name="search" value="{{ .Criteria }}" />
+                                        {{ end }}
+                                        <input type="hidden" name="limit" value="{{ .Limit }}" />
+                                        <input type="hidden" name="offset" value="{{ var_pager_more .Limit .PagerOffset .PagerTotal }}" />
+                                        <input id="button" type="submit" name="button" value="Forward" />
+                                </li>
+                        </ul>
+                </fieldset>
+        </form>
+        {{ end }}
+</p>
+<p>
+        Offset: {{ .PagerOffset }}, Total: {{ .PagerTotal }}
+</p>

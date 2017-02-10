@@ -23,6 +23,11 @@
 </tr>
 <tr>
 	<td>store</td>
+	<td>http://localhost:8333/</td>
+	<td>testURI</td>
+</tr>
+<tr>
+	<td>store</td>
 	<td>https://trident.localhost/</td>
 	<td>testURI</td>
 </tr>
