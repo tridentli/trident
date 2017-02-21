@@ -1,7 +1,7 @@
 .TH "tcli" "1" "12 May 2015" "" ""
 
 .SH NAME
-tcli - myFSI CLI
+tcli - Trident CLI (Tickly)
 .SH SYNOPSIS
 
 \fBtcli \fR [ \fB\fI<commands>\fB\fR ]
@@ -23,7 +23,7 @@ This causes the
 .B system login
 command to be sent to the Trident server, which then acts upon.
 If successfully logged in, a JSON Web Token (JWT) is stored in
-.B ~/.myfsi_token
+.B ~/.trident_token
 .
 
 .SH "SESSION MAINTENANCE"
@@ -42,7 +42,7 @@ If
 .B TRIDENT_TOKEN
 is set, it is used as the filename where the JSON Web Token is stored.
 Default the token is
-.B ~/.myfsi_token
+.B ~/.trident_token
 .
 .TP
 .B TRIDENT_SERVER
