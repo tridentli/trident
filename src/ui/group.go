@@ -61,7 +61,7 @@ func h_group_member(cui pu.PfUI) {
 	isadmin := cui.IAmGroupAdmin()
 
 	p := Page{cui.Page_def(), grp, members, offset, total, search, isadmin}
-	cui.Page_show("group/members.tmpl", p)
+	cui.PageShow("group/members.tmpl", p)
 }
 
 type NominateAdd struct {
@@ -119,7 +119,7 @@ func h_group_nominate_existing(cui pu.PfUI) {
 	na := &NominateAdd{group: grp, Vouchee: vouchee.GetUserName(), Action: "nominate", Message: msg, Error: errmsg}
 
 	p := Page{cui.Page_def(), vouchee.GetUserName(), grp.GetGroupName(), na}
-	cui.Page_show("group/nominate_existing.tmpl", p)
+	cui.PageShow("group/nominate_existing.tmpl", p)
 }
 
 type NominateNew struct {
@@ -219,7 +219,7 @@ func h_group_nominate(cui pu.PfUI) {
 	newform := &NominateNew{group: grp, Action: "nominate", Email: search, Message: msg, Error: errmsg, Search: search, FullName: descr, Affiliation: affil, Biography: bio, Comment: comment}
 
 	p := Page{cui.Page_def(), search, grp.GetGroupName(), list, notfound, newform}
-	cui.Page_show("group/nominate.tmpl", p)
+	cui.PageShow("group/nominate.tmpl", p)
 }
 
 func h_vouches_csv(cui pu.PfUI) {
@@ -268,7 +268,7 @@ func h_vouches(cui pu.PfUI) {
 	}
 
 	p := Page{cui.Page_def(), vouches}
-	cui.Page_show("group/vouches.tmpl", p)
+	cui.PageShow("group/vouches.tmpl", p)
 }
 
 func h_group(cui pu.PfUI, menu *pu.PfUIMenu) {
