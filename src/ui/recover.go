@@ -83,5 +83,5 @@ func h_recover(cui pu.PfUI) {
 		"</p>\n")
 
 	p := Page{cui.Page_def(), intro, rec{usr, usp, nmp, "", "", "", msg, errmsg}, msg, errmsg}
-	cui.Page_show("misc/recover.tmpl", p)
+	cui.PageShow("misc/recover.tmpl", p)
 }
