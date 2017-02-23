@@ -156,5 +156,5 @@ func h_group_vcp(cui pu.PfUI) {
 	}
 
 	p := Page{cui.Page_def(), offset, total, cui.SelectedGroup().GetGroupName(), vcps, action, criteria, criterias, limit, limits}
-	cui.Page_show("group/vcp.tmpl", p)
+	cui.PageShow("group/vcp.tmpl", p)
 }

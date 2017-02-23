@@ -167,5 +167,5 @@ func h_user_vouches(cui pu.PfUI) {
 		p.Error += err.Error()
 	}
 
-	cui.Page_show("user/profile_vouches.tmpl", p)
+	cui.PageShow("user/profile_vouches.tmpl", p)
 }
