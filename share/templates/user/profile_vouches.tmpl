@@ -14,7 +14,7 @@
 	<h1>Group {{ .Group.GetGroupName }}</h1>
 	<table>
 	<tbody>
-	<tr><th>E-mail Address:</th><td>{{ $user.GetPriEmailString $.UI false }}</td></tr>
+	<tr><th>Email address:</th><td>{{ ($user.GetPriEmail $.UI false).Email }}</td></tr>
 	</tbody>
 	</table>
 

@@ -184,7 +184,7 @@ With formatting:
 [WikiPage](WikiPage/)
 [WikiPage](WikiPage/)
 [External Site](https://example.net)
-[Email Address](mailto:user@example.net)
+[Email address](mailto:user@example.net)
 ```
 
 ##### Importing from other Wikis (FosWiki)
@@ -544,7 +544,7 @@ server {
 }
 ```
 
-### E-mail setup
+### Email setup
 
 Trident can be run behind both Postfix and Sendmail or likely other SMTP servers.
 

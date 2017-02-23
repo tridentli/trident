@@ -128,7 +128,7 @@ INSERT INTO trustgroup (ident, shortname, descr, min_invouch, target_invouch,
 INSERT into attestations (ident,descr,trustgroup)
   VALUES ('know','LONG DESCRIPTION','test2');
 
--- Add E-mail addresses
+-- Add Email addresses
 INSERT INTO member_email (member, email, verified)
     VALUES ('testuser', 'test@user.com', true);
 INSERT INTO member_email (member, email, verified)

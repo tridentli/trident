@@ -29,7 +29,7 @@
 {{ if $user.GetHideEmail }}
 [Email Hidden]
 {{ else }}
-{{ $user.GetPriEmailString $.UI false }}
+{{ ($user.GetPriEmail $.UI false).Email }}
 {{ end }}
 		</td>
 		<td>{{ $user.GetAffiliation }}</td>
