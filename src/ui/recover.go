@@ -7,6 +7,7 @@ import (
 	pu "trident.li/pitchfork/ui"
 )
 
+// h_recover allows a user to enter the two parts of a recovery tokens and with that reset their password
 func h_recover(cui pu.PfUI) {
 	var msg string
 	var err error
@@ -44,7 +45,7 @@ func h_recover(cui pu.PfUI) {
 				err = errors.New("Password not set")
 			}
 		} else {
-			//Intentionally vague, don't want to leak internal details.
+			/* Intentionally vague, don't want to leak internal details */
 			err = errors.New("Invalid Input")
 		}
 	}
@@ -80,6 +81,9 @@ func h_recover(cui pu.PfUI) {
 
 	intro := pf.HEB("<p>\n" +
 		"This form can be used after receiving both the user and nominator portions of the password recovery procedure.\n" +
+		"</p>\n" +
+		"<p>\n" +
+		"Recovery tokens are made up of the numbers 0-9 and the lowercase characters a-f, effectively hexadecimal representation.\n" +
 		"</p>\n")
 
 	p := Page{cui.Page_def(), intro, rec{usr, usp, nmp, "", "", "", msg, errmsg}, msg, errmsg}
