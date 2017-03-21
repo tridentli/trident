@@ -8,16 +8,19 @@ import (
 )
 
 type TriVouch struct {
-	Vouchor      string    `label:"Voucher" pfset:"self" pfcol:"voucher"`
-	Vouchee      string    `label:"Vouchee" pfset:"self" pfcol:"vouchee"`
-	GroupName    string    `label:"TrustGroup" pfset:"self" pfcol:"trustgroup"`
-	Comment      string    `label:"Comment" pfset:"self" pfcol:"comment"`
-	Entered      time.Time `label:"Entered" pfset:"nobody"`
-	Positive     bool      `label:"Positive" pfset:"self" pfcol:"positive" hint:"Is the vouch of a positive nature"`
-	State        string    `label:"Member state in trustgroup" pfset:"nobody"`
-	Affiliation  string    `label:"Vouchee Afiliation" pfset:"nobody"`
-	MyVouch      bool
-	Attestations []TriGroupAttestation
+	Vouchor            string    `label:"VouchorName" pfset:"self"`
+	VouchorName        string    `label:"VouchorName" pfset:"self"`
+	VouchorAffiliation string    `label:"Vouchor Afiliation" pfset:"nobody"`
+	Vouchee            string    `label:"Vouchee" pfset:"self"`
+	VoucheeName        string    `label:"Vouchee Name" pfset:"self"`
+	VoucheeAffiliation string    `label:"Vouchee Afiliation" pfset:"nobody"`
+	GroupName          string    `label:"TrustGroup" pfset:"self"`
+	Comment            string    `label:"Comment" pfset:"self"`
+	Entered            time.Time `label:"Entered" pfset:"nobody"`
+	Positive           bool      `label:"Positive" pfset:"self" hint:"Is the vouch of a positive nature"`
+	State              string    `label:"Member state in trustgroup" pfset:"nobody"`
+	MyVouch            bool
+	Attestations       []TriGroupAttestation
 }
 
 func (vouch *TriVouch) String() (out string) {
@@ -44,14 +47,16 @@ func (vouch *TriVouch) String() (out string) {
  */
 
 func (vouch *TriVouch) ListBy(user TriUser, tg TriGroup, username string) (vouches []TriVouch, err error) {
-	q := "SELECT mv.vouchor, mv.comment, mt.trustgroup, " +
+	q := "SELECT " +
+		"mv.vouchor, vom.descr, vom.affiliation, " +
+		"mv.vouchee, vem.descr, vem.affiliation, " +
 		"DATE_TRUNC('seconds', mv.entered) as entered, " +
-		"vm.affiliation, mv.vouchee, mt.state " +
+		"mv.comment, mt.trustgroup, mt.state " +
 		"FROM member_vouch mv " +
-		"JOIN member vm ON (mv.vouchor = vm.ident) " +
-		"JOIN member m ON (m.ident = mv.vouchor) " +
+		"JOIN member vom ON (vom.ident = mv.vouchor) " +
+		"JOIN member vem ON (vem.ident = mv.vouchee) " +
 		"JOIN member_trustgroup mt ON " +
-		" ROW(m.ident, mv.trustgroup) = ROW(mt.member, mt.trustgroup) " +
+		" ROW(vom.ident, mv.trustgroup) = ROW(mt.member, mt.trustgroup) " +
 		"WHERE ROW(mv.vouchor, mv.trustgroup) = ROW($1, $2) " +
 		"AND mv.positive " +
 		"ORDER BY mv.entered DESC"
@@ -67,8 +72,10 @@ func (vouch *TriVouch) ListBy(user TriUser, tg TriGroup, username string) (vouch
 	for rows.Next() {
 		var v TriVouch
 
-		err = rows.Scan(&v.Vouchor, &v.Comment, &v.GroupName,
-			&v.Entered, &v.Affiliation, &v.Vouchee, &v.State)
+		err = rows.Scan(
+			&v.Vouchor, &v.VouchorName, &v.VouchorAffiliation,
+			&v.Vouchee, &v.VoucheeName, &v.VoucheeAffiliation,
+			&v.Entered, &v.Comment, &v.GroupName, &v.State)
 		if err != nil {
 			vouches = nil
 			return
@@ -93,14 +100,16 @@ func (vouch *TriVouch) ListBy(user TriUser, tg TriGroup, username string) (vouch
  */
 
 func (vouch *TriVouch) ListFor(user TriUser, tg TriGroup, username string) (vouches []TriVouch, err error) {
-	q := "SELECT mv.vouchor, mv.comment, mt.trustgroup, " +
+	q := "SELECT " +
+		"mv.vouchor, vom.descr, vom.affiliation, " +
+		"mv.vouchee, vem.descr, vem.affiliation, " +
 		"DATE_TRUNC('seconds', mv.entered) as entered, " +
-		"vm.affiliation, mv.vouchee, mt.state " +
+		"mv.comment, mt.trustgroup, mt.state " +
 		"FROM member_vouch mv " +
-		"JOIN member vm ON (mv.vouchor = vm.ident) " +
-		"JOIN member m ON (m.ident = mv.vouchee) " +
+		"JOIN member vom ON (vom.ident = mv.vouchor) " +
+		"JOIN member vem ON (vem.ident = mv.vouchee) " +
 		"JOIN member_trustgroup mt ON " +
-		" ROW(m.ident, mv.trustgroup) = ROW(mt.member, mt.trustgroup) " +
+		" ROW(vem.ident, mv.trustgroup) = ROW(mt.member, mt.trustgroup) " +
 		"WHERE ROW(mv.vouchee, mv.trustgroup) = ROW($1, $2) " +
 		"AND mv.positive " +
 		"ORDER BY mv.entered DESC"
@@ -116,8 +125,10 @@ func (vouch *TriVouch) ListFor(user TriUser, tg TriGroup, username string) (vouc
 	for rows.Next() {
 		var v TriVouch
 
-		err = rows.Scan(&v.Vouchor, &v.Comment, &v.GroupName,
-			&v.Entered, &v.Affiliation, &v.Vouchee, &v.State)
+		err = rows.Scan(
+			&v.Vouchor, &v.VouchorName, &v.VouchorAffiliation,
+			&v.Vouchee, &v.VoucheeName, &v.VoucheeAffiliation,
+			&v.Entered, &v.Comment, &v.GroupName, &v.State)
 		if err != nil {
 			vouches = nil
 			return
