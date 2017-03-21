@@ -94,8 +94,9 @@ func (vouch *TriVouch) ListBy(user TriUser, tg TriGroup, username string) (vouch
 func (vouch *TriVouch) ListFor(user TriUser, tg TriGroup, username string) (vouches []TriVouch, err error) {
 	q := "SELECT mv.vouchor, mv.comment, mt.trustgroup, " +
 		"DATE_TRUNC('seconds', mv.entered) as entered, " +
-		"m.affiliation, mv.vouchee, mt.state " +
+		"vm.affiliation, mv.vouchee, mt.state " +
 		"FROM member_vouch mv " +
+		"JOIN member vm ON (mv.vouchor = vm.ident) " +
 		"JOIN member m ON (m.ident = mv.vouchee) " +
 		"JOIN member_trustgroup mt ON " +
 		" ROW(m.ident, mv.trustgroup) = ROW(mt.member, mt.trustgroup) " +
