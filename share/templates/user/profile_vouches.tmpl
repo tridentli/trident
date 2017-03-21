@@ -84,6 +84,7 @@
 	<thead>
 	<tr>
 		<th colspan="2">Vouchor</th>
+		<th>Affiliation</th>
 		<th>Entered</th>
 		<th>Comment</th>
 		<th>Actions</th>
@@ -96,6 +97,7 @@
 		<tr>
 			<td>{{ user_image_link $.UI $vouch.Vouchor $vouch.Vouchor "" }}</td>
 			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchor $vouch.Vouchor }}</a></td>
+			<td>{{ $vouch.Affiliation }}</td>
 			<td>{{ $vouch.Entered }}</td>
 			<td><label for="TriVouch-comment"></label>
 				<textarea id="TriVouch-comment" name="comment">{{ $vouch.Comment }}</textarea>
