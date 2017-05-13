@@ -34,6 +34,7 @@ Package: trident-server
 Architecture: linux-any kfreebsd-any
 Depends: ${misc:Depends},
          ${shlibs:Depends},
+         pitchfork-data,
          ntpdate | ntp | time-daemon,
          nginx | apache,
          lsb-base (>= 3.0-6),
