@@ -164,7 +164,7 @@
 <tr>
 	<td>assertText</td>
 	<td>id=PfML-message</td>
-	<td>9 fields where not modified</td>
+	<td>5 fields where not modified</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>

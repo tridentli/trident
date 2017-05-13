@@ -239,7 +239,7 @@
 <tr>
 	<td>assertText</td>
 	<td>id=-message</td>
-	<td>Updated 5 fields, 11 fields where not modified</td>
+	<td>Updated 5 fields, 10 fields where not modified</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
