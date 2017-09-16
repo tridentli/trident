@@ -1,3 +1,9 @@
+trident (1.4.6) UNRELEASED; urgency=medium
+
+  * Building 1.4.6 release
+
+ -- bapril <bapril@trident.stagecraft.net>  Sat, 16 Sep 2017 18:33:34 -0400
+
 trident (1.4.5) stable; urgency=medium
 
   * (PF65) Update login min length to be a config value along with example username.
