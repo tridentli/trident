@@ -6,7 +6,7 @@ trident (1.4.6+tr93) UNRELEASED; urgency=medium
   * #72 Add dep for pitchfork-data package.
   * (PF59) Make iptrk, jet timeout and login attempts config variables.
   * (T97) Group Member Vouch overview shows wrong affiliation.
-  * (T93) Add a note in UI and email about the characters used in the recovery token 
+  * (T93) Add a note in UI and email about the characters used in the recovery token
 
  -- bapril <bapril@trident.stagecraft.net>  Sun, 24 Sep 2017 00:46:15 -0400
 

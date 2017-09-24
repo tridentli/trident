@@ -22,6 +22,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//div[@id='receptacle']/div[2]/article/p[2]</td>
+	<td>Recovery tokens are made up of the numbers 0-9 and the lowercase characters a-f, effectively hexadecimal representation.</td>
+</tr>
+<tr>
 	<td>type</td>
 	<td>id=rec-username</td>
 	<td>test@user.com</td>
