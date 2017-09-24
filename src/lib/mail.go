@@ -35,7 +35,9 @@ func Mail_PassResetUser(ctx pf.PfCtx, email pf.PfUserEmail, is_reset bool, nom_e
 		"and enter the following password in the User Portion:" + CRLF +
 		"  " + user_portion + CRLF +
 		CRLF +
-		"If you do not perform this reset the request will be canceled." + CRLF
+		"If you do not perform this reset the request will be canceled." + CRLF +
+		CRLF +
+		"Recovery tokens are made up of the numbers 0-9 and the lowercase characters a-f, effectively hexadecimal representation." + CRLF
 
 	err = pf.Mail(ctx,
 		"", "",

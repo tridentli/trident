@@ -1,4 +1,4 @@
-trident (1.4.6+tr97) UNRELEASED; urgency=medium
+trident (1.4.6+tr93) UNRELEASED; urgency=medium
 
   * #82 Documentation work.
   * #84 Page_Show -> PageShow.
@@ -6,8 +6,9 @@ trident (1.4.6+tr97) UNRELEASED; urgency=medium
   * #72 Add dep for pitchfork-data package.
   * (PF59) Make iptrk, jet timeout and login attempts config variables.
   * (T97) Group Member Vouch overview shows wrong affiliation.
+  * (T93) Add a note in UI and email about the characters used in the recovery token
 
- -- bapril <bapril@trident.stagecraft.net>  Sat, 23 Sep 2017 23:53:47 -0400
+ -- bapril <bapril@trident.stagecraft.net>  Sun, 24 Sep 2017 00:46:15 -0400
 
 trident (1.4.5) stable; urgency=medium
 
