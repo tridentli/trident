@@ -139,6 +139,31 @@
 <tr>
 	<td>type</td>
 	<td>id=np-name</td>
+	<td>/test.arf</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-file</td>
+	<td>${testSuiteFolder}/files/sysadmin.arf</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-description</td>
+	<td>Test ARF File.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=np-button</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add a new file</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=np-name</td>
 	<td>/</td>
 </tr>
 <tr>

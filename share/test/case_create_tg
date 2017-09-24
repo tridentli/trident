@@ -84,7 +84,7 @@
 <tr>
 	<td>assertText</td>
 	<td>id=-message</td>
-	<td>Updated 2 fields, 14 fields where not modified</td>
+	<td>Updated 2 fields, 14 fields were not modified</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
