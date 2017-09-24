@@ -1,4 +1,4 @@
-trident (1.4.6+tr93) UNRELEASED; urgency=medium
+trident (1.4.6+arf) UNRELEASED; urgency=medium
 
   * #82 Documentation work.
   * #84 Page_Show -> PageShow.
