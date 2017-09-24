@@ -39,6 +39,7 @@
 <tr><td><a href="case_cli">case_cli</a></td></tr>
 <tr><td><a href="case_emit_vouch">case_emit_vouch</a></td></tr>
 <tr><td><a href="case_vcp_pager">case_vcp_pager</a></td></tr>
+<tr><td><a href="case_affiliation">case_affiliation</a></td></tr>
 <tr><td><a href="case_summary">case_summary</a></td></tr>
 <tr><td><a href="case_failed_login">case_failed_login</a></td></tr>
 </tbody></table>

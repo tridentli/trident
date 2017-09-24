@@ -39,9 +39,9 @@
 		{{ if $vouch.MyVouch }}
 		{{ csrf_form $.UI "" }}
 		<tr>
-			<td>{{ user_image_link $.UI $vouch.Vouchee $vouch.Vouchee "" }}</td>
-			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchee $vouch.Vouchee }}</a></td>
-			<td>{{ $vouch.Affiliation }}</td>
+			<td>{{ user_image_link $.UI $vouch.Vouchee $vouch.VoucheeName "" }}</td>
+			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchee $vouch.VoucheeName }}</a></td>
+			<td>{{ $vouch.VoucheeAffiliation }}</td>
 			<td>{{ fmt_time $vouch.Entered }}</td>
 			<td><label for="TriVouch-comment"></label>
 				<textarea id="TriVouch-comment" name="comment">{{ $vouch.Comment }}</textarea>
@@ -67,9 +67,9 @@
 		</tr>
 		{{ else }}
 			<tr>
-			<td>{{ user_image_link $.UI $vouch.Vouchee $vouch.Vouchee "" }}</td>
-			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchee $vouch.Vouchee }}</a></td>
-			<td>{{ $vouch.Affiliation }}</td>
+			<td>{{ user_image_link $.UI $vouch.Vouchee $vouch.VoucheeName "" }}</td>
+			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchee $vouch.VoucheeName }}</a></td>
+			<td>{{ $vouch.VoucheeAffiliation }}</td>
 			<td>{{ fmt_time $vouch.Entered }}</td>
 			<td>{{ $vouch.Comment }}</td>
 			<td>&nbsp;</td>
@@ -84,6 +84,7 @@
 	<thead>
 	<tr>
 		<th colspan="2">Vouchor</th>
+		<th>Affiliation</th>
 		<th>Entered</th>
 		<th>Comment</th>
 		<th>Actions</th>
@@ -94,8 +95,9 @@
 		{{ if $vouch.MyVouch }}
 		{{ csrf_form $.UI "" }}
 		<tr>
-			<td>{{ user_image_link $.UI $vouch.Vouchor $vouch.Vouchor "" }}</td>
-			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchor $vouch.Vouchor }}</a></td>
+			<td>{{ user_image_link $.UI $vouch.Vouchor $vouch.VouchorName "" }}</td>
+			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchor $vouch.VouchorName }}</a></td>
+			<td>{{ $vouch.VouchorAffiliation }}</td>
 			<td>{{ $vouch.Entered }}</td>
 			<td><label for="TriVouch-comment"></label>
 				<textarea id="TriVouch-comment" name="comment">{{ $vouch.Comment }}</textarea>
@@ -120,8 +122,9 @@
 		</tr>
 		{{ else }}
 		<tr>
-			<td>{{ user_image_link $.UI $vouch.Vouchor $vouch.Vouchor "" }}</td>
-			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchor $vouch.Vouchor }}</a></td>
+			<td>{{ user_image_link $.UI $vouch.Vouchor $vouch.VouchorName "" }}</td>
+			<td>{{ group_home_link $.UI $vouch.GroupName $vouch.Vouchor $vouch.VouchorName }}</a></td>
+			<td>{{ $vouch.VouchorAffiliation }}</td>
 			<td>{{ $vouch.Entered }}</td>
 			<td>{{ $vouch.Comment }}</td>
 			<td>&nbsp;</td>
