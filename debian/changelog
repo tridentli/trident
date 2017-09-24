@@ -1,8 +1,12 @@
-trident (1.4.6) UNRELEASED; urgency=medium
+trident (1.4.6+pf59) UNRELEASED; urgency=medium
 
-  * Building 1.4.6 release
+  * #82 Documentation work.
+  * #84 Page_Show -> PageShow.
+  * #88 SQL Cleanup.
+  * #72 Add dep for pitchfork-data package.
+  * (PF59) Make iptrk, jet timeout and login attempts config variables.
 
- -- bapril <bapril@trident.stagecraft.net>  Sat, 16 Sep 2017 18:33:34 -0400
+ -- bapril <bapril@trident.stagecraft.net>  Sat, 23 Sep 2017 23:29:06 -0400
 
 trident (1.4.5) stable; urgency=medium
 
