@@ -18,7 +18,7 @@ type TriGroup interface {
 type TriGroupS struct {
 	pf.PfGroup
 	Please_vouch    bool   `label:"Please Vouch" pfset:"group_admin" hint:"Members must vouch before becoming active"`
-	Vouch_adminonly bool   `label:"Vouch group admins only" pfset:"group_admin" hint:"Only adminstators may Vouvh"`
+	Vouch_adminonly bool   `label:"Vouch group admins only" pfset:"group_admin" hint:"Only adminstators may Vouch"`
 	Min_invouch     int    `label:"Minimum Inbound Vouches" pfset:"group_admin" hint:"Number of incoming vouches required to vett."`
 	Min_outvouch    int    `label:"Minimum Outbound Vouches" pfset:"group_admin" hint:"Number of outgoing vouches required"`
 	Target_invouch  int    `label:"Target Invouches" pfset:"group_admin"`
