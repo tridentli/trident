@@ -343,6 +343,76 @@ func group_add(ctx pf.PfCtx, args []string) (err error) {
 	return
 }
 
+//Function to allow TG admins and sysadmins to request a reset of the passowrd
+//for a member of a group that they posses an admin bit for.
+//This function provides the admin making the request the nominator portion
+//of the reset token , and emails the user poriton to the user, thus resolving the
+//bad nominator problem.
+
+func group_pw_reset(ctx pf.PfCtx, args []string)(err error) {
+	var nom_portion string
+	var user_portion string
+	var user_email pf.PfUserEmail
+	var reset_user_email pf.PfUserEmail
+	var pw pf.PfPass
+
+	//Capture Reset user e-mail
+	reset_user_email,err = ctx.SelectedUser().GetPriEmail(ctx, false)
+
+	//Establish that user current user is a group admin for selected group.
+	grpname := args[0]
+	username := args[1]
+	err = ctx.SelectGroup(grpname,pf.PERM_GROUP_ADMIN)
+	if err != nil {
+		return
+	}
+
+	//Select the target user.
+	err = ctx.SelectUser(username, pf.PERM_USER_VIEW)
+	if err != nil {
+		//Return same error to prevent information leakage.
+		err = errors.New("Unable to select user")
+		return
+	}
+
+	grp := ctx.SelectedGroup()
+	user := ctx.SelectedUser()
+
+	//Validate that the user is a member of the target group.
+	var ismember bool
+	ismember, _, _, err = grp.IsMember(user.GetUserName())
+	if !ismember {
+		//Return same error to prevent information leakage.
+		err = errors.New("Unable to select user")
+		return
+	}
+
+	user_email, err = user.GetPriEmail(ctx, true)
+	if err != nil {
+		return
+	}
+
+	user_portion, err = pw.GenPass(16)
+	if err != nil {
+		return
+	}
+
+	nom_portion, err = pw.GenPass(16)
+	if err != nil {
+		return
+	}
+
+	err = Mail_PassResetUser(ctx, user_email, true, reset_user_email, user_portion)
+	if err != nil {
+		return
+	}
+
+	ctx.OutLn("Nominator portion of the password: "+nom_portion)
+	err = user.SetRecoverToken(ctx, user_portion+nom_portion)
+
+	return
+}
+
 func group_member_nominate(ctx pf.PfCtx, args []string) (err error) {
 	grp := ctx.SelectedGroup()
 	user := args[1]
@@ -352,6 +422,13 @@ func group_member_nominate(ctx pf.PfCtx, args []string) (err error) {
 		return
 	}
 	return grp.Member_add(ctx)
+}
+
+func group_member_menu(ctx pf.PfCtx, menu *pf.PfMenu){
+	m := []pf.PfMEntry{
+		{"pwreset", group_pw_reset, 2, 2, []string{"group","username"}, pf.PERM_GROUP_ADMIN, "Change group member's password"},
+	}
+	menu.Add(m...)
 }
 
 func group_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
