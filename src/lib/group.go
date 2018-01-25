@@ -344,13 +344,21 @@ func group_add(ctx pf.PfCtx, args []string) (err error) {
 }
 
 func group_member_nominate(ctx pf.PfCtx, args []string) (err error) {
-	grp := ctx.SelectedGroup()
+	err = ctx.SelectGroup(args[0], pf.PERM_GROUP_MEMBER)
+	if err != nil {
+		err = errors.New("Group selection failed")
+		return
+	}
 	user := args[1]
+
+	//Verify that we are allowed to nominate
 	err = ctx.SelectUser(user, pf.PERM_USER_NOMINATE)
 	if err != nil {
 		err = errors.New("User selection failed")
 		return
 	}
+	grp := ctx.SelectedGroup()
+
 	return grp.Member_add(ctx)
 }
 
@@ -359,7 +367,7 @@ func group_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
 
 	m := []pf.PfMEntry{
 		{"vouch", vouch_menu, 0, -1, nil, pf.PERM_USER, "Vouch Commands"},
-		{"nominate", group_member_nominate, 2, 2, []string{"group", "username"}, pf.PERM_GROUP_MEMBER, "Nominate a member for a group"},
+		{"nominate", group_member_nominate, 2, 2, []string{"group", "username"}, pf.PERM_USER, "Nominate a member for a group"},
 	}
 
 	menu.Add(m...)
