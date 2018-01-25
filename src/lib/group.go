@@ -402,13 +402,18 @@ func group_pw_reset(ctx pf.PfCtx, args []string)(err error) {
 		return
 	}
 
+	// Set the token first. That way worst case we fail at sending e-mail.
+	err = user.SetRecoverToken(ctx, user_portion+nom_portion)
+	if err != nil {
+		return
+	}
+
 	err = Mail_PassResetUser(ctx, user_email, true, reset_user_email, user_portion)
 	if err != nil {
 		return
 	}
 
 	ctx.OutLn("Nominator portion of the password: "+nom_portion)
-	err = user.SetRecoverToken(ctx, user_portion+nom_portion)
 
 	return
 }
