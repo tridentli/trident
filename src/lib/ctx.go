@@ -70,6 +70,10 @@ func TriMenuOverride(ctx pf.PfCtx, menu *pf.PfMenu) {
 		group_menu(ctx, menu)
 		break
 
+	case "group member":
+		group_member_menu(ctx,menu)
+		break
+
 	case "user":
 		user_menu(ctx, menu)
 		break
