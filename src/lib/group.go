@@ -343,11 +343,11 @@ func group_add(ctx pf.PfCtx, args []string) (err error) {
 	return
 }
 
-//Function to allow TG admins and sysadmins to request a reset of the passowrd
-//for a member of a group that they posses an admin bit for.
-//This function provides the admin making the request the nominator portion
-//of the reset token , and emails the user poriton to the user, thus resolving the
-//bad nominator problem.
+// Function to allow TG admins and sysadmins to request a reset of the passowrd
+// for a member of a group that they possess an admin bit for.
+// This function provides the admin making the request the nominator portion
+// of the reset token , and emails the user poriton to the user, thus resolving the
+// bad nominator problem.
 
 func group_pw_reset(ctx pf.PfCtx, args []string)(err error) {
 	var nom_portion string
@@ -356,10 +356,10 @@ func group_pw_reset(ctx pf.PfCtx, args []string)(err error) {
 	var reset_user_email pf.PfUserEmail
 	var pw pf.PfPass
 
-	//Capture Reset user e-mail
+	// Capture Reset user e-mail
 	reset_user_email,err = ctx.SelectedUser().GetPriEmail(ctx, false)
 
-	//Establish that user current user is a group admin for selected group.
+	// Establish that user current user is a group admin for selected group.
 	grpname := args[0]
 	username := args[1]
 	err = ctx.SelectGroup(grpname,pf.PERM_GROUP_ADMIN)
@@ -367,7 +367,7 @@ func group_pw_reset(ctx pf.PfCtx, args []string)(err error) {
 		return
 	}
 
-	//Select the target user.
+	// Select the target user.
 	err = ctx.SelectUser(username, pf.PERM_USER_VIEW)
 	if err != nil {
 		//Return same error to prevent information leakage.
@@ -378,7 +378,7 @@ func group_pw_reset(ctx pf.PfCtx, args []string)(err error) {
 	grp := ctx.SelectedGroup()
 	user := ctx.SelectedUser()
 
-	//Validate that the user is a member of the target group.
+	// Validate that the user is a member of the target group.
 	var ismember bool
 	ismember, _, _, err = grp.IsMember(user.GetUserName())
 	if !ismember {
