@@ -1,4 +1,4 @@
-trident (1.4.6) UNRELEASED; urgency=medium
+trident (1.4.6a) UNRELEASED; urgency=medium
 
   * #82 Documentation work.
   * #84 Page_Show -> PageShow.
@@ -7,6 +7,7 @@ trident (1.4.6) UNRELEASED; urgency=medium
   * (PF59) Make iptrk, jet timeout and login attempts config variables.
   * (T97) Group Member Vouch overview shows wrong affiliation.
   * (T93) Add a note in UI and email about the characters used in the recovery token
+  * (PF168) Fix Permissions bug.
 
  -- bapril <bapril@trident.stagecraft.net>  Sun, 24 Sep 2017 00:46:15 -0400
 
