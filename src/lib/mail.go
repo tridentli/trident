@@ -23,10 +23,10 @@ func Mail_PassResetUser(ctx pf.PfCtx, email pf.PfUserEmail, is_reset bool, nom_e
 	body += CRLF +
 		"We are therefor sending you two token portions." + CRLF +
 		"The user portion is in this email, the other portion " + CRLF +
-		"has been sent to your nominator who will forward it in " + CRLF +
-		"a secure method towards you." + CRLF +
+		"has been sent to your nominator or trust-group admin " + CRLF +
+		" who will forward it in a secure method towards you." + CRLF +
 		CRLF +
-		"Your nominator is:" + CRLF +
+		"Your nominator or group admin is:" + CRLF +
 		" " + nom_email.FullName + " <" + nom_email.Email + ">" + CRLF +
 		CRLF +
 		"When both parts have been received by you, please proceed to:" + CRLF +
