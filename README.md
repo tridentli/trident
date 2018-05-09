@@ -2,7 +2,7 @@
 
 Trident is a Trusted Information Exchange Toolkit.
 
-This is the upcoming new iteration of code that runs [Ops-Trust](https://www.ops-trust.net)
+This is the upcoming new iteration of code that runs Ops-Trust
 and a variety of other instances.
 
 ## Requirements
