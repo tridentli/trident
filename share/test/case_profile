@@ -139,7 +139,7 @@
 <tr>
 	<td>assertText</td>
 	<td>id=-message</td>
-	<td>Updated 8 fields, 14 fields were not modified</td>
+	<td>Updated 8 fields, 9 fields were not modified</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
