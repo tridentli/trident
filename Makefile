@@ -7,7 +7,7 @@ ifndef $GIT_BRANCH
 endif
 
 # Pull correct branches for PF from local files.
-PF_GIT_BRANCH = DEV_1.4.7
+PF_GIT_BRANCH = fix_admin_approve
 PF_GIT_REPO = https://github.com/tridentli/pitchfork.git
 
 # dpkg-buildpackage calls make, so <all> should be empty.
