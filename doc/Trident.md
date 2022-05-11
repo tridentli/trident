@@ -825,7 +825,6 @@ Following is a short list of credits related to the Trident Project:
  * [XKCD 936 'Password Strength' comic](https://xkcd.com/936/) by Randall Munroe of xkcd.com.
  * [Go Crypto library](https://github.com/kless/osutil/) by Jeramey Crawford and Jonas mg.
  * [Go UUID library](https://code.google.com/p/go-uuid/) by Google Inc.
- * [Go JSON Web Token (JWT)](https://github.com/dgrijalva/jwt-go) by Dave Grijalva.
  * [Go PostgreSQL driver 'pq'](https://github.com/lib/pq/) by Blake Mizerany and 'pq' Contributors.
  * [EpicEditor](http://epiceditor.com/) by Oscar Godson.
  * [Black Friday](https://github.com/russross/blackfriday) by Russ Ross
