@@ -27,11 +27,11 @@ require (
 	github.com/shurcooL/highlight_go v0.0.0-20191220051317-782971ddf21b // indirect
 	github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d // indirect
 	github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e // indirect
-	golang.org/x/crypto v0.0.0-20220507011949-2cf3adece122 // indirect
+	golang.org/x/crypto v0.14.0 // indirect
 	golang.org/x/image v0.5.0 // indirect
-	golang.org/x/net v0.7.0 // indirect
-	golang.org/x/sys v0.5.0 // indirect
-	golang.org/x/term v0.5.0 // indirect
+	golang.org/x/net v0.17.0 // indirect
+	golang.org/x/sys v0.13.0 // indirect
+	golang.org/x/term v0.13.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	trident.li/go v0.0.0-20161021100159-4bb271e8a450 // indirect
 )
