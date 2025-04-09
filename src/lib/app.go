@@ -8,4 +8,4 @@ var AppSetupVersion = 0
 
 var AppName = "Trident"
 var Copyright = "(C) 2015-2016 The Trident Project"
-var Website = "https:///tridentli"
+var Website = "https:///trident.li"
