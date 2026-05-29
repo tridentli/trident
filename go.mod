@@ -1,6 +1,6 @@
 module trident.li/trident
 
-go 1.18
+go 1.26.2
 
 require (
 	trident.li/keyval v0.0.0-20220511083218-ca9b9e7f42ab
@@ -35,3 +35,9 @@ require (
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	trident.li/go v0.0.0-20161021100159-4bb271e8a450 // indirect
 )
+
+replace trident.li/pitchfork => ./ext/_gopath/src/trident.li/pitchfork
+
+replace trident.li/keyval => ./ext/_gopath/src/trident.li/keyval
+
+replace trident.li/go => ./ext/_gopath/src/trident.li/go
