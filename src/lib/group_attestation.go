@@ -133,9 +133,9 @@ func grp_attestation_delete(ctx pf.PfCtx, args []string) (err error) {
 
 func attestation_menu(ctx pf.PfCtx, args []string) (err error) {
 	menu := pf.NewPfMenu([]pf.PfMEntry{
-		{"list", grp_attestation_list, 1, 1, []string{"groupname"}, pf.PERM_USER, "List attestations"},
-		{"add", grp_attestation_add, 3, 3, []string{"groupname", "ident", "Description"}, pf.PERM_GROUP_ADMIN, "Add an attestation"},
-		{"delete", grp_attestation_delete, 2, 2, []string{"groupname", "ident"}, pf.PERM_GROUP_ADMIN, "Delete an attestation"},
+		{Cmd: "list", Fun: grp_attestation_list, Args_min: 1, Args_max: 1, Args: []string{"groupname"}, Perms: pf.PERM_USER, Desc: "List attestations"},
+		{Cmd: "add", Fun: grp_attestation_add, Args_min: 3, Args_max: 3, Args: []string{"groupname", "ident", "Description"}, Perms: pf.PERM_GROUP_ADMIN, Desc: "Add an attestation"},
+		{Cmd: "delete", Fun: grp_attestation_delete, Args_min: 2, Args_max: 2, Args: []string{"groupname", "ident"}, Perms: pf.PERM_GROUP_ADMIN, Desc: "Delete an attestation"},
 	})
 
 	err = ctx.Menu(args, menu)

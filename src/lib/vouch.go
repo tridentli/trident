@@ -381,12 +381,12 @@ func vouch_menu(ctx pf.PfCtx, args []string) (err error) {
 	perms := pf.PERM_USER
 
 	var menu = pf.NewPfMenu([]pf.PfMEntry{
-		{"add", vouch_add, 5, 5, []string{"group", "vouchor", "vouchee", "comment", "attestations"}, pf.PERM_USER, "Add a vouch"},
-		{"update", vouch_update, 4, 4, []string{"group", "vouchor", "vouchee", "comment"}, perms, "Update vouch comment"},
-		{"remove", vouch_remove, 3, 3, []string{"group", "vouchor", "vouchee"}, perms, "Remove a vouch"},
-		{"list_for", vouches_for_member, 2, 2, []string{"group", "username"}, perms, "List vouches for a member"},
-		{"list_by", vouches_by_member, 2, 2, []string{"group", "username"}, perms, "List vouches by a member"},
-		{"emit", vouches_emit, 1, 1, []string{"group"}, perms, "Emit Vouches"},
+		{Cmd: "add", Fun: vouch_add, Args_min: 5, Args_max: 5, Args: []string{"group", "vouchor", "vouchee", "comment", "attestations"}, Perms: pf.PERM_USER, Desc: "Add a vouch"},
+		{Cmd: "update", Fun: vouch_update, Args_min: 4, Args_max: 4, Args: []string{"group", "vouchor", "vouchee", "comment"}, Perms: perms, Desc: "Update vouch comment"},
+		{Cmd: "remove", Fun: vouch_remove, Args_min: 3, Args_max: 3, Args: []string{"group", "vouchor", "vouchee"}, Perms: perms, Desc: "Remove a vouch"},
+		{Cmd: "list_for", Fun: vouches_for_member, Args_min: 2, Args_max: 2, Args: []string{"group", "username"}, Perms: perms, Desc: "List vouches for a member"},
+		{Cmd: "list_by", Fun: vouches_by_member, Args_min: 2, Args_max: 2, Args: []string{"group", "username"}, Perms: perms, Desc: "List vouches by a member"},
+		{Cmd: "emit", Fun: vouches_emit, Args_min: 1, Args_max: 1, Args: []string{"group"}, Perms: perms, Desc: "Emit Vouches"},
 	})
 
 	return ctx.Menu(args, menu)

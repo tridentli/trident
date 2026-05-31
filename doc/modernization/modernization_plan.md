@@ -4,29 +4,24 @@ This document outlines a phased plan to modernize the Trident codebase, transiti
 
 ---
 
-## Phase 1: Build System & Dependency Modernization (Immediate)
+## Phase 1: Build System & Dependency Modernization (Completed)
 
 **Objective**: Transition the codebase fully to modern Go Modules, eliminating legacy `GOPATH` requirements and ensuring the project can be built and tested using standard Go toolchain commands.
 
 ### 1.1. Go Module Transition & Clean Up
 *   **Issue**: The current build system relies on a legacy `GOPATH` hack (`ext/_gopath`) and clones dependencies manually via Git in the `Makefile`.
 *   **Tasks**:
-    *   Permanently adopt Go Modules (`go.mod`).
-    *   Update the `go.mod` file to use a modern Go version (e.g., `go 1.21` or higher) to leverage modern language features and security updates.
-    *   Configure `replace` directives in `go.mod` to point to local checkouts of internal dependencies (`trident.li/pitchfork`, `trident.li/keyval`, `trident.li/go`) during transition, or migrate them to standard GitHub import paths (e.g., `github.com/tridentli/...`) if the vanity domain `trident.li` remains unreliable.
-    *   Ensure all local dependency repositories (`pitchfork`, `go`, `keyval`) have valid, tidied `go.mod` files.
-    *   Clean up the `Makefile` to remove `GOPATH` exports and replace legacy commands with standard `go build`, `go test`, and `go vet` commands.
+    *   [x] Permanently adopt Go Modules (`go.mod`).
+    *   [x] Update the `go.mod` file to use a modern Go version (e.g., `go 1.21` or higher) to leverage modern language features and security updates. (Updated to Go 1.26.2).
+    *   [x] Configure `replace` directives in `go.mod` to point to local checkouts ... or migrate them to standard GitHub import paths. (Migrated to GitHub import paths: `github.com/tridentli/pitchfork`, `github.com/tridentli/go`, and `github.com/secludedsoc/keyval` to fully eliminate local checkout requirements).
+    *   [x] Ensure all local dependency repositories have valid, tidied `go.mod` files. (N/A: bypassed by using GitHub replaces).
+    *   [x] Clean up the `Makefile` to remove `GOPATH` exports and replace legacy commands with standard `go build`, `go test`, and `go vet` commands.
 
 ### 1.2. Code Quality & Static Analysis (Style Fixes)
 *   **Issue**: `go vet` currently flags multiple warnings regarding unkeyed struct literals in menu definitions (e.g., `PfMEntry` and `PfUIMentry`).
 *   **Tasks**:
-    *   Refactor all struct initializations to use keyed fields. This prevents silent breakage if the underlying struct definitions in `pitchfork` or other dependencies change in the future.
-    *   Example Refactoring:
-        ```diff
-        - {"reset", user_pw_reset, 1, 2, []string{"username", "nominator"}, pf.PERM_USER, "Send a recovery password..."},
-        + {Cmd: "reset", Fun: user_pw_reset, Args_min: 1, Args_max: 2, Args: []string{"username", "nominator"}, Perms: pf.PERM_USER, Desc: "Send a recovery password..."},
-        ```
-    *   Integrate `go vet` and `go fmt` checks as blocking steps in the local development loop.
+    *   [x] Refactor all struct initializations to use keyed fields.
+    *   [x] Integrate `go vet` and `go fmt` checks as blocking steps in the local development loop. (Integrated into Makefile `check` target).
 
 ---
 

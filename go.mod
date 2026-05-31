@@ -36,8 +36,8 @@ require (
 	trident.li/go v0.0.0-20161021100159-4bb271e8a450 // indirect
 )
 
-replace trident.li/pitchfork => ./ext/_gopath/src/trident.li/pitchfork
+replace trident.li/pitchfork => github.com/tridentli/pitchfork v1.4.6-0.20220511083412-a5bad841e7b0
 
-replace trident.li/keyval => ./ext/_gopath/src/trident.li/keyval
+replace trident.li/keyval => github.com/secludedsoc/keyval v0.0.0-20220511083218-ca9b9e7f42ab
 
-replace trident.li/go => ./ext/_gopath/src/trident.li/go
+replace trident.li/go => github.com/tridentli/go v0.0.0-20161021100159-4bb271e8a450

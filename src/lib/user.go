@@ -205,7 +205,7 @@ func user_merge(ctx pf.PfCtx, args []string) (err error) {
 
 func user_pw_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
 	m := []pf.PfMEntry{
-		{"reset", user_pw_reset, 1, 2, []string{"username", "nominator"}, pf.PERM_USER, "Send a recovery password split between the user and a nominator"},
+		{Cmd: "reset", Fun: user_pw_reset, Args_min: 1, Args_max: 2, Args: []string{"username", "nominator"}, Perms: pf.PERM_USER, Desc: "Send a recovery password split between the user and a nominator"},
 	}
 
 	menu.Add(m...)
@@ -213,7 +213,7 @@ func user_pw_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
 
 func user_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
 	m := []pf.PfMEntry{
-		{"nominate", user_nominate, 5, 5, []string{"username", "email", "bio_info", "affiliation", "descr"}, pf.PERM_USER, "Nominate New User"},
+		{Cmd: "nominate", Fun: user_nominate, Args_min: 5, Args_max: 5, Args: []string{"username", "email", "bio_info", "affiliation", "descr"}, Perms: pf.PERM_USER, Desc: "Nominate New User"},
 	}
 
 	menu.Add(m...)

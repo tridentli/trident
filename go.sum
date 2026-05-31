@@ -38,6 +38,8 @@ github.com/rogpeppe/go-internal v1.6.1 h1:/FiVV8dS/e+YqF2JvO3yXRFbBLTIuSDkuC7aBO
 github.com/rogpeppe/go-internal v1.6.1/go.mod h1:xXDCJY+GAPziupqXw64V24skbSoqbTEfhy4qGm1nDQc=
 github.com/russross/blackfriday v1.6.0 h1:KqfZb0pUVN2lYqZUYRddxF4OR8ZMURnJIG5Y3VRLtww=
 github.com/russross/blackfriday v1.6.0/go.mod h1:ti0ldHuxg49ri4ksnFxlkCfN+hvslNlmVHqNRXXJNAY=
+github.com/secludedsoc/keyval v0.0.0-20220511083218-ca9b9e7f42ab h1:NmRWEzcRLTyjKB+/P8tvl7go1vE6PxKOi+R+16pIBlA=
+github.com/secludedsoc/keyval v0.0.0-20220511083218-ca9b9e7f42ab/go.mod h1:FQWKo+Kz5zMDgQe9iFvkwd1g0hCMGoqrToHjKZr3gpI=
 github.com/shurcooL/go v0.0.0-20200502201357-93f07166e636 h1:aSISeOcal5irEhJd1M+IrApc0PdcN7e7Aj4yuEnOrfQ=
 github.com/shurcooL/go v0.0.0-20200502201357-93f07166e636/go.mod h1:TDJrrUr11Vxrven61rcy3hJMUqaf/CLWYhHNPmT14Lk=
 github.com/shurcooL/highlight_go v0.0.0-20191220051317-782971ddf21b h1:rBIwpb5ggtqf0uZZY5BPs1sL7njUMM7I8qD2jiou70E=
@@ -46,6 +48,10 @@ github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d h1:yKm7XZV6j9
 github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d/go.mod h1:UdhH50NIW0fCiwBSr0co2m7BnFLdv4fQTgdqdJTHFeE=
 github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e h1:qpG93cPwA5f7s/ZPBJnGOYQNK/vKsaDaseuKT5Asee8=
 github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e/go.mod h1:HuIsMU8RRBOtsCgI77wP899iHVBQpCmg4ErYMZB+2IA=
+github.com/tridentli/go v0.0.0-20161021100159-4bb271e8a450 h1:sTbXt2T+q2XuwHMGZGV8ARcOjW/NZUEZvYjzbP/Bs4U=
+github.com/tridentli/go v0.0.0-20161021100159-4bb271e8a450/go.mod h1:PgS8aHg1g3/e4nQFtZGtzO39PcwgXnywzSbai9pHJpo=
+github.com/tridentli/pitchfork v1.4.6-0.20220511083412-a5bad841e7b0 h1:0sx0sKmtFP6N7CkCX9XMsH0u9JVxXO7fRM5aqYG8t+I=
+github.com/tridentli/pitchfork v1.4.6-0.20220511083412-a5bad841e7b0/go.mod h1:ETCwKJgp42Q5dogTQ8bo3/bcnUQ7bZIte7oU9jv9Zpg=
 golang.org/x/crypto v0.36.0 h1:AnAEvhDddvBdpY+uR+MyHmuZzzNqXSe/GvuDeob5L34=
 golang.org/x/crypto v0.36.0/go.mod h1:Y4J0ReaxCR1IMaabaSMugxJES1EpwhBHhv2bDHklZvc=
 golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8/go.mod h1:FeLwcggjj3mMvU+oOTbSwawSJRM1uh48EjtB4UJZlP0=
