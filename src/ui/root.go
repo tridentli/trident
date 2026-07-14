@@ -5,5 +5,5 @@ import (
 )
 
 func h_root(cui pu.PfUI, menu *pu.PfUIMenu) {
-	menu.Add(pu.PfUIMentry{"recover", "Password Recover", pu.PERM_NONE | pu.PERM_HIDDEN, h_recover, nil})
+	menu.Add(pu.PfUIMentry{URI: "recover", Desc: "Password Recover", Perms: pu.PERM_NONE | pu.PERM_HIDDEN, Fun: h_recover, Subs: nil})
 }

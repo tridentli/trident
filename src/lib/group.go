@@ -357,8 +357,8 @@ func group_menu(ctx pf.PfCtx, menu *pf.PfMenu) {
 	menu.Replace("add", group_add)
 
 	m := []pf.PfMEntry{
-		{"vouch", vouch_menu, 0, -1, nil, pf.PERM_USER, "Vouch Commands"},
-		{"nominate", group_member_nominate, 2, 2, []string{"group", "username"}, pf.PERM_GROUP_MEMBER, "Nominate a member for a group"},
+		{Cmd: "vouch", Fun: vouch_menu, Args_min: 0, Args_max: -1, Args: nil, Perms: pf.PERM_USER, Desc: "Vouch Commands"},
+		{Cmd: "nominate", Fun: group_member_nominate, Args_min: 2, Args_max: 2, Args: []string{"group", "username"}, Perms: pf.PERM_GROUP_MEMBER, Desc: "Nominate a member for a group"},
 	}
 
 	menu.Add(m...)
