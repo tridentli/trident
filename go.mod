@@ -12,7 +12,7 @@ require (
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
 	github.com/disintegration/imaging v1.6.2 // indirect
-	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
+	github.com/golang-jwt/jwt/v4 v4.5.2 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/css v1.0.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
@@ -27,16 +27,16 @@ require (
 	github.com/shurcooL/highlight_go v0.0.0-20191220051317-782971ddf21b // indirect
 	github.com/sourcegraph/annotate v0.0.0-20160123013949-f4cad6c6324d // indirect
 	github.com/sourcegraph/syntaxhighlight v0.0.0-20170531221838-bd320f5d308e // indirect
-	golang.org/x/crypto v0.52.0 // indirect
+	golang.org/x/crypto v0.57.0 // indirect
 	golang.org/x/image v0.46.0 // indirect
-	golang.org/x/net v0.55.0 // indirect
+	golang.org/x/net v0.59.0 // indirect
 	golang.org/x/sys v0.48.0 // indirect
-	golang.org/x/term v0.43.0 // indirect
+	golang.org/x/term v0.46.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	trident.li/go v0.0.0-20161021100159-4bb271e8a450 // indirect
 )
 
-replace trident.li/pitchfork => github.com/tridentli/pitchfork v1.4.6-0.20220511083412-a5bad841e7b0
+replace trident.li/pitchfork => github.com/tridentli/pitchfork v1.4.6-0.20260924200401-6e90f86ea792
 
 replace trident.li/keyval => github.com/secludedsoc/keyval v0.0.0-20220511083218-ca9b9e7f42ab
 
