@@ -47,7 +47,6 @@ jobs:
   vulncheck:
     name: Vulnerability Scan
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Check out code
         uses: actions/checkout@v4
@@ -56,8 +55,10 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version-file: 'go.mod'
+          cache: true
 
       - name: Run govulncheck
-        uses: golang/govulncheck-action@v1
-        with:
-          go-version-file: 'go.mod'
+        continue-on-error: true
+        run: |
+          go run golang.org/x/vuln/cmd/govulncheck@latest ./... || echo "::warning::govulncheck detected vulnerabilities in dependencies"
+
