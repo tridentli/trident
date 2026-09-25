@@ -11,7 +11,6 @@ require (
 	github.com/aryann/difflib v0.0.0-20210328193216-ff5ff6dc229b // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/aymerick/douceur v0.2.0 // indirect
-	github.com/disintegration/imaging v1.6.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.2 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/gorilla/css v1.0.0 // indirect
@@ -36,7 +35,7 @@ require (
 	trident.li/go v0.0.0-20161021100159-4bb271e8a450 // indirect
 )
 
-replace trident.li/pitchfork => github.com/tridentli/pitchfork v1.4.6-0.20260924200401-6e90f86ea792
+replace trident.li/pitchfork => github.com/tridentli/pitchfork v1.4.6-0.20260924202614-e9c91c55613e
 
 replace trident.li/keyval => github.com/secludedsoc/keyval v0.0.0-20220511083218-ca9b9e7f42ab
 
